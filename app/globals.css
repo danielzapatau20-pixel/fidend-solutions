@@ -1,0 +1,328 @@
+/* ─── Google Fonts: Fraunces (variable, all axes) + Inter ──────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&display=optional');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=optional');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ────────────────────────────────────────────────── */
+:root {
+  --color-navy:          #16243A;
+  --color-champagne:     #B89968;
+  --color-old-gold:      #A88A4B;
+  --color-cream:         #F4ECDC;
+  --color-dark-cream:    #EDE3CF;
+  --color-mid-cream:     #E8DCC6;
+
+  --font-fraunces: 'Fraunces', Georgia, serif;
+  --font-inter:    'Inter', system-ui, sans-serif;
+
+  /* Fraunces variable font defaults */
+  --fraunces-soft: 30;
+  --fraunces-opsz: 72;
+
+  --transition: 240ms ease-out;
+}
+
+/* ─── Base Reset & Typography ──────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    background-color: var(--color-cream);
+    color: var(--color-navy);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-fraunces);
+    font-variation-settings: 'SOFT' 30, 'opsz' 72;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; }
+  h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+  h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); }
+  h4 { font-size: 1.125rem; }
+
+  p { max-width: 65ch; }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity var(--transition);
+  }
+
+  a:hover { opacity: 0.72; }
+
+  /* Focus states — 2px gold outline */
+  :focus-visible {
+    outline: 2px solid var(--color-champagne);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  img, video { display: block; max-width: 100%; }
+
+  button { cursor: pointer; font-family: inherit; }
+}
+
+/* ─── Utility Layer ────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Fraunces with SOFT axis */
+  .font-display {
+    font-family: var(--font-fraunces);
+    font-variation-settings: 'SOFT' 30, 'opsz' 144;
+    font-weight: 300;
+  }
+
+  .font-display-md {
+    font-family: var(--font-fraunces);
+    font-variation-settings: 'SOFT' 30, 'opsz' 72;
+    font-weight: 400;
+  }
+
+  .font-display-italic {
+    font-family: var(--font-fraunces);
+    font-style: italic;
+    font-variation-settings: 'SOFT' 30, 'opsz' 72;
+    font-weight: 300;
+  }
+
+  /* Eyebrow label — Inter, 10px, ALL CAPS, 0.35em tracking */
+  .eyebrow {
+    font-family: var(--font-inter);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--color-champagne);
+    line-height: 1.4;
+  }
+
+  .eyebrow-navy {
+    font-family: var(--font-inter);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    line-height: 1.4;
+  }
+
+  /* 1px champagne gold rule */
+  .gold-rule {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-champagne);
+  }
+
+  /* Section outer padding */
+  .section-x {
+    padding-left: clamp(28px, 6.7vw, 88px);
+    padding-right: clamp(28px, 6.7vw, 88px);
+  }
+
+  .section-y {
+    padding-top: clamp(64px, 8vw, 120px);
+    padding-bottom: clamp(64px, 8vw, 120px);
+  }
+
+  /* Brand transition */
+  .transition-brand {
+    transition: all 240ms ease-out;
+  }
+
+  /* Overlay classes */
+  .overlay-navy-60::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(22, 36, 58, 0.60);
+    pointer-events: none;
+  }
+
+  .overlay-cream-75::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(244, 236, 220, 0.75);
+    pointer-events: none;
+  }
+
+  .overlay-cream-80::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(244, 236, 220, 0.80);
+    pointer-events: none;
+  }
+
+  /* Diamond ornament */
+  .diamond::before { content: '◇'; }
+
+  /* Numbered step circles */
+  .step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-champagne);
+    border-radius: 50%;
+    font-family: var(--font-fraunces);
+    font-variation-settings: 'SOFT' 30;
+    font-size: 1rem;
+    color: var(--color-champagne);
+    flex-shrink: 0;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    font-family: var(--font-fraunces);
+    font-style: italic;
+    font-variation-settings: 'SOFT' 30, 'opsz' 144;
+    font-weight: 300;
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--color-navy);
+  }
+
+  /* Card hover lift */
+  .card-hover {
+    transition: transform 240ms ease-out, box-shadow 240ms ease-out;
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(22, 36, 58, 0.12);
+  }
+
+  /* Compliance badge */
+  .compliance-badge {
+    font-family: var(--font-inter);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-champagne);
+    border: 1px solid var(--color-champagne);
+    padding: 4px 10px;
+    display: inline-block;
+  }
+
+  /* Input field base */
+  .form-input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(22, 36, 58, 0.25);
+    padding: 12px 16px;
+    font-family: var(--font-inter);
+    font-size: 15px;
+    color: var(--color-navy);
+    transition: border-color 240ms ease-out;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .form-input::placeholder { color: rgba(22, 36, 58, 0.40); }
+
+  .form-input:focus {
+    border-color: var(--color-champagne);
+  }
+
+  .form-input.error {
+    border-color: #C0392B;
+  }
+
+  .form-label {
+    display: block;
+    font-family: var(--font-inter);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    margin-bottom: 8px;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--font-inter);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    border: 1px solid var(--color-champagne);
+    color: var(--color-champagne);
+    background: transparent;
+    transition: background-color 240ms ease-out, color 240ms ease-out;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-champagne);
+    color: var(--color-navy);
+    opacity: 1;
+  }
+
+  .btn-primary-navy {
+    display: inline-block;
+    font-family: var(--font-inter);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    border: 1px solid var(--color-navy);
+    color: var(--color-navy);
+    background: transparent;
+    transition: background-color 240ms ease-out, color 240ms ease-out;
+  }
+
+  .btn-primary-navy:hover {
+    background-color: var(--color-navy);
+    color: var(--color-cream);
+    opacity: 1;
+  }
+
+  .btn-gold-fill {
+    display: inline-block;
+    font-family: var(--font-inter);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    background-color: var(--color-champagne);
+    color: var(--color-navy);
+    border: 1px solid var(--color-champagne);
+    transition: background-color 240ms ease-out;
+  }
+
+  .btn-gold-fill:hover {
+    background-color: var(--color-old-gold);
+    border-color: var(--color-old-gold);
+    opacity: 1;
+  }
+}
