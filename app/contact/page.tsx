@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm'
 import ApplyForm from '@/components/ApplyForm'
+import FadeIn from '@/components/FadeIn'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -20,48 +21,54 @@ export default function ContactPage() {
         }}
       >
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <p
-            className="eyebrow"
-            style={{ color: 'rgba(184,153,104,0.85)', marginBottom: 16 }}
-          >
-            Contact
-          </p>
-          <div
-            style={{
-              height: 1,
-              backgroundColor: '#B89968',
-              maxWidth: 64,
-              marginBottom: 28,
-            }}
-          />
-          <h1
-            style={{
-              fontFamily: "'Fraunces', Georgia, serif",
-              fontVariationSettings: "'SOFT' 30, 'opsz' 72",
-              fontWeight: 300,
-              fontSize: 'clamp(2.2rem, 5vw, 4rem)',
-              lineHeight: 1.08,
-              color: '#F4ECDC',
-              maxWidth: '22ch',
-              margin: '0 0 20px',
-            }}
-          >
-            Two conversations. One company.
-          </h1>
-          <p
-            style={{
-              fontFamily: 'Inter, system-ui, sans-serif',
-              fontSize: 'clamp(14px, 1.6vw, 16px)',
-              lineHeight: 1.65,
-              color: 'rgba(244,236,220,0.65)',
-              maxWidth: '52ch',
-              margin: 0,
-            }}
-          >
-            If you run a facility, tell us your staffing situation. If you want
-            to work, apply below. We read everything and respond to every
-            submission.
-          </p>
+          <FadeIn delay={80}>
+            <p
+              className="eyebrow"
+              style={{ color: 'rgba(184,153,104,0.85)', marginBottom: 16 }}
+            >
+              Contact
+            </p>
+            <div
+              style={{
+                height: 1,
+                backgroundColor: '#B89968',
+                maxWidth: 64,
+                marginBottom: 28,
+              }}
+            />
+          </FadeIn>
+          <FadeIn delay={200}>
+            <h1
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontVariationSettings: "'SOFT' 30, 'opsz' 72",
+                fontWeight: 300,
+                fontSize: 'clamp(2.2rem, 5vw, 4rem)',
+                lineHeight: 1.08,
+                color: '#F4ECDC',
+                maxWidth: '22ch',
+                margin: '0 0 20px',
+              }}
+            >
+              Two conversations. One company.
+            </h1>
+          </FadeIn>
+          <FadeIn delay={320}>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 'clamp(14px, 1.6vw, 16px)',
+                lineHeight: 1.65,
+                color: 'rgba(244,236,220,0.65)',
+                maxWidth: '52ch',
+                margin: 0,
+              }}
+            >
+              If you run a facility, tell us your staffing situation. If you want
+              to work, apply below. We read everything and respond to every
+              submission.
+            </p>
+          </FadeIn>
         </div>
       </section>
 
@@ -84,6 +91,7 @@ export default function ContactPage() {
         >
           {/* ── HIRE FIDEND ─── */}
           <div id="hire">
+          <FadeIn direction="left">
             {/* Section header */}
             <div style={{ marginBottom: 40 }}>
               <p className="eyebrow" style={{ marginBottom: 12 }}>
@@ -169,10 +177,12 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
+          </FadeIn>
           </div>
 
           {/* ── APPLY TO WORK ─── */}
           <div id="apply">
+          <FadeIn delay={140}>
             {/* Section header */}
             <div style={{ marginBottom: 40 }}>
               <p className="eyebrow" style={{ marginBottom: 12 }}>
@@ -281,6 +291,7 @@ export default function ContactPage() {
                 ))}
               </div>
             </div>
+          </FadeIn>
           </div>
         </div>
       </section>
@@ -292,7 +303,7 @@ export default function ContactPage() {
           padding: 'clamp(40px, 6vw, 64px) clamp(24px, 6vw, 80px)',
         }}
       >
-        <div
+        <FadeIn
           style={{
             maxWidth: 1200,
             margin: '0 auto',
@@ -352,7 +363,7 @@ export default function ContactPage() {
           >
             Claridad · Estrategia · Resultados
           </p>
-        </div>
+        </FadeIn>
       </section>
     </>
   )

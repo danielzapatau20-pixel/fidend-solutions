@@ -1,80 +1,101 @@
 'use client'
-
 import Link from 'next/link'
 
 interface LogoProps {
-  /**
-   * 'cream' → Option 1: gold F-mark + navy FIDEND + gold SOLUTIONS (for cream/light backgrounds)
-   * 'navy'  → Option 2: cream F-mark + cream FIDEND + gold SOLUTIONS (for navy/dark backgrounds)
-   */
   variant?: 'cream' | 'navy'
-  className?: string
   size?: 'sm' | 'md' | 'lg'
   asLink?: boolean
+  showTagline?: boolean
 }
 
 const sizes = {
-  sm: { mark: 20, fidend: '0.85rem', solutions: '0.48rem' },
-  md: { mark: 28, fidend: '1.1rem',  solutions: '0.58rem' },
-  lg: { mark: 36, fidend: '1.4rem',  solutions: '0.70rem' },
+  sm: { markW: 20, markH: 32, fidend: '0.80rem', solutions: '0.37rem', gap: 9 },
+  md: { markW: 28, markH: 45, fidend: '1.06rem', solutions: '0.48rem', gap: 12 },
+  lg: { markW: 38, markH: 61, fidend: '1.38rem', solutions: '0.62rem', gap: 16 },
 }
 
 export default function Logo({
   variant = 'navy',
-  className = '',
   size = 'md',
   asLink = true,
+  showTagline = false,
 }: LogoProps) {
-  const isNavy = variant === 'navy'
-  const markColor   = isNavy ? '#F4ECDC' : '#B89968'
+  const isNavy    = variant === 'navy'
+  const markColor = isNavy ? '#F4ECDC' : '#B89968'
   const fidendColor = isNavy ? '#F4ECDC' : '#16243A'
-  const goldColor   = '#B89968'
+  const goldColor = '#B89968'
   const s = sizes[size]
 
   const inner = (
     <div
-      className={`inline-flex items-center gap-0 select-none ${className}`}
-      style={{ minWidth: 72 }}
+      style={{ display: 'inline-flex', alignItems: 'center', gap: s.gap, userSelect: 'none' }}
       aria-label="Fidend Solutions"
     >
-      {/* F-mark SVG */}
+      {/* Curved calligraphic F mark — mirrors the brand handoff SVG */}
       <svg
-        width={s.mark}
-        height={Math.round(s.mark * 1.25)}
-        viewBox="0 0 32 40"
+        width={s.markW}
+        height={s.markH}
+        viewBox="0 0 56 90"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
         style={{ flexShrink: 0 }}
       >
-        {/* Vertical stroke */}
-        <rect x="4" y="2" width="5" height="36" fill={markColor} />
-        {/* Top horizontal bar */}
-        <rect x="4" y="2" width="22" height="5" fill={markColor} />
-        {/* Top serif left */}
-        <rect x="1" y="2" width="3" height="2" fill={markColor} />
-        <rect x="1" y="5" width="2" height="2" fill={markColor} />
-        {/* Middle horizontal bar */}
-        <rect x="4" y="19" width="17" height="4" fill={markColor} />
-        {/* Bottom serif */}
-        <rect x="1" y="36" width="3" height="2" fill={markColor} />
-        <rect x="1" y="34" width="2" height="2" fill={markColor} />
-        {/* Top bar right serif */}
-        <rect x="24" y="2" width="2" height="2" fill={markColor} />
-        <rect x="26" y="4" width="1" height="2" fill={markColor} />
+        {/* Main arc: sweeps from upper-right, counterclockwise (left→down) forming the C-shape */}
+        <path
+          d="M 46,12 C 30,2 4,16 4,42 C 4,68 20,80 38,80"
+          stroke={markColor}
+          strokeWidth="5.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        {/* F crossbar — horizontal through the mid-point of the arc */}
+        <line
+          x1="2"
+          y1="42"
+          x2="52"
+          y2="38"
+          stroke={markColor}
+          strokeWidth="4.5"
+          strokeLinecap="round"
+        />
+        {/* Calligraphic tail — descends from the bottom of the arc */}
+        <path
+          d="M 38,80 C 46,84 52,88 54,90"
+          stroke={markColor}
+          strokeWidth="5.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
 
-      {/* Wordmark lockup */}
-      <div style={{ marginLeft: 10 }}>
-        {/* Gold rule above SOLUTIONS */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
-          <div style={{ height: 1, width: 20, backgroundColor: goldColor }} />
+      {/* Wordmark */}
+      <div>
+        {/* FIDEND */}
+        <div
+          style={{
+            fontFamily: "'Fraunces', Georgia, serif",
+            fontVariationSettings: "'SOFT' 30, 'opsz' 48",
+            fontWeight: 400,
+            fontSize: s.fidend,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: fidendColor,
+            lineHeight: 1,
+            marginBottom: 5,
+          }}
+        >
+          FIDEND
+        </div>
+
+        {/* — SOLUTIONS — */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+          <div style={{ height: 1, width: 10, backgroundColor: goldColor }} />
           <span
             style={{
               fontFamily: 'Inter, system-ui, sans-serif',
               fontSize: s.solutions,
               fontWeight: 500,
-              letterSpacing: '0.38em',
+              letterSpacing: '0.32em',
               textTransform: 'uppercase',
               color: goldColor,
               lineHeight: 1,
@@ -82,24 +103,26 @@ export default function Logo({
           >
             SOLUTIONS
           </span>
-          <div style={{ height: 1, width: 20, backgroundColor: goldColor }} />
+          <div style={{ height: 1, width: 10, backgroundColor: goldColor }} />
         </div>
 
-        {/* FIDEND */}
-        <div
-          style={{
-            fontFamily: "'Fraunces', Georgia, serif",
-            fontVariationSettings: "'SOFT' 30, 'opsz' 72",
-            fontWeight: 400,
-            fontSize: s.fidend,
-            letterSpacing: '0.22em',
-            color: fidendColor,
-            lineHeight: 1,
-            textTransform: 'uppercase',
-          }}
-        >
-          FIDEND
-        </div>
+        {/* Tagline — optional, shown in footer */}
+        {showTagline && (
+          <div
+            style={{
+              fontFamily: "'Fraunces', Georgia, serif",
+              fontVariationSettings: "'SOFT' 80, 'opsz' 18",
+              fontStyle: 'italic',
+              fontWeight: 300,
+              fontSize: s.solutions,
+              color: isNavy ? 'rgba(184,153,104,0.80)' : '#A88A4B',
+              marginTop: 7,
+              letterSpacing: '0.04em',
+            }}
+          >
+            the faithful house of care
+          </div>
+        )}
       </div>
     </div>
   )

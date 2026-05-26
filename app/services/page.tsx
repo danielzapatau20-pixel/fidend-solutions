@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import HeroVideo from '@/components/HeroVideo'
 import ServiceCard from '@/components/ServiceCard'
 import PricingTable from '@/components/PricingTable'
+import FadeIn from '@/components/FadeIn'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -24,12 +25,12 @@ const SERVICES = [
   {
     title: 'Laundry',
     description:
-      'Resident laundry, linen exchange, and dry-goods handling. Sorted, tracked, and returned on schedule. Workers follow your facility\'s sorting and infection-control procedures from day one.',
+      "Resident laundry, linen exchange, and dry-goods handling. Sorted, tracked, and returned on schedule. Workers follow your facility's sorting and infection-control procedures from day one.",
   },
   {
     title: 'Activities Assistance',
     description:
-      'Structured program support under your activities coordinator\'s direction. Engagement, facilitation, and logistical setup for recreational and therapeutic programming. Warm, patient, and resident-focused.',
+      "Structured program support under your activities coordinator's direction. Engagement, facilitation, and logistical setup for recreational and therapeutic programming. Warm, patient, and resident-focused.",
   },
   {
     title: 'Companion Care',
@@ -61,7 +62,7 @@ const HOW_IT_WORKS = [
   {
     number: '03',
     title: 'On-site orientation',
-    body: 'Workers arrive briefed on your facility\'s layout and general protocols. Your DON or shift supervisor handles final orientation to your specific procedures.',
+    body: "Workers arrive briefed on your facility's layout and general protocols. Your DON or shift supervisor handles final orientation to your specific procedures.",
   },
   {
     number: '04',
@@ -75,15 +76,6 @@ export default function ServicesPage() {
     <>
       {/* ── HERO ─────────────────────────────────────────────────────── */}
       <HeroVideo
-        /**
-         * HIGGSFIELD ASSET 03 — Services hero (static image or short video)
-         * src="/videos/services-loop.mp4"  (optional short loop)
-         * poster="/images/services-hero.jpg"
-         * Tool: generate_image · Model: flux_dev
-         * Prompt: "Close-up of a freshly made bed in a senior living room. Crisp
-         * white linens, navy throw pillow, warm bedside lamp. Golden hour.
-         * Institutional precision. No people. Film grain."
-         */
         overlayOpacity={0.65}
         minHeight="60svh"
       >
@@ -94,47 +86,53 @@ export default function ServicesPage() {
             padding: '0 clamp(24px, 6vw, 80px)',
           }}
         >
-          <p
-            className="eyebrow"
-            style={{ color: 'rgba(184,153,104,0.85)', marginBottom: 16 }}
-          >
-            Services
-          </p>
-          <div
-            style={{
-              height: 1,
-              backgroundColor: '#B89968',
-              maxWidth: 64,
-              marginBottom: 28,
-            }}
-          />
-          <h1
-            style={{
-              fontFamily: "'Fraunces', Georgia, serif",
-              fontVariationSettings: "'SOFT' 30, 'opsz' 72",
-              fontWeight: 300,
-              fontSize: 'clamp(2.2rem, 5vw, 4rem)',
-              lineHeight: 1.08,
-              color: '#F4ECDC',
-              maxWidth: '20ch',
-              margin: '0 0 20px',
-            }}
-          >
-            Five disciplines. One standard.
-          </h1>
-          <p
-            style={{
-              fontFamily: 'Inter, system-ui, sans-serif',
-              fontSize: 'clamp(14px, 1.6vw, 16px)',
-              lineHeight: 1.65,
-              color: 'rgba(244,236,220,0.68)',
-              maxWidth: '48ch',
-              margin: 0,
-            }}
-          >
-            Every Fidend worker is TB-cleared, background-checked, and oriented
-            to senior care before their first shift at your facility.
-          </p>
+          <FadeIn delay={80}>
+            <p
+              className="eyebrow"
+              style={{ color: 'rgba(184,153,104,0.85)', marginBottom: 16 }}
+            >
+              Services
+            </p>
+            <div
+              style={{
+                height: 1,
+                backgroundColor: '#B89968',
+                maxWidth: 64,
+                marginBottom: 28,
+              }}
+            />
+          </FadeIn>
+          <FadeIn delay={200}>
+            <h1
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontVariationSettings: "'SOFT' 30, 'opsz' 72",
+                fontWeight: 300,
+                fontSize: 'clamp(2.2rem, 5vw, 4rem)',
+                lineHeight: 1.08,
+                color: '#F4ECDC',
+                maxWidth: '20ch',
+                margin: '0 0 20px',
+              }}
+            >
+              Five disciplines. One standard.
+            </h1>
+          </FadeIn>
+          <FadeIn delay={320}>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 'clamp(14px, 1.6vw, 16px)',
+                lineHeight: 1.65,
+                color: 'rgba(244,236,220,0.68)',
+                maxWidth: '48ch',
+                margin: 0,
+              }}
+            >
+              Every Fidend worker is TB-cleared, background-checked, and oriented
+              to senior care before their first shift at your facility.
+            </p>
+          </FadeIn>
         </div>
       </HeroVideo>
 
@@ -153,12 +151,13 @@ export default function ServicesPage() {
               gap: 20,
             }}
           >
-            {SERVICES.map(svc => (
-              <ServiceCard
-                key={svc.title}
-                title={svc.title}
-                description={svc.description}
-              />
+            {SERVICES.map((svc, i) => (
+              <FadeIn key={svc.title} delay={i * 80} direction="up">
+                <ServiceCard
+                  title={svc.title}
+                  description={svc.description}
+                />
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -172,7 +171,7 @@ export default function ServicesPage() {
         }}
       >
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ maxWidth: 560, marginBottom: 'clamp(40px, 6vw, 72px)' }}>
+          <FadeIn style={{ maxWidth: 560, marginBottom: 'clamp(40px, 6vw, 72px)' }}>
             <p className="eyebrow" style={{ marginBottom: 16 }}>The Process</p>
             <div
               style={{
@@ -194,7 +193,7 @@ export default function ServicesPage() {
             >
               From first call to first shift in 48 hours.
             </h2>
-          </div>
+          </FadeIn>
 
           <div
             style={{
@@ -203,8 +202,8 @@ export default function ServicesPage() {
               gap: 40,
             }}
           >
-            {HOW_IT_WORKS.map(step => (
-              <div key={step.number}>
+            {HOW_IT_WORKS.map((step, i) => (
+              <FadeIn key={step.number} delay={i * 90}>
                 <p
                   style={{
                     fontFamily: "'Fraunces', Georgia, serif",
@@ -248,7 +247,7 @@ export default function ServicesPage() {
                 >
                   {step.body}
                 </p>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -272,7 +271,7 @@ export default function ServicesPage() {
           }}
         >
           {/* Left — copy */}
-          <div>
+          <FadeIn direction="left">
             <p className="eyebrow" style={{ marginBottom: 16 }}>Compliance</p>
             <div className="gold-rule" style={{ marginBottom: 28 }} />
             <h2
@@ -305,10 +304,10 @@ export default function ServicesPage() {
             <Link href="/contact" className="btn-primary-navy">
               Request a Conversation
             </Link>
-          </div>
+          </FadeIn>
 
           {/* Right — checklist */}
-          <div>
+          <FadeIn delay={120}>
             <p
               style={{
                 fontFamily: 'Inter, system-ui, sans-serif',
@@ -359,7 +358,7 @@ export default function ServicesPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -380,7 +379,7 @@ export default function ServicesPage() {
             alignItems: 'center',
           }}
         >
-          <div>
+          <FadeIn direction="left">
             <p className="eyebrow" style={{ marginBottom: 16 }}>Pricing</p>
             <div
               style={{
@@ -400,7 +399,7 @@ export default function ServicesPage() {
                 margin: '0 0 20px',
               }}
             >
-              The invoice you receive is the invoice we'd show anyone.
+              {"The invoice you receive is the invoice we'd show anyone."}
             </h2>
             <p
               style={{
@@ -418,9 +417,11 @@ export default function ServicesPage() {
             <Link href="/contact" className="btn-primary">
               Request a Rate Sheet
             </Link>
-          </div>
+          </FadeIn>
 
-          <PricingTable variant="navy" />
+          <FadeIn delay={150}>
+            <PricingTable variant="navy" />
+          </FadeIn>
         </div>
       </section>
     </>

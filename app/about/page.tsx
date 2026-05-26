@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import HeroVideo from '@/components/HeroVideo'
+import FadeIn from '@/components/FadeIn'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ const VALUES = [
   {
     latin: 'Claridad',
     english: 'Clarity',
-    body: 'Every rate disclosed. Every worker\'s credentials documented. No surprises on the invoice or the floor.',
+    body: "Every rate disclosed. Every worker's credentials documented. No surprises on the invoice or the floor.",
   },
   {
     latin: 'Estrategia',
@@ -31,15 +32,6 @@ export default function AboutPage() {
     <>
       {/* ── HERO ─────────────────────────────────────────────────────── */}
       <HeroVideo
-        /**
-         * HIGGSFIELD ASSET 04 — About hero (portrait / founder tone)
-         * poster="/images/about-hero.jpg"
-         * Tool: generate_image · Model: flux_dev
-         * Prompt: "An empty leather chair beside a window in a quiet, well-lit
-         * office. Navy wall, warm lamp, single framed document on the wall.
-         * Afternoon light. Dignified, institutional, permanent. No people.
-         * Film grain. 16:9."
-         */
         overlayOpacity={0.68}
         minHeight="60svh"
       >
@@ -50,34 +42,38 @@ export default function AboutPage() {
             padding: '0 clamp(24px, 6vw, 80px)',
           }}
         >
-          <p
-            className="eyebrow"
-            style={{ color: 'rgba(184,153,104,0.85)', marginBottom: 16 }}
-          >
-            About
-          </p>
-          <div
-            style={{
-              height: 1,
-              backgroundColor: '#B89968',
-              maxWidth: 64,
-              marginBottom: 28,
-            }}
-          />
-          <h1
-            style={{
-              fontFamily: "'Fraunces', Georgia, serif",
-              fontVariationSettings: "'SOFT' 30, 'opsz' 72",
-              fontWeight: 300,
-              fontSize: 'clamp(2.2rem, 5vw, 4rem)',
-              lineHeight: 1.08,
-              color: '#F4ECDC',
-              maxWidth: '22ch',
-              margin: '0 0 20px',
-            }}
-          >
-            Built on the belief that faithful service is a profession.
-          </h1>
+          <FadeIn delay={80}>
+            <p
+              className="eyebrow"
+              style={{ color: 'rgba(184,153,104,0.85)', marginBottom: 16 }}
+            >
+              About
+            </p>
+            <div
+              style={{
+                height: 1,
+                backgroundColor: '#B89968',
+                maxWidth: 64,
+                marginBottom: 28,
+              }}
+            />
+          </FadeIn>
+          <FadeIn delay={220}>
+            <h1
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontVariationSettings: "'SOFT' 30, 'opsz' 72",
+                fontWeight: 300,
+                fontSize: 'clamp(2.2rem, 5vw, 4rem)',
+                lineHeight: 1.08,
+                color: '#F4ECDC',
+                maxWidth: '22ch',
+                margin: '0 0 20px',
+              }}
+            >
+              Built on the belief that faithful service is a profession.
+            </h1>
+          </FadeIn>
         </div>
       </HeroVideo>
 
@@ -99,7 +95,7 @@ export default function AboutPage() {
           }}
         >
           {/* Left */}
-          <div>
+          <FadeIn direction="left">
             <p className="eyebrow" style={{ marginBottom: 16 }}>The Name</p>
             <div className="gold-rule" style={{ marginBottom: 28 }} />
             <h2
@@ -155,42 +151,44 @@ export default function AboutPage() {
               Every worker we place is a representation of that commitment.
               Every invoice we issue is designed to honor it.
             </p>
-          </div>
+          </FadeIn>
 
           {/* Right — pull quote */}
-          <div
-            style={{
-              borderLeft: '3px solid #B89968',
-              paddingLeft: 32,
-            }}
-          >
-            <p
+          <FadeIn delay={160}>
+            <div
               style={{
-                fontFamily: "'Fraunces', Georgia, serif",
-                fontVariationSettings: "'SOFT' 30, 'opsz' 36",
-                fontStyle: 'italic',
-                fontWeight: 300,
-                fontSize: 'clamp(1.3rem, 2.8vw, 2rem)',
-                color: '#16243A',
-                lineHeight: 1.35,
-                margin: '0 0 24px',
+                borderLeft: '3px solid #B89968',
+                paddingLeft: 32,
               }}
             >
-              "The faithful house of care."
-            </p>
-            <p
-              style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: 12,
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: 'rgba(22,36,58,0.40)',
-                margin: 0,
-              }}
-            >
-              Fidend Solutions tagline
-            </p>
-          </div>
+              <p
+                style={{
+                  fontFamily: "'Fraunces', Georgia, serif",
+                  fontVariationSettings: "'SOFT' 30, 'opsz' 36",
+                  fontStyle: 'italic',
+                  fontWeight: 300,
+                  fontSize: 'clamp(1.3rem, 2.8vw, 2rem)',
+                  color: '#16243A',
+                  lineHeight: 1.35,
+                  margin: '0 0 24px',
+                }}
+              >
+                "The faithful house of care."
+              </p>
+              <p
+                style={{
+                  fontFamily: 'Inter, system-ui, sans-serif',
+                  fontSize: 12,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(22,36,58,0.40)',
+                  margin: 0,
+                }}
+              >
+                Fidend Solutions tagline
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -221,31 +219,33 @@ export default function AboutPage() {
            *   Aspect: 3:4 (portrait)
            *   Place at: /public/images/founder.jpg
            */}
-          <div
-            style={{
-              aspectRatio: '3/4',
-              maxWidth: 400,
-              backgroundColor: 'rgba(244,236,220,0.04)',
-              border: '1px solid rgba(184,153,104,0.15)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-            aria-hidden="true"
-          >
-            <p
-              className="eyebrow"
+          <FadeIn direction="left">
+            <div
               style={{
-                color: 'rgba(184,153,104,0.30)',
-                letterSpacing: '0.4em',
+                aspectRatio: '3/4',
+                maxWidth: 400,
+                backgroundColor: 'rgba(244,236,220,0.04)',
+                border: '1px solid rgba(184,153,104,0.15)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
+              aria-hidden="true"
             >
-              Higgsfield Asset 05
-            </p>
-          </div>
+              <p
+                className="eyebrow"
+                style={{
+                  color: 'rgba(184,153,104,0.30)',
+                  letterSpacing: '0.4em',
+                }}
+              >
+                Higgsfield Asset 05
+              </p>
+            </div>
+          </FadeIn>
 
           {/* Founder copy */}
-          <div>
+          <FadeIn delay={140}>
             <p className="eyebrow" style={{ marginBottom: 16 }}>
               The Founder
             </p>
@@ -329,7 +329,7 @@ export default function AboutPage() {
                 Founder & Principal · Fidend Solutions
               </p>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -341,7 +341,7 @@ export default function AboutPage() {
         }}
       >
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ maxWidth: 480, marginBottom: 'clamp(40px, 6vw, 72px)' }}>
+          <FadeIn style={{ maxWidth: 480, marginBottom: 'clamp(40px, 6vw, 72px)' }}>
             <p className="eyebrow" style={{ marginBottom: 16 }}>
               The Standard
             </p>
@@ -359,7 +359,7 @@ export default function AboutPage() {
             >
               Three commitments. No exceptions.
             </h2>
-          </div>
+          </FadeIn>
 
           <div
             style={{
@@ -368,59 +368,61 @@ export default function AboutPage() {
               gap: 32,
             }}
           >
-            {VALUES.map(val => (
-              <div
-                key={val.latin}
-                style={{
-                  backgroundColor: '#F4ECDC',
-                  border: '1px solid rgba(22,36,58,0.08)',
-                  padding: 32,
-                }}
-              >
+            {VALUES.map((val, i) => (
+              <FadeIn key={val.latin} delay={i * 100}>
                 <div
                   style={{
-                    height: 1,
-                    backgroundColor: '#B89968',
-                    marginBottom: 24,
-                  }}
-                />
-                <p
-                  style={{
-                    fontFamily: "'Fraunces', Georgia, serif",
-                    fontVariationSettings: "'SOFT' 30, 'opsz' 36",
-                    fontWeight: 400,
-                    fontSize: '1.5rem',
-                    color: '#16243A',
-                    margin: '0 0 4px',
+                    backgroundColor: '#F4ECDC',
+                    border: '1px solid rgba(22,36,58,0.08)',
+                    padding: 32,
+                    height: '100%',
                   }}
                 >
-                  {val.latin}
-                </p>
-                <p
-                  style={{
-                    fontFamily: 'Inter, system-ui, sans-serif',
-                    fontSize: 9,
-                    fontWeight: 500,
-                    letterSpacing: '0.3em',
-                    textTransform: 'uppercase',
-                    color: '#B89968',
-                    margin: '0 0 20px',
-                  }}
-                >
-                  {val.english}
-                </p>
-                <p
-                  style={{
-                    fontFamily: 'Inter, system-ui, sans-serif',
-                    fontSize: 14,
-                    lineHeight: 1.65,
-                    color: 'rgba(22,36,58,0.60)',
-                    margin: 0,
-                  }}
-                >
-                  {val.body}
-                </p>
-              </div>
+                  <div
+                    style={{
+                      height: 1,
+                      backgroundColor: '#B89968',
+                      marginBottom: 24,
+                    }}
+                  />
+                  <p
+                    style={{
+                      fontFamily: "'Fraunces', Georgia, serif",
+                      fontVariationSettings: "'SOFT' 30, 'opsz' 36",
+                      fontWeight: 400,
+                      fontSize: '1.5rem',
+                      color: '#16243A',
+                      margin: '0 0 4px',
+                    }}
+                  >
+                    {val.latin}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 9,
+                      fontWeight: 500,
+                      letterSpacing: '0.3em',
+                      textTransform: 'uppercase',
+                      color: '#B89968',
+                      margin: '0 0 20px',
+                    }}
+                  >
+                    {val.english}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 14,
+                      lineHeight: 1.65,
+                      color: 'rgba(22,36,58,0.60)',
+                      margin: 0,
+                    }}
+                  >
+                    {val.body}
+                  </p>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -434,7 +436,7 @@ export default function AboutPage() {
           textAlign: 'center',
         }}
       >
-        <div style={{ maxWidth: 560, margin: '0 auto' }}>
+        <FadeIn style={{ maxWidth: 560, margin: '0 auto' }}>
           <div
             style={{
               height: 1,
@@ -471,7 +473,7 @@ export default function AboutPage() {
           <Link href="/contact" className="btn-primary">
             Request a Conversation
           </Link>
-        </div>
+        </FadeIn>
       </section>
     </>
   )

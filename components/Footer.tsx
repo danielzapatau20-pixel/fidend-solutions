@@ -29,7 +29,7 @@ export default function Footer() {
 
         {/* Logo block */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <Logo variant="navy" size="md" />
+          <Logo variant="navy" size="md" showTagline={true} />
           <p
             style={{
               fontFamily: "'Fraunces', Georgia, serif",
