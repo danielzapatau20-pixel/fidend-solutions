@@ -9,9 +9,9 @@ interface LogoProps {
 }
 
 const sizes = {
-  sm: { markW: 20, markH: 32, fidend: '0.80rem', solutions: '0.37rem', gap: 9 },
-  md: { markW: 28, markH: 45, fidend: '1.06rem', solutions: '0.48rem', gap: 12 },
-  lg: { markW: 38, markH: 61, fidend: '1.38rem', solutions: '0.62rem', gap: 16 },
+  sm: { markW: 20, markH: 26, fidend: '0.82rem', tagline: '0.38rem', gap: 10 },
+  md: { markW: 28, markH: 36, fidend: '1.10rem', tagline: '0.50rem', gap: 14 },
+  lg: { markW: 40, markH: 52, fidend: '1.52rem', tagline: '0.68rem', gap: 18 },
 }
 
 export default function Logo({
@@ -22,91 +22,75 @@ export default function Logo({
 }: LogoProps) {
   const isNavy    = variant === 'navy'
   const markColor = isNavy ? '#F4ECDC' : '#B89968'
-  const fidendColor = isNavy ? '#F4ECDC' : '#16243A'
+  const textColor = isNavy ? '#F4ECDC' : '#16243A'
   const goldColor = '#B89968'
   const s = sizes[size]
 
   const inner = (
     <div
       style={{ display: 'inline-flex', alignItems: 'center', gap: s.gap, userSelect: 'none' }}
-      aria-label="Fidend Solutions"
+      aria-label="Fidend"
     >
-      {/* Curved calligraphic F mark — mirrors the brand handoff SVG */}
+      {/*
+        Circular swash F mark — matches the Option 6 brand handoff.
+        viewBox 0 0 72 92:
+          • Main arc: large CCW arc from upper-right (≈1:30 o'clock) sweeping
+            counterclockwise ~300° around the left side to lower-right (≈7 o'clock)
+          • Crossbar: horizontal F bar at mid-height of the arc
+          • Tail: calligraphic descender from the arc's lower terminus
+      */}
       <svg
         width={s.markW}
         height={s.markH}
-        viewBox="0 0 56 90"
+        viewBox="0 0 72 92"
         fill="none"
         aria-hidden="true"
         style={{ flexShrink: 0 }}
       >
-        {/* Main arc: sweeps from upper-right, counterclockwise (left→down) forming the C-shape */}
+        {/* Main circular arc */}
         <path
-          d="M 46,12 C 30,2 4,16 4,42 C 4,68 20,80 38,80"
+          d="M 62,10 A 36,36 0 1 0 60,78"
           stroke={markColor}
           strokeWidth="5.5"
           strokeLinecap="round"
-          strokeLinejoin="round"
         />
-        {/* F crossbar — horizontal through the mid-point of the arc */}
+        {/* Calligraphic descending tail */}
+        <path
+          d="M 60,78 C 66,84 70,88 72,92"
+          stroke={markColor}
+          strokeWidth="5.5"
+          strokeLinecap="round"
+        />
+        {/* F crossbar at mid-height — slight diagonal follows the calligraphic axis */}
         <line
-          x1="2"
-          y1="42"
-          x2="52"
-          y2="38"
+          x1="6"
+          y1="44"
+          x2="58"
+          y2="40"
           stroke={markColor}
-          strokeWidth="4.5"
+          strokeWidth="4"
           strokeLinecap="round"
-        />
-        {/* Calligraphic tail — descends from the bottom of the arc */}
-        <path
-          d="M 38,80 C 46,84 52,88 54,90"
-          stroke={markColor}
-          strokeWidth="5.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
         />
       </svg>
 
       {/* Wordmark */}
       <div>
-        {/* FIDEND */}
+        {/* FIDEND — Italiana, editorial-luxury serif per brand spec */}
         <div
           style={{
-            fontFamily: "'Fraunces', Georgia, serif",
-            fontVariationSettings: "'SOFT' 30, 'opsz' 48",
+            fontFamily: "'Italiana', Georgia, serif",
             fontWeight: 400,
             fontSize: s.fidend,
-            letterSpacing: '0.22em',
+            letterSpacing: '0.16em',
             textTransform: 'uppercase',
-            color: fidendColor,
+            color: textColor,
             lineHeight: 1,
-            marginBottom: 5,
           }}
         >
           FIDEND
         </div>
 
-        {/* — SOLUTIONS — */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-          <div style={{ height: 1, width: 10, backgroundColor: goldColor }} />
-          <span
-            style={{
-              fontFamily: 'Inter, system-ui, sans-serif',
-              fontSize: s.solutions,
-              fontWeight: 500,
-              letterSpacing: '0.32em',
-              textTransform: 'uppercase',
-              color: goldColor,
-              lineHeight: 1,
-            }}
-          >
-            SOLUTIONS
-          </span>
-          <div style={{ height: 1, width: 10, backgroundColor: goldColor }} />
-        </div>
-
-        {/* Tagline — optional, shown in footer */}
+        {/* Tagline — shown in footer only */}
         {showTagline && (
           <div
             style={{
@@ -114,9 +98,9 @@ export default function Logo({
               fontVariationSettings: "'SOFT' 80, 'opsz' 18",
               fontStyle: 'italic',
               fontWeight: 300,
-              fontSize: s.solutions,
-              color: isNavy ? 'rgba(184,153,104,0.80)' : '#A88A4B',
-              marginTop: 7,
+              fontSize: s.tagline,
+              color: goldColor,
+              marginTop: 6,
               letterSpacing: '0.04em',
             }}
           >

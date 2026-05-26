@@ -57,7 +57,7 @@ const HOW_IT_WORKS = [
   {
     number: '02',
     title: 'Worker match',
-    body: 'Within 48 hours we assign TB-cleared, background-checked workers aligned to your service area, shift length, and facility type.',
+    body: 'We assign TB-cleared, background-checked workers matched to your service area, shift length, and facility type.',
   },
   {
     number: '03',
@@ -129,8 +129,8 @@ export default function ServicesPage() {
                 margin: 0,
               }}
             >
-              Every Fidend worker is TB-cleared, background-checked, and oriented
-              to senior care before their first shift at your facility.
+              Every Fidend worker is TB-cleared, background-checked, and credentialed
+              before they arrive at your facility.
             </p>
           </FadeIn>
         </div>
@@ -191,7 +191,7 @@ export default function ServicesPage() {
                 margin: 0,
               }}
             >
-              From first call to first shift in 48 hours.
+              How we go from first call to first shift.
             </h2>
           </FadeIn>
 
@@ -399,7 +399,7 @@ export default function ServicesPage() {
                 margin: '0 0 20px',
               }}
             >
-              {"The invoice you receive is the invoice we'd show anyone."}
+              You see the worker rate. You see our fee. That is the invoice.
             </h2>
             <p
               style={{
@@ -410,9 +410,11 @@ export default function ServicesPage() {
                 margin: '0 0 32px',
               }}
             >
-              Worker rate plus our flat management fee. No blended rates, no
-              hidden charges, no percentage markups. Transparent billing is not
-              a feature — it's the foundation of a working relationship.
+              Every invoice shows two line items: the worker's pay rate and
+              our management fee — listed separately, every time. Most agencies
+              present one blended number that hides the margin. We don't.
+              You know what the labor costs and what you're paying to have
+              it managed. That visibility is the foundation of the relationship.
             </p>
             <Link href="/contact" className="btn-primary">
               Request a Rate Sheet

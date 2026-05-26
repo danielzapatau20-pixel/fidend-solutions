@@ -41,7 +41,7 @@ const PROCESS_STEPS = [
   {
     number: '02',
     title: 'Worker match',
-    body: 'We assign cleared, experienced workers aligned to your service area and schedule within 48 hours.',
+    body: 'We match cleared, experienced workers to your service area, shift length, and facility type.',
   },
   {
     number: '03',
@@ -60,7 +60,7 @@ const KEY_MESSAGES = [
     number: '01',
     title: 'Open book pricing.',
     subtitle: 'Precios a libro abierto',
-    body: 'You see exactly what we pay the worker, and exactly what we charge for management. No hidden burden, no opaque markup.',
+    body: 'Every invoice shows two line items: the worker\'s pay rate and our management fee. Both numbers, always visible. You can audit either one.',
   },
   {
     number: '02',
@@ -102,10 +102,10 @@ export default function HomePage() {
             pointerEvents: 'none',
           }}
         >
-          <svg width="560" height="900" viewBox="0 0 56 90" fill="none">
-            <path d="M 46,12 C 30,2 4,16 4,42 C 4,68 20,80 38,80" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
-            <line x1="2" y1="42" x2="52" y2="38" stroke="#F4ECDC" strokeWidth="4.5" strokeLinecap="round"/>
-            <path d="M 38,80 C 46,84 52,88 54,90" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
+          <svg width="560" height="718" viewBox="0 0 72 92" fill="none">
+            <path d="M 62,10 A 36,36 0 1 0 60,78" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
+            <path d="M 60,78 C 66,84 70,88 72,92" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
+            <line x1="6" y1="44" x2="58" y2="40" stroke="#F4ECDC" strokeWidth="4" strokeLinecap="round"/>
           </svg>
         </div>
 
@@ -225,8 +225,8 @@ export default function HomePage() {
             }}
           >
             {[
-              { stat: '48 hrs', label: 'From first call to placed worker' },
-              { stat: 'Open book', label: 'Flat fee. No markup on worker rate.' },
+              { stat: 'Open book', label: 'Worker rate + management fee — both on every invoice.' },
+              { stat: 'Survey ready', label: 'TB-cleared, background-checked, documented on arrival.' },
               { stat: 'One call', label: 'Scheduling, HR, compliance — handled.' },
             ].map(item => (
               <div key={item.stat}>
@@ -472,10 +472,11 @@ export default function HomePage() {
                   margin: '0 0 32px',
                 }}
               >
-                Most staffing agencies mark up the worker rate and never disclose it.
-                We do not. Our management fee is flat. The worker rate you see is the
-                worker rate they are paid. Your invoice is two numbers, not a paragraph
-                of adjustments.
+                Most staffing agencies present one blended bill rate — the margin is
+                buried inside and you cannot see it. We work differently. Every Fidend
+                invoice lists the worker's pay rate and our management fee as separate
+                line items. You know both numbers. The markup is not hidden — it is the
+                basis of a relationship that doesn't need to hide anything.
               </p>
               <Link href="/contact" className="btn-primary-navy">
                 Request a Rate Sheet
@@ -508,7 +509,7 @@ export default function HomePage() {
                   margin: 0,
                 }}
               >
-                From first call to first shift in 48 hours.
+                How we go from first call to first shift.
               </h2>
             </div>
           </FadeIn>
