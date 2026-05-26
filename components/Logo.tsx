@@ -32,12 +32,12 @@ export default function Logo({
       aria-label="Fidend"
     >
       {/*
-        Circular swash F mark — matches the Option 6 brand handoff.
-        viewBox 0 0 72 92:
-          • Main arc: large CCW arc from upper-right (≈1:30 o'clock) sweeping
-            counterclockwise ~300° around the left side to lower-right (≈7 o'clock)
-          • Crossbar: horizontal F bar at mid-height of the arc
-          • Tail: calligraphic descender from the arc's lower terminus
+        Circular swash F mark — Option 6 brand handoff.
+        viewBox 0 0 72 92, center ≈ (38, 47), r = 36:
+          • Arc: 270° CCW from upper-right (1:30) through top, left, bottom
+            to lower-right (4:30). Gap of 90° on the right side.
+          • Crossbar: F bar at mid-height, crossing the opening.
+          • Tail: calligraphic descender from the arc's lower terminus.
       */}
       <svg
         width={s.markW}
@@ -47,26 +47,26 @@ export default function Logo({
         aria-hidden="true"
         style={{ flexShrink: 0 }}
       >
-        {/* Main circular arc */}
+        {/* 270° circular arc: upper-right → CCW → lower-right */}
         <path
-          d="M 62,10 A 36,36 0 1 0 60,78"
+          d="M 64,21 A 36,36 0 1 0 64,72"
           stroke={markColor}
           strokeWidth="5.5"
           strokeLinecap="round"
         />
         {/* Calligraphic descending tail */}
         <path
-          d="M 60,78 C 66,84 70,88 72,92"
+          d="M 64,72 C 68,79 71,85 72,92"
           stroke={markColor}
           strokeWidth="5.5"
           strokeLinecap="round"
         />
-        {/* F crossbar at mid-height — slight diagonal follows the calligraphic axis */}
+        {/* F crossbar at mid-height */}
         <line
-          x1="6"
-          y1="44"
-          x2="58"
-          y2="40"
+          x1="4"
+          y1="47"
+          x2="62"
+          y2="43"
           stroke={markColor}
           strokeWidth="4"
           strokeLinecap="round"
