@@ -9,9 +9,9 @@ interface LogoProps {
 }
 
 const sizes = {
-  sm: { markW: 22, markH: 28, fidend: '0.80rem', solutions: '0.33rem', ruleW: 7, tagline: '0.38rem', gap: 9 },
-  md: { markW: 30, markH: 38, fidend: '1.06rem', solutions: '0.43rem', ruleW: 9, tagline: '0.50rem', gap: 12 },
-  lg: { markW: 42, markH: 54, fidend: '1.44rem', solutions: '0.58rem', ruleW: 13, tagline: '0.68rem', gap: 16 },
+  sm: { markW: 22, markH: 26, fidend: '0.80rem', solutions: '0.33rem', ruleW: 7, tagline: '0.38rem', gap: 9 },
+  md: { markW: 30, markH: 36, fidend: '1.06rem', solutions: '0.43rem', ruleW: 9, tagline: '0.50rem', gap: 12 },
+  lg: { markW: 42, markH: 50, fidend: '1.44rem', solutions: '0.58rem', ruleW: 13, tagline: '0.68rem', gap: 16 },
 }
 
 export default function Logo({
@@ -31,32 +31,40 @@ export default function Logo({
       style={{ display: 'inline-flex', alignItems: 'center', gap: s.gap, userSelect: 'none' }}
       aria-label="Fidend"
     >
-      {/* Circular swash F mark — ~300° CCW arc, crossbar, calligraphic tail */}
+      {/*
+        Circular swash F mark — viewBox 0 0 80 96
+        Center (38, 47), r=36. Gap: 90° centered on right (y=22 to y=72).
+        Crossbar at y=47 extends to x=78, exiting PAST the arc right edge (x=74).
+        This is what makes it read as F (not G): the crossbar exits through the gap.
+      */}
       <svg
         width={s.markW}
         height={s.markH}
-        viewBox="0 0 72 92"
+        viewBox="0 0 80 96"
         fill="none"
         aria-hidden="true"
         style={{ flexShrink: 0 }}
       >
-        {/* ~300° arc: CCW from upper-right down through left to lower-right, gap on right */}
+        {/* 270° arc CCW: (64,22) → top → left → bottom → (64,72). Gap 90° on right. */}
         <path
-          d="M 64,22 A 36,36 0 1 0 66,70"
+          d="M 64,22 A 36,36 0 1 0 64,72"
           stroke={markColor}
           strokeWidth="5.5"
           strokeLinecap="round"
         />
-        {/* Calligraphic descending tail from arc terminus */}
+        {/* Calligraphic tail from lower arc terminus */}
         <path
-          d="M 66,70 C 70,77 71,83 69,89"
+          d="M 64,72 C 70,81 70,88 67,95"
           stroke={markColor}
           strokeWidth="5.5"
           strokeLinecap="round"
         />
-        {/* F crossbar — slightly angled, crossing the open right side */}
-        <path
-          d="M 4,43 L 62,39"
+        {/* F crossbar — exits RIGHT through the gap (past arc boundary at x=74) */}
+        <line
+          x1="4"
+          y1="47"
+          x2="78"
+          y2="47"
           stroke={markColor}
           strokeWidth="4"
           strokeLinecap="round"

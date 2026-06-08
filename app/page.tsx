@@ -102,10 +102,10 @@ export default function HomePage() {
             pointerEvents: 'none',
           }}
         >
-          <svg width="560" height="718" viewBox="0 0 72 92" fill="none">
-            <path d="M 64,22 A 36,36 0 1 0 66,70" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
-            <path d="M 66,70 C 70,77 71,83 69,89" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
-            <path d="M 4,43 L 62,39" stroke="#F4ECDC" strokeWidth="4" strokeLinecap="round"/>
+          <svg width="560" height="672" viewBox="0 0 80 96" fill="none">
+            <path d="M 64,22 A 36,36 0 1 0 64,72" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
+            <path d="M 64,72 C 70,81 70,88 67,95" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
+            <line x1="4" y1="47" x2="78" y2="47" stroke="#F4ECDC" strokeWidth="4" strokeLinecap="round"/>
           </svg>
         </div>
 
