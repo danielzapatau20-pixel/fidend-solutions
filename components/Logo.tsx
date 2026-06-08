@@ -9,9 +9,9 @@ interface LogoProps {
 }
 
 const sizes = {
-  sm: { markW: 20, markH: 26, fidend: '0.82rem', tagline: '0.38rem', gap: 10 },
-  md: { markW: 28, markH: 36, fidend: '1.10rem', tagline: '0.50rem', gap: 14 },
-  lg: { markW: 40, markH: 52, fidend: '1.52rem', tagline: '0.68rem', gap: 18 },
+  sm: { markW: 22, markH: 28, fidend: '0.80rem', solutions: '0.33rem', ruleW: 7, tagline: '0.38rem', gap: 9 },
+  md: { markW: 30, markH: 38, fidend: '1.06rem', solutions: '0.43rem', ruleW: 9, tagline: '0.50rem', gap: 12 },
+  lg: { markW: 42, markH: 54, fidend: '1.44rem', solutions: '0.58rem', ruleW: 13, tagline: '0.68rem', gap: 16 },
 }
 
 export default function Logo({
@@ -31,14 +31,7 @@ export default function Logo({
       style={{ display: 'inline-flex', alignItems: 'center', gap: s.gap, userSelect: 'none' }}
       aria-label="Fidend"
     >
-      {/*
-        Circular swash F mark — Option 6 brand handoff.
-        viewBox 0 0 72 92, center ≈ (38, 47), r = 36:
-          • Arc: 270° CCW from upper-right (1:30) through top, left, bottom
-            to lower-right (4:30). Gap of 90° on the right side.
-          • Crossbar: F bar at mid-height, crossing the opening.
-          • Tail: calligraphic descender from the arc's lower terminus.
-      */}
+      {/* Circular swash F mark — ~300° CCW arc, crossbar, calligraphic tail */}
       <svg
         width={s.markW}
         height={s.markH}
@@ -47,26 +40,23 @@ export default function Logo({
         aria-hidden="true"
         style={{ flexShrink: 0 }}
       >
-        {/* 270° circular arc: upper-right → CCW → lower-right */}
+        {/* ~300° arc: CCW from upper-right down through left to lower-right, gap on right */}
         <path
-          d="M 64,21 A 36,36 0 1 0 64,72"
+          d="M 64,22 A 36,36 0 1 0 66,70"
           stroke={markColor}
           strokeWidth="5.5"
           strokeLinecap="round"
         />
-        {/* Calligraphic descending tail */}
+        {/* Calligraphic descending tail from arc terminus */}
         <path
-          d="M 64,72 C 68,79 71,85 72,92"
+          d="M 66,70 C 70,77 71,83 69,89"
           stroke={markColor}
           strokeWidth="5.5"
           strokeLinecap="round"
         />
-        {/* F crossbar at mid-height */}
-        <line
-          x1="4"
-          y1="47"
-          x2="62"
-          y2="43"
+        {/* F crossbar — slightly angled, crossing the open right side */}
+        <path
+          d="M 4,43 L 62,39"
           stroke={markColor}
           strokeWidth="4"
           strokeLinecap="round"
@@ -75,7 +65,7 @@ export default function Logo({
 
       {/* Wordmark */}
       <div>
-        {/* FIDEND — Italiana, editorial-luxury serif per brand spec */}
+        {/* FIDEND — Italiana, high-contrast editorial serif */}
         <div
           style={{
             fontFamily: "'Italiana', Georgia, serif",
@@ -90,6 +80,33 @@ export default function Logo({
           FIDEND
         </div>
 
+        {/* — SOLUTIONS — with flanking gold rules */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 5,
+            marginTop: 3,
+          }}
+        >
+          <div style={{ height: 1, width: s.ruleW, backgroundColor: goldColor, flexShrink: 0 }} />
+          <div
+            style={{
+              fontFamily: "'Italiana', Georgia, serif",
+              fontWeight: 400,
+              fontSize: s.solutions,
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              color: goldColor,
+              lineHeight: 1,
+              whiteSpace: 'nowrap',
+            }}
+          >
+            SOLUTIONS
+          </div>
+          <div style={{ height: 1, width: s.ruleW, backgroundColor: goldColor, flexShrink: 0 }} />
+        </div>
+
         {/* Tagline — shown in footer only */}
         {showTagline && (
           <div
@@ -100,7 +117,7 @@ export default function Logo({
               fontWeight: 300,
               fontSize: s.tagline,
               color: goldColor,
-              marginTop: 6,
+              marginTop: 7,
               letterSpacing: '0.04em',
             }}
           >

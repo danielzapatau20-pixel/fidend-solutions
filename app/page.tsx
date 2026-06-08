@@ -103,9 +103,9 @@ export default function HomePage() {
           }}
         >
           <svg width="560" height="718" viewBox="0 0 72 92" fill="none">
-            <path d="M 64,21 A 36,36 0 1 0 64,72" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
-            <path d="M 64,72 C 68,79 71,85 72,92" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
-            <line x1="4" y1="47" x2="62" y2="43" stroke="#F4ECDC" strokeWidth="4" strokeLinecap="round"/>
+            <path d="M 64,22 A 36,36 0 1 0 66,70" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
+            <path d="M 66,70 C 70,77 71,83 69,89" stroke="#F4ECDC" strokeWidth="5.5" strokeLinecap="round"/>
+            <path d="M 4,43 L 62,39" stroke="#F4ECDC" strokeWidth="4" strokeLinecap="round"/>
           </svg>
         </div>
 

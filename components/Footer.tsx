@@ -28,22 +28,8 @@ export default function Footer() {
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: 40, marginBottom: 48 }}>
 
         {/* Logo block */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div>
           <Logo variant="navy" size="md" showTagline={true} />
-          <p
-            style={{
-              fontFamily: "'Fraunces', Georgia, serif",
-              fontStyle: 'italic',
-              fontVariationSettings: "'SOFT' 30, 'opsz' 72",
-              fontWeight: 300,
-              fontSize: 14,
-              color: 'rgba(184,153,104,0.8)',
-              letterSpacing: '0.04em',
-              marginTop: 8,
-            }}
-          >
-            the faithful house of care
-          </p>
         </div>
 
         {/* Nav links */}
