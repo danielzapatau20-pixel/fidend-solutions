@@ -4,7 +4,7 @@ import { useEffect, useRef, ReactNode, CSSProperties } from 'react'
 interface FadeInProps {
   children: ReactNode
   delay?: number
-  direction?: 'up' | 'left' | 'none'
+  direction?: 'up' | 'down' | 'left' | 'right' | 'scale' | 'none'
   className?: string
   style?: CSSProperties
 }
@@ -44,8 +44,11 @@ export default function FadeIn({
   }, [])
 
   const initialTransform =
-    direction === 'up' ? 'translateY(32px)'
-    : direction === 'left' ? 'translateX(-24px)'
+    direction === 'up'    ? 'translateY(36px)'
+    : direction === 'down'  ? 'translateY(-24px)'
+    : direction === 'left'  ? 'translateX(-32px)'
+    : direction === 'right' ? 'translateX(32px)'
+    : direction === 'scale' ? 'scale(0.94)'
     : 'none'
 
   return (

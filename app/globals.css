@@ -7,6 +7,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Motion Keyframes ──────────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes floatMark {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-20px); }
+}
+
+@keyframes scrollCue {
+  0%, 100% { transform: translateX(-50%) translateY(0px);  opacity: 0.5; }
+  50%       { transform: translateX(-50%) translateY(10px); opacity: 1; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+@keyframes draw-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ─── CSS Custom Properties ────────────────────────────────────────────────── */
 :root {
   --color-navy:          #16243A;

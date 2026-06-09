@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import ScrollProgress from '@/components/ScrollProgress'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -43,6 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ScrollProgress />
         <Nav />
         <main>{children}</main>
         <Footer />
