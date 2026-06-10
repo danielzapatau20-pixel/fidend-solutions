@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-interface HeroVideoProps {
+interface HeroVideoProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * HIGGSFIELD ASSET 01 — Hero video loop
    * Replace with actual URL after generating:
@@ -30,6 +30,7 @@ export default function HeroVideo({
   overlayOpacity = 0.60,
   children,
   minHeight = '100svh',
+  ...rest
 }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [videoError, setVideoError] = useState(false)
@@ -55,6 +56,7 @@ export default function HeroVideo({
   return (
     <div
       role="region"
+      {...rest}
       style={{
         position: 'relative',
         minHeight,
