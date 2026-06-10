@@ -91,10 +91,19 @@ export default function Nav() {
             {/* Gold rule separator */}
             <div style={{ width: 1, height: 20, backgroundColor: 'rgba(184,153,104,0.35)' }} />
 
-            {/* Apply to Work CTA */}
+            {/* Hire Fidend — primary CTA for facilities */}
+            <Link
+              href="/contact#hire"
+              className="btn-gold-fill"
+              style={{ fontSize: 11, padding: '10px 20px', letterSpacing: '0.25em' }}
+            >
+              Hire Fidend
+            </Link>
+
+            {/* Apply to Work — secondary CTA for workers */}
             <Link
               href="/contact#apply"
-              className="btn-gold-fill"
+              className="btn-primary"
               style={{ fontSize: 11, padding: '10px 20px', letterSpacing: '0.25em' }}
             >
               Apply to Work
@@ -206,14 +215,24 @@ export default function Nav() {
         {/* Diamond separator */}
         <div style={{ color: '#B89968', fontSize: 12 }}>◇</div>
 
-        <Link
-          href="/contact#apply"
-          onClick={() => setMenuOpen(false)}
-          className="btn-primary"
-          style={{ letterSpacing: '0.25em', fontSize: 11 }}
-        >
-          Apply to Work
-        </Link>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+          <Link
+            href="/contact#hire"
+            onClick={() => setMenuOpen(false)}
+            className="btn-gold-fill"
+            style={{ letterSpacing: '0.25em', fontSize: 11, minWidth: 200, textAlign: 'center' }}
+          >
+            Hire Fidend
+          </Link>
+          <Link
+            href="/contact#apply"
+            onClick={() => setMenuOpen(false)}
+            className="btn-primary"
+            style={{ letterSpacing: '0.25em', fontSize: 11, minWidth: 200, textAlign: 'center' }}
+          >
+            Apply to Work
+          </Link>
+        </div>
 
         {/* Footer tag */}
         <p style={{
