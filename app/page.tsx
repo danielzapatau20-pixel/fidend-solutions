@@ -45,52 +45,64 @@ const SERVICES = [
 const PROCESS_STEPS = [
   {
     number: '01',
-    title: 'Initial call',
-    body: 'We learn your census, acuity level, and staffing gaps. Typically 20 minutes with your DON, administrator, or HR manager.',
+    title: 'Discovery',
+    body: 'A working conversation with leadership. We listen for the real operational need, not the pitch we want to give.',
   },
   {
     number: '02',
-    title: 'Worker match',
-    body: 'We assign TB-cleared, background-checked workers matched to your service area, shift length, and facility type.',
+    title: 'Written proposal',
+    body: 'Within five business days. Roles, hours, worker rate, burden, and the Fidend markup. Every number in writing.',
   },
   {
     number: '03',
-    title: 'On-site orientation',
-    body: "Workers arrive briefed on your facility's layout and general protocols. Your DON or shift supervisor handles final orientation.",
+    title: 'Preparation',
+    body: 'Background checks. TB clearance. State requirements. Prior orientation in senior care protocols. Nothing skipped.',
   },
   {
     number: '04',
-    title: 'Ongoing management',
-    body: 'We handle scheduling, HR, payroll, and compliance documentation. You manage care quality. One point of contact — always.',
+    title: 'Placement & presence',
+    body: 'Workers arrive in uniform on day one. Leadership remains your direct line — never a rotating account rep.',
   },
 ]
 
 const WHY_FIDEND = [
-  '4-hour response guarantee, 7 days a week',
-  'Founder personally reviews every placement',
-  'No rotating account representatives — ever',
-  'Pennsylvania-based, same time zone as your facility',
-  'Complete compliance file before day one',
+  'Questions answered fast — problems handled before they grow',
+  'Leadership is your direct line, not a rotating account rep',
+  'Every placement built with intention — never pulled from a temp roster',
+  'Pennsylvania-based, working in your time zone',
+  'Every number in writing before the first shift',
 ]
 
 const KEY_MESSAGES = [
   {
     number: '01',
-    title: 'Open book pricing.',
-    subtitle: 'Precios a libro abierto',
-    body: 'Every invoice shows two line items: the worker\'s pay rate and our management fee — listed separately, always. You can audit either number. The markup is never hidden.',
+    title: 'We listen first.',
+    subtitle: 'Escuchamos primero',
+    body: 'Every engagement begins by understanding what your facility actually needs. Then we build the operation around that brief — not around our roster.',
   },
   {
     number: '02',
-    title: 'Compliance handled.',
-    subtitle: 'Cumplimiento gestionado',
-    body: "Background checks, TB tests, state clearances, I-9 compliance — all managed by us. Your HR receives the complete file before the worker's first shift.",
+    title: 'Pre-oriented personnel.',
+    subtitle: 'Personal pre-orientado',
+    body: 'Every Fidend worker arrives with a prior orientation in senior care communication and dignity protocols. The full handover to your house rules happens on day one, on the floor.',
   },
   {
     number: '03',
+    title: 'Compliance handled.',
+    subtitle: 'Cumplimiento gestionado',
+    body: 'Background checks, TB tests, and state clearances are all managed by us, not by you.',
+  },
+  {
+    number: '04',
     title: 'Direct leadership access.',
     subtitle: 'Acceso directo',
-    body: 'You work with the founder — not a rotating account rep. Founder mobile on every contract. When a surveyor walks in at 6 PM Friday, you have one number to call.',
+    body: 'You work directly with leadership — not a rotating account rep. Questions answered fast. Problems handled before they grow.',
+  },
+  {
+    number: '05',
+    title: 'Markup methodology.',
+    subtitle: 'Metodología de precio',
+    body: 'A fixed dollar fee per hour over verifiable worker cost. You always know exactly what we add, and what we do not.',
   },
 ]
 
@@ -113,7 +125,7 @@ export default function HomePage() {
             pointerEvents: 'none',
           }}
         >
-          <div style={{ animation: 'floatMark 14s ease-in-out infinite' }}>
+          <div style={{ animation: 'floatMark 8s ease-in-out infinite alternate' }}>
             <svg width="480" height="547" viewBox="0 0 222 253" aria-hidden="true">
               {FMARK}
             </svg>
@@ -227,14 +239,32 @@ export default function HomePage() {
           </FadeIn>
 
           <FadeIn delay={560}>
-            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-              {['TB Cleared', 'Background Checked', 'Survey Ready'].map(badge => (
-                <span
-                  key={badge}
-                  className="compliance-badge"
-                  style={{ color: 'rgba(184,153,104,0.75)', borderColor: 'rgba(184,153,104,0.25)' }}
-                >
-                  {badge}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 12,
+                flexWrap: 'wrap',
+              }}
+              aria-label="Our services"
+            >
+              {['Housekeeping', 'Dietary', 'Laundry', 'Activities', 'Companion care'].map((item, i, arr) => (
+                <span key={item} style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+                  <span
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 11,
+                      fontWeight: 500,
+                      letterSpacing: '0.28em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(244,236,220,0.50)',
+                    }}
+                  >
+                    {item}
+                  </span>
+                  {i < arr.length - 1 && (
+                    <span style={{ color: 'rgba(184,153,104,0.35)', fontSize: 8 }}>·</span>
+                  )}
                 </span>
               ))}
             </div>
@@ -285,10 +315,10 @@ export default function HomePage() {
             }}
           >
             {[
-              { to: 48,  suffix: ' hrs', label: 'to first shift', sub: 'from initial call' },
-              { to: 5,   suffix: '',     label: 'service disciplines', sub: 'under one contract' },
-              { to: 100, suffix: '%',    label: 'compliance documented', sub: 'before day one' },
-              { to: 4,   suffix: ' hr',  label: 'response guarantee', sub: '7 days a week' },
+              { display: null,  countTo: 4,   suffix: ' wk',  label: 'Standard fulfillment',   sub: 'workers ready for your house' },
+              { display: null,  countTo: 100,  suffix: '%',    label: 'Compliance handled',      sub: 'background, TB, state' },
+              { display: 'Fixed', countTo: null, suffix: '',   label: 'Markup methodology',      sub: 'same per hour, every role' },
+              { display: '1 line', countTo: null, suffix: '',  label: 'Direct to leadership',    sub: 'no rotating account rep' },
             ].map((stat, i) => (
               <FadeIn key={stat.label} delay={i * 100} direction="up">
                 <div
@@ -299,20 +329,22 @@ export default function HomePage() {
                     position: 'relative',
                   }}
                 >
-                  {/* Number */}
+                  {/* Number or word */}
                   <p
                     style={{
                       fontFamily: "'Fraunces', Georgia, serif",
                       fontVariationSettings: "'SOFT' 30, 'opsz' 72",
                       fontWeight: 300,
-                      fontSize: 'clamp(2.8rem, 5vw, 4.5rem)',
+                      fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
                       color: '#B89968',
                       margin: '0 0 6px',
                       lineHeight: 1,
                       letterSpacing: '-0.02em',
                     }}
                   >
-                    <CountUp to={stat.to} suffix={stat.suffix} />
+                    {stat.countTo !== null
+                      ? <CountUp to={stat.countTo} suffix={stat.suffix} />
+                      : stat.display}
                   </p>
                   {/* Label */}
                   <p
@@ -713,7 +745,7 @@ export default function HomePage() {
                   margin: 0,
                 }}
               >
-                First call to first shift in 48 hours.
+                From inquiry to first shift, in three to four weeks.
               </h2>
             </div>
           </FadeIn>
@@ -862,14 +894,17 @@ export default function HomePage() {
                 fontStyle: 'italic',
                 fontWeight: 300,
                 fontSize: 'clamp(1.8rem, 4vw, 3.2rem)',
-                lineHeight: 1.2,
+                lineHeight: 1.22,
                 color: '#16243A',
                 margin: '0 0 36px',
                 letterSpacing: '-0.01em',
               }}
             >
-              Your facility has a survey tomorrow.<br />
-              Your workers are ready or they aren&#39;t.
+              &#8220;The care of human life and happiness{' '}
+              <em style={{ fontVariationSettings: "'SOFT' 80, 'opsz' 72", color: '#B89968' }}>
+                is the first &amp; only legitimate object
+              </em>{' '}
+              of good government — and of every house that stands for something.&#8221;
             </blockquote>
 
             <div
@@ -892,7 +927,7 @@ export default function HomePage() {
                   margin: 0,
                 }}
               >
-                The Fidend Standard
+                after Thomas Jefferson, 1809
               </p>
               <div style={{ width: 32, height: 1, backgroundColor: '#B89968', opacity: 0.5 }} />
             </div>
@@ -1006,7 +1041,8 @@ export default function HomePage() {
                 margin: '0 0 24px',
               }}
             >
-              Tell us your staffing gap.<br />
+              One call.<br />
+              One proposal.{' '}
               <em
                 style={{
                   fontStyle: 'italic',
@@ -1014,7 +1050,7 @@ export default function HomePage() {
                   color: '#B89968',
                 }}
               >
-                We will close it.
+                One promise.
               </em>
             </h2>
             <p
@@ -1026,8 +1062,8 @@ export default function HomePage() {
                 margin: '0 0 44px',
               }}
             >
-              Our intake process takes 20 minutes. Workers placed within 48 hours.
-              No long-term contracts required.
+              One conversation. A written proposal within five business days.
+              Every number on the page before anything is agreed.
             </p>
             <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/contact" className="btn-primary">

@@ -1,16 +1,12 @@
 'use client'
 
 const ITEMS = [
-  'TB Cleared',
-  'Background Checked',
-  'I-9 Compliant',
-  'HIPAA Trained',
-  'Survey Ready',
-  'Infection Control',
-  'Senior Care Oriented',
-  'Reference Verified',
-  'PA Compliance',
-  '48-Hour Placement',
+  'Faithful attention',
+  'Care of distinguished places',
+  'Listening first',
+  'Open methodology',
+  'Dignity at work',
+  'Pennsylvania',
 ]
 
 export default function Marquee({ speed = 42 }: { speed?: number }) {
