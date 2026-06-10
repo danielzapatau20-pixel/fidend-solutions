@@ -116,186 +116,6 @@ export default function HomePage() {
     <>
 
       {/* ═══════════════════════════════════════════════════════════════
-          FRONTISPIECE — editorial opening, cream, opens like a book
-      ═══════════════════════════════════════════════════════════════ */}
-      <section
-        className="grain"
-        style={{
-          backgroundColor: '#FAF1DA',
-          minHeight: '100svh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
-          position: 'relative',
-          overflow: 'hidden',
-          textAlign: 'center',
-        }}
-      >
-        {/* Amber radial glow */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            top: '-5%',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: 700,
-            height: 420,
-            background: 'radial-gradient(ellipse at center, rgba(214,154,92,0.18) 0%, transparent 68%)',
-            pointerEvents: 'none',
-          }}
-        />
-
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: 640, margin: '0 auto' }}>
-
-          {/* Top ornament */}
-          <FadeIn direction="none" delay={0}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 16,
-                marginBottom: 32,
-              }}
-            >
-              <div style={{ height: 1, width: 48, backgroundColor: '#B89968', opacity: 0.6 }} />
-              <span style={{ color: '#B89968', fontSize: 9 }}>◇</span>
-              <div style={{ height: 1, width: 48, backgroundColor: '#B89968', opacity: 0.6 }} />
-            </div>
-            <p
-              style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: 9,
-                fontWeight: 500,
-                letterSpacing: '0.42em',
-                textTransform: 'uppercase',
-                color: 'rgba(22,36,58,0.40)',
-                marginBottom: 64,
-              }}
-            >
-              Volume One
-            </p>
-          </FadeIn>
-
-          {/* Verse */}
-          <FadeIn delay={200} direction="none">
-            <p
-              style={{
-                fontFamily: "'Fraunces', Georgia, serif",
-                fontVariationSettings: "'SOFT' 60, 'opsz' 72",
-                fontStyle: 'italic',
-                fontWeight: 300,
-                fontSize: 'clamp(2rem, 5vw, 3.8rem)',
-                color: '#16243A',
-                lineHeight: 1.15,
-                margin: '0 0 28px',
-                letterSpacing: '-0.01em',
-              }}
-            >
-              To tend
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={420} direction="none">
-            <p
-              style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: 'clamp(9px, 1.2vw, 11px)',
-                fontWeight: 500,
-                letterSpacing: '0.42em',
-                textTransform: 'uppercase',
-                color: '#B89968',
-                margin: '0 0 28px',
-              }}
-            >
-              — is to keep faith —
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={620} direction="none">
-            <p
-              style={{
-                fontFamily: "'Fraunces', Georgia, serif",
-                fontVariationSettings: "'SOFT' 60, 'opsz' 72",
-                fontStyle: 'italic',
-                fontWeight: 300,
-                fontSize: 'clamp(2rem, 5vw, 3.8rem)',
-                color: '#16243A',
-                lineHeight: 1.15,
-                margin: '0 0 64px',
-                letterSpacing: '-0.01em',
-              }}
-            >
-              with the small hours.
-            </p>
-          </FadeIn>
-
-          {/* Author block */}
-          <FadeIn delay={820} direction="none">
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 16,
-                marginBottom: 12,
-              }}
-            >
-              <div style={{ height: 1, width: 24, backgroundColor: '#B89968', opacity: 0.4 }} />
-              <p
-                style={{
-                  fontFamily: "'Fraunces', Georgia, serif",
-                  fontVariationSettings: "'SOFT' 80, 'opsz' 18",
-                  fontStyle: 'italic',
-                  fontWeight: 300,
-                  fontSize: 14,
-                  color: 'rgba(22,36,58,0.40)',
-                  margin: 0,
-                }}
-              >
-                a meditation kept at the door
-              </p>
-              <div style={{ height: 1, width: 24, backgroundColor: '#B89968', opacity: 0.4 }} />
-            </div>
-            <p
-              style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: 10,
-                fontWeight: 500,
-                letterSpacing: '0.3em',
-                textTransform: 'uppercase',
-                color: 'rgba(22,36,58,0.30)',
-                margin: 0,
-              }}
-            >
-              Fidend · Pennsylvania
-            </p>
-          </FadeIn>
-        </div>
-
-        {/* Turn-the-page cue */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            bottom: 36,
-            left: '50%',
-            animation: 'turnPage 2.6s ease-in-out infinite',
-            pointerEvents: 'none',
-          }}
-        >
-          <svg width="18" height="24" viewBox="0 0 18 24" fill="none">
-            <path d="M2 2l7 7 7-7"  stroke="#B89968" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.3"/>
-            <path d="M2 10l7 7 7-7" stroke="#B89968" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.65"/>
-            <path d="M2 18l7 7 7-7" stroke="#B89968" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════
           HERO — navy, centered, cinematic — F-mark with breathing glow
       ═══════════════════════════════════════════════════════════════ */}
       <HeroVideo overlayOpacity={0.58} minHeight="100svh" id="top">
@@ -496,6 +316,186 @@ export default function HomePage() {
           </FadeIn>
         </div>
       </HeroVideo>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          FRONTISPIECE — editorial opening, cream, opens like a book
+      ═══════════════════════════════════════════════════════════════ */}
+      <section
+        className="grain"
+        style={{
+          backgroundColor: '#FAF1DA',
+          minHeight: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 'clamp(56px, 8vw, 96px) clamp(24px, 6vw, 80px)',
+          position: 'relative',
+          overflow: 'hidden',
+          textAlign: 'center',
+        }}
+      >
+        {/* Amber radial glow */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: '-5%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 700,
+            height: 420,
+            background: 'radial-gradient(ellipse at center, rgba(214,154,92,0.18) 0%, transparent 68%)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: 640, margin: '0 auto' }}>
+
+          {/* Top ornament */}
+          <FadeIn direction="none" delay={0}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 16,
+                marginBottom: 32,
+              }}
+            >
+              <div style={{ height: 1, width: 48, backgroundColor: '#B89968', opacity: 0.6 }} />
+              <span style={{ color: '#B89968', fontSize: 9 }}>◇</span>
+              <div style={{ height: 1, width: 48, backgroundColor: '#B89968', opacity: 0.6 }} />
+            </div>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 9,
+                fontWeight: 500,
+                letterSpacing: '0.42em',
+                textTransform: 'uppercase',
+                color: 'rgba(22,36,58,0.40)',
+                marginBottom: 64,
+              }}
+            >
+              Volume One
+            </p>
+          </FadeIn>
+
+          {/* Verse */}
+          <FadeIn delay={200} direction="none">
+            <p
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontVariationSettings: "'SOFT' 60, 'opsz' 72",
+                fontStyle: 'italic',
+                fontWeight: 300,
+                fontSize: 'clamp(2rem, 5vw, 3.8rem)',
+                color: '#16243A',
+                lineHeight: 1.15,
+                margin: '0 0 28px',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              To tend
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={420} direction="none">
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 'clamp(9px, 1.2vw, 11px)',
+                fontWeight: 500,
+                letterSpacing: '0.42em',
+                textTransform: 'uppercase',
+                color: '#B89968',
+                margin: '0 0 28px',
+              }}
+            >
+              — is to keep faith —
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={620} direction="none">
+            <p
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontVariationSettings: "'SOFT' 60, 'opsz' 72",
+                fontStyle: 'italic',
+                fontWeight: 300,
+                fontSize: 'clamp(2rem, 5vw, 3.8rem)',
+                color: '#16243A',
+                lineHeight: 1.15,
+                margin: '0 0 64px',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              with the small hours.
+            </p>
+          </FadeIn>
+
+          {/* Author block */}
+          <FadeIn delay={820} direction="none">
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 16,
+                marginBottom: 12,
+              }}
+            >
+              <div style={{ height: 1, width: 24, backgroundColor: '#B89968', opacity: 0.4 }} />
+              <p
+                style={{
+                  fontFamily: "'Fraunces', Georgia, serif",
+                  fontVariationSettings: "'SOFT' 80, 'opsz' 18",
+                  fontStyle: 'italic',
+                  fontWeight: 300,
+                  fontSize: 14,
+                  color: 'rgba(22,36,58,0.40)',
+                  margin: 0,
+                }}
+              >
+                a meditation kept at the door
+              </p>
+              <div style={{ height: 1, width: 24, backgroundColor: '#B89968', opacity: 0.4 }} />
+            </div>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 10,
+                fontWeight: 500,
+                letterSpacing: '0.3em',
+                textTransform: 'uppercase',
+                color: 'rgba(22,36,58,0.30)',
+                margin: 0,
+              }}
+            >
+              Fidend · Pennsylvania
+            </p>
+          </FadeIn>
+        </div>
+
+        {/* Turn-the-page cue */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            bottom: 36,
+            left: '50%',
+            animation: 'turnPage 2.6s ease-in-out infinite',
+            pointerEvents: 'none',
+          }}
+        >
+          <svg width="18" height="24" viewBox="0 0 18 24" fill="none">
+            <path d="M2 2l7 7 7-7"  stroke="#B89968" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.3"/>
+            <path d="M2 10l7 7 7-7" stroke="#B89968" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.65"/>
+            <path d="M2 18l7 7 7-7" stroke="#B89968" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      </section>
 
       {/* ═══════════════════════════════════════════════════════════════
           MARQUEE — gold on navy
