@@ -159,6 +159,7 @@ html.custom-cursor * {
     color: var(--color-navy);
     font-size: 15px;
     line-height: 1.55;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4 {

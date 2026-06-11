@@ -62,8 +62,8 @@ export default function Nav() {
           {/* Desktop nav */}
           <nav
             aria-label="Main navigation"
-            style={{ display: 'flex', alignItems: 'center', gap: 40 }}
-            className="hidden lg:flex"
+            style={{ display: 'flex', alignItems: 'center', gap: 28 }}
+            className="hidden xl:flex"
           >
             {navLinks.map(({ label, href }) => {
               const active = href === '/' ? pathname === '/' : pathname.startsWith(href)
@@ -116,7 +116,7 @@ export default function Nav() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen(prev => !prev)}
-            className="lg:hidden"
+            className="xl:hidden"
             style={{
               background: 'none',
               border: 'none',
