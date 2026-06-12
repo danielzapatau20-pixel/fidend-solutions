@@ -12,9 +12,12 @@ const navLinks = [
   { label: 'Contact',  href: '/contact' },
 ]
 
+const DESKTOP_BREAKPOINT = 1280
+
 export default function Nav() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled,  setScrolled] = useState(false)
+  const [menuOpen,   setMenuOpen]   = useState(false)
+  const [scrolled,   setScrolled]   = useState(false)
+  const [isDesktop,  setIsDesktop]  = useState(false)
   const pathname = usePathname()
 
   // Close on route change
@@ -25,6 +28,18 @@ export default function Nav() {
     const handler = () => setScrolled(window.scrollY > 8)
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
+  }, [])
+
+  // Responsive: track if desktop width
+  useEffect(() => {
+    const mq = window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`)
+    setIsDesktop(mq.matches)
+    const handler = (e: MediaQueryListEvent) => {
+      setIsDesktop(e.matches)
+      if (e.matches) setMenuOpen(false)
+    }
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
   }, [])
 
   // Body scroll lock while mobile menu is open
@@ -51,119 +66,114 @@ export default function Nav() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            paddingLeft:  'clamp(28px, 6.7vw, 88px)',
-            paddingRight: 'clamp(28px, 6.7vw, 88px)',
-            height: 72,
+            paddingLeft:  'clamp(20px, 5vw, 88px)',
+            paddingRight: 'clamp(20px, 5vw, 88px)',
+            height: 68,
           }}
         >
-          {/* Logo — Option 2 (navy background) */}
           <Logo variant="navy" size="md" />
 
-          {/* Desktop nav */}
-          <nav
-            aria-label="Main navigation"
-            style={{ display: 'flex', alignItems: 'center', gap: 28 }}
-            className="hidden xl:flex"
-          >
-            {navLinks.map(({ label, href }) => {
-              const active = href === '/' ? pathname === '/' : pathname.startsWith(href)
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  style={{
-                    fontFamily: 'Inter, system-ui, sans-serif',
-                    fontSize: 13,
-                    fontWeight: 400,
-                    letterSpacing: '0.08em',
-                    color: active ? '#B89968' : '#F4ECDC',
-                    textDecoration: 'none',
-                    transition: 'color 240ms ease-out',
-                    paddingBottom: 2,
-                    borderBottom: active ? '1px solid #B89968' : '1px solid transparent',
-                  }}
-                >
-                  {label}
-                </Link>
-              )
-            })}
-
-            {/* Gold rule separator */}
-            <div style={{ width: 1, height: 20, backgroundColor: 'rgba(184,153,104,0.35)' }} />
-
-            {/* Hire Fidend — primary CTA for facilities */}
-            <Link
-              href="/contact#hire"
-              className="btn-gold-fill"
-              style={{ fontSize: 11, padding: '10px 20px', letterSpacing: '0.25em' }}
+          {/* Desktop nav — JS-controlled, no Tailwind display conflict */}
+          {isDesktop && (
+            <nav
+              aria-label="Main navigation"
+              style={{ display: 'flex', alignItems: 'center', gap: 28 }}
             >
-              Hire Fidend
-            </Link>
+              {navLinks.map(({ label, href }) => {
+                const active = href === '/' ? pathname === '/' : pathname.startsWith(href)
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 13,
+                      fontWeight: 400,
+                      letterSpacing: '0.08em',
+                      color: active ? '#B89968' : '#F4ECDC',
+                      textDecoration: 'none',
+                      transition: 'color 240ms ease-out',
+                      paddingBottom: 2,
+                      borderBottom: active ? '1px solid #B89968' : '1px solid transparent',
+                    }}
+                  >
+                    {label}
+                  </Link>
+                )
+              })}
 
-            {/* Apply to Work — secondary CTA for workers */}
-            <Link
-              href="/contact#apply"
-              className="btn-primary"
-              style={{ fontSize: 11, padding: '10px 20px', letterSpacing: '0.25em' }}
-            >
-              Apply to Work
-            </Link>
-          </nav>
+              <div style={{ width: 1, height: 20, backgroundColor: 'rgba(184,153,104,0.35)' }} />
 
-          {/* Mobile hamburger */}
-          <button
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
-            onClick={() => setMenuOpen(prev => !prev)}
-            className="xl:hidden"
-            style={{
-              background: 'none',
-              border: 'none',
-              padding: 8,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              gap: 5,
-              cursor: 'pointer',
-            }}
-          >
-            <span
-              style={{
-                display: 'block',
-                width: 24,
-                height: 1,
-                backgroundColor: '#F4ECDC',
-                transformOrigin: 'center',
-                transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none',
-                transition: 'transform 240ms ease-out',
-              }}
-            />
-            <span
-              style={{
-                display: 'block',
-                width: 24,
-                height: 1,
-                backgroundColor: '#F4ECDC',
-                opacity: menuOpen ? 0 : 1,
-                transition: 'opacity 240ms ease-out',
-              }}
-            />
-            <span
-              style={{
-                display: 'block',
-                width: 24,
-                height: 1,
-                backgroundColor: '#F4ECDC',
-                transformOrigin: 'center',
-                transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none',
-                transition: 'transform 240ms ease-out',
-              }}
-            />
-          </button>
+              <Link
+                href="/contact#hire"
+                className="btn-gold-fill"
+                style={{ fontSize: 11, padding: '10px 20px', letterSpacing: '0.25em' }}
+              >
+                Hire Fidend
+              </Link>
+
+              <Link
+                href="/contact#apply"
+                className="btn-primary"
+                style={{ fontSize: 11, padding: '10px 20px', letterSpacing: '0.25em' }}
+              >
+                Apply to Work
+              </Link>
+            </nav>
+          )}
+
+          {/* Mobile: CTA + hamburger */}
+          {!isDesktop && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <Link
+                href="/contact#hire"
+                className="btn-gold-fill"
+                style={{ fontSize: 10, padding: '8px 16px', letterSpacing: '0.2em' }}
+              >
+                Hire Fidend
+              </Link>
+
+              <button
+                aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={menuOpen}
+                aria-controls="mobile-menu"
+                onClick={() => setMenuOpen(prev => !prev)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  padding: 8,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  gap: 5,
+                  cursor: 'pointer',
+                }}
+              >
+                <span style={{
+                  display: 'block', width: 24, height: 1,
+                  backgroundColor: '#F4ECDC',
+                  transformOrigin: 'center',
+                  transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none',
+                  transition: 'transform 240ms ease-out',
+                }} />
+                <span style={{
+                  display: 'block', width: 24, height: 1,
+                  backgroundColor: '#F4ECDC',
+                  opacity: menuOpen ? 0 : 1,
+                  transition: 'opacity 240ms ease-out',
+                }} />
+                <span style={{
+                  display: 'block', width: 24, height: 1,
+                  backgroundColor: '#F4ECDC',
+                  transformOrigin: 'center',
+                  transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none',
+                  transition: 'transform 240ms ease-out',
+                }} />
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Gold rule under nav */}
         <div style={{ height: 1, backgroundColor: 'rgba(184,153,104,0.20)' }} />
       </header>
 
@@ -185,6 +195,7 @@ export default function Nav() {
           gap: 48,
           transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
           transition: 'transform 240ms ease-out',
+          pointerEvents: menuOpen ? 'auto' : 'none',
         }}
       >
         <nav aria-label="Mobile navigation" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 40 }}>
@@ -212,7 +223,6 @@ export default function Nav() {
           })}
         </nav>
 
-        {/* Diamond separator */}
         <div style={{ color: '#B89968', fontSize: 12 }}>◇</div>
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
@@ -234,7 +244,6 @@ export default function Nav() {
           </Link>
         </div>
 
-        {/* Footer tag */}
         <p style={{
           fontFamily: "'Fraunces', Georgia, serif",
           fontStyle: 'italic',
