@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import HeroVideo from '@/components/HeroVideo'
 import ServiceCard from '@/components/ServiceCard'
-import PricingTable from '@/components/PricingTable'
 import FadeIn from '@/components/FadeIn'
 import Link from 'next/link'
 
@@ -16,7 +15,7 @@ const SERVICES = [
     title: 'Housekeeping',
     image: '/images/services/housekeeping.jpg',
     description:
-      'Daily room cleaning, common-area maintenance, and infection-control protocols. Our housekeepers are trained to long-term care standards — proper disinfection sequences, biohazard awareness, and resident dignity throughout.',
+      'Daily room cleaning, common-area maintenance, and infection-control protocols. Our housekeepers are trained to long-term care standards: proper disinfection sequences, biohazard awareness, and resident dignity throughout.',
   },
   {
     title: 'Dietary / Food Service',
@@ -45,10 +44,10 @@ const SERVICES = [
 ]
 
 const COMPLIANCE_ITEMS = [
-  'TB test — current and documented',
-  'Criminal background check — state and federal',
-  'Identity verification — I-9 compliant',
-  'Reference check — prior senior care preferred',
+  'TB test, current and documented',
+  'Criminal background check, state and federal',
+  'Identity verification, I-9 compliant',
+  'Reference check, prior senior care preferred',
   'HIPAA awareness training',
   'Infection control orientation',
 ]
@@ -72,7 +71,7 @@ const HOW_IT_WORKS = [
   {
     number: '04',
     title: 'Ongoing management',
-    body: 'We handle scheduling, HR, payroll, and compliance documentation. You manage care quality. One point of contact — always.',
+    body: 'We handle scheduling, HR, payroll, and compliance documentation. You manage care quality. One point of contact, always.',
   },
 ]
 
@@ -369,68 +368,133 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── PRICING ───────────────────────────────────────────────────── */}
+      {/* ── PRICING METHOD ───────────────────────────────────────────── */}
       <section
         style={{
           backgroundColor: '#16243A',
           padding: 'clamp(64px, 10vw, 120px) clamp(24px, 6vw, 80px)',
         }}
       >
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: 'clamp(48px, 8vw, 96px)',
-            alignItems: 'center',
-          }}
-        >
-          <FadeIn direction="left">
-            <p className="eyebrow" style={{ marginBottom: 16 }}>Pricing</p>
-            <div
-              style={{
-                height: 1,
-                backgroundColor: '#B89968',
-                marginBottom: 28,
-              }}
-            />
-            <h2
-              style={{
-                fontFamily: "'Fraunces', Georgia, serif",
-                fontVariationSettings: "'SOFT' 30, 'opsz' 48",
-                fontWeight: 300,
-                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
-                color: '#F4ECDC',
-                lineHeight: 1.1,
-                margin: '0 0 20px',
-              }}
-            >
-              You see the worker rate. You see our fee. That is the invoice.
-            </h2>
-            <p
-              style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: 15,
-                lineHeight: 1.7,
-                color: 'rgba(244,236,220,0.60)',
-                margin: '0 0 32px',
-              }}
-            >
-              Every invoice shows two line items: the worker's pay rate and
-              our management fee — listed separately, every time. Most agencies
-              present one blended number that hides the margin. We don't.
-              You know what the labor costs and what you're paying to have
-              it managed. That visibility is the foundation of the relationship.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              Request a Rate Sheet
-            </Link>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <FadeIn>
+            <div style={{ maxWidth: 640, marginBottom: 'clamp(40px, 6vw, 64px)' }}>
+              <p className="eyebrow" style={{ marginBottom: 16 }}>The Open Book Method</p>
+              <div
+                style={{
+                  height: 1,
+                  backgroundColor: '#B89968',
+                  marginBottom: 28,
+                }}
+              />
+              <h2
+                style={{
+                  fontFamily: "'Fraunces', Georgia, serif",
+                  fontVariationSettings: "'SOFT' 30, 'opsz' 48",
+                  fontWeight: 300,
+                  fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+                  color: '#F4ECDC',
+                  lineHeight: 1.1,
+                  margin: '0 0 20px',
+                }}
+              >
+                You see the worker rate. You see our fee. That is the invoice.
+              </h2>
+              <p
+                style={{
+                  fontFamily: 'Inter, system-ui, sans-serif',
+                  fontSize: 15,
+                  lineHeight: 1.7,
+                  color: 'rgba(244,236,220,0.60)',
+                  margin: 0,
+                }}
+              >
+                Most agencies quote one blended hourly number and keep the
+                breakdown to themselves. We separate the two figures on every
+                quote we send, so you know exactly what the worker is paid and
+                what we charge to manage the placement.
+              </p>
+            </div>
           </FadeIn>
 
-          <FadeIn delay={150}>
-            <PricingTable variant="navy" />
-          </FadeIn>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: 2,
+              marginBottom: 'clamp(40px, 6vw, 56px)',
+            }}
+          >
+            {[
+              {
+                n: 'I',
+                title: 'Worker rate',
+                body: 'The hourly rate paid to the person working in your facility. Disclosed in writing before the placement begins.',
+              },
+              {
+                n: 'II',
+                title: 'Management fee',
+                body: 'A flat fee per hour, the same for every shift and every renewal. It covers payroll, compliance, scheduling, and support.',
+              },
+              {
+                n: 'III',
+                title: 'Your invoice',
+                body: 'Worker rate plus management fee. Nothing else is added, and nothing is bundled in to obscure the total.',
+              },
+            ].map((step) => (
+              <div
+                key={step.n}
+                style={{
+                  padding: 'clamp(28px, 4vw, 40px)',
+                  border: '1px solid rgba(184,153,104,0.20)',
+                  backgroundColor: 'rgba(244,236,220,0.06)',
+                  height: '100%',
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "'Fraunces', Georgia, serif",
+                    fontVariationSettings: "'SOFT' 30, 'opsz' 72",
+                    fontWeight: 300,
+                    fontSize: '2rem',
+                    color: '#B89968',
+                    margin: '0 0 20px',
+                    lineHeight: 1,
+                    opacity: 0.6,
+                  }}
+                >
+                  {step.n}
+                </p>
+                <div style={{ height: 1, backgroundColor: '#B89968', opacity: 0.3, marginBottom: 20 }} />
+                <h3
+                  style={{
+                    fontFamily: "'Fraunces', Georgia, serif",
+                    fontVariationSettings: "'SOFT' 30, 'opsz' 24",
+                    fontWeight: 400,
+                    fontSize: '1.15rem',
+                    color: '#F4ECDC',
+                    margin: '0 0 12px',
+                  }}
+                >
+                  {step.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'Inter, system-ui, sans-serif',
+                    fontSize: 14,
+                    lineHeight: 1.65,
+                    color: 'rgba(244,236,220,0.55)',
+                    margin: 0,
+                  }}
+                >
+                  {step.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <Link href="/contact" className="btn-primary">
+            Request a Rate Sheet
+          </Link>
         </div>
       </section>
     </>

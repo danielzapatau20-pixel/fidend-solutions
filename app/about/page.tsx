@@ -18,7 +18,7 @@ const VALUES = [
   {
     latin: 'Estrategia',
     english: 'Strategy',
-    body: 'Staffing gaps are operational problems. We solve them with structure, not patches — the right worker, the right shift, sustained.',
+    body: 'Staffing gaps are operational problems. We solve them with structure rather than patches: the right worker, on the right shift, sustained over time.',
   },
   {
     latin: 'Resultados',
@@ -122,7 +122,7 @@ export default function AboutPage() {
                 margin: '0 0 24px',
               }}
             >
-              From Latin <em>fidelis</em> — faithful, loyal, trustworthy.
+              From Latin <em>fidelis</em>: faithful, loyal, trustworthy.
             </p>
             <p
               style={{
@@ -137,7 +137,7 @@ export default function AboutPage() {
               your facility have earned a standard of care that doesn't bend to
               staffing gaps, surprise callouts, or workers who arrive without
               context. We named ourselves Fidend because we believe the word
-              should mean something in operational staffing — not just in the
+              should mean something in operational staffing, not only in the
               care professions.
             </p>
             <p
@@ -278,7 +278,7 @@ export default function AboutPage() {
             >
               Fidend was founded to offer an alternative: a small, focused
               operation in Pennsylvania that places the right workers, discloses
-              every number, and stays accountable to outcomes — not just
+              every number, and stays accountable to outcomes, not only
               placements.
             </p>
             <div

@@ -3,7 +3,6 @@ import HeroVideo from '@/components/HeroVideo'
 import FadeIn from '@/components/FadeIn'
 import CountUp from '@/components/CountUp'
 import Marquee from '@/components/Marquee'
-import PricingTable from '@/components/PricingTable'
 import Link from 'next/link'
 
 /* ─── Shared brand SVG paths ────────────────────────────────────────────────── */
@@ -21,39 +20,6 @@ const SERVICES = [
   { num: '03', title: 'Laundry',             es: 'Lavandería',            image: '/images/services/laundry.jpg' },
   { num: '04', title: 'Activities',          es: 'Actividades',           image: '/images/services/activities.jpg' },
   { num: '05', title: 'Companion Care',      es: 'Cuidado y compañía',    image: '/images/services/companion-care.jpg' },
-]
-
-const VOICES = [
-  {
-    quote: "They answer the phone. Not an account rep — the founder. Three years in, the invoice still shows me exactly what the worker earns and what the management costs. That alone is rare.",
-    emph: 'answer the phone',
-    name: 'Maria Reyes',
-    role: 'Administrator',
-    venue: 'Hillside Senior Living',
-    state: 'PA',
-    since: '2023',
-    initials: 'MR',
-  },
-  {
-    quote: "Every Fidend worker arrived fully prepared — TB clearance, background, dementia orientation. I have not filed a single compliance correction in eighteen months. That is the whole story.",
-    emph: 'fully prepared',
-    name: 'James Margolis',
-    role: 'Director',
-    venue: 'Cedar Brook Residences',
-    state: 'NJ',
-    since: '2024',
-    initials: 'JM',
-  },
-  {
-    quote: "We had three vendors before Fidend. Two of them I never met in person. The Fidend founder walked the building on day one and writes back the same afternoon. It is a different kind of business.",
-    emph: 'walked the building',
-    name: 'Patricia Liang',
-    role: 'Owner',
-    venue: 'Magnolia Court',
-    state: 'PA',
-    since: '2025',
-    initials: 'PL',
-  },
 ]
 
 const VALUES = [
@@ -87,7 +53,7 @@ const FIVE_TRUTHS = [
   {
     n: '01',
     title: 'We listen first.',
-    quote: 'Every engagement begins by understanding what your facility actually needs. Then we build the operation around that brief — not around our roster.',
+    quote: 'Every engagement begins by understanding what your facility actually needs. Then we build the operation around that brief, not around our roster.',
   },
   {
     n: '02',
@@ -102,7 +68,7 @@ const FIVE_TRUTHS = [
   {
     n: '04',
     title: 'Direct leadership access.',
-    quote: 'You work directly with leadership — not a rotating account rep. Questions answered fast. Problems handled before they grow.',
+    quote: 'You work directly with leadership, not a rotating account rep. Questions answered fast. Problems handled before they grow.',
   },
   {
     n: '05',
@@ -819,205 +785,6 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          VOICES / TESTIMONIALS — paper, 3-column
-      ═══════════════════════════════════════════════════════════════ */}
-      <section
-        id="voices"
-        className="grain"
-        style={{
-          backgroundColor: '#FAF1DA',
-          padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
-        }}
-      >
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <FadeIn>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'flex-end',
-                flexWrap: 'wrap',
-                gap: 24,
-                marginBottom: 'clamp(48px, 7vw, 80px)',
-              }}
-            >
-              <div>
-                <p className="eyebrow-navy" style={{ marginBottom: 14 }}>Voices</p>
-                <div className="gold-rule" style={{ marginBottom: 24 }} />
-                <h2
-                  style={{
-                    fontFamily: "'Fraunces', Georgia, serif",
-                    fontVariationSettings: "'SOFT' 30, 'opsz' 48",
-                    fontWeight: 300,
-                    fontSize: 'clamp(1.9rem, 3.5vw, 2.8rem)',
-                    color: '#16243A',
-                    lineHeight: 1.1,
-                    margin: 0,
-                  }}
-                >
-                  The people we work for,<br />in their own words.
-                </h2>
-              </div>
-              <p
-                style={{
-                  fontFamily: 'Inter, system-ui, sans-serif',
-                  fontSize: 10,
-                  fontWeight: 500,
-                  letterSpacing: '0.25em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(22,36,58,0.35)',
-                  margin: 0,
-                }}
-              >
-                Verified clients
-              </p>
-            </div>
-          </FadeIn>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-              gap: 24,
-            }}
-          >
-            {VOICES.map((v, i) => (
-              <FadeIn key={v.name} delay={i * 100} direction="up">
-                <div
-                  style={{
-                    backgroundColor: '#F6ECD4',
-                    border: '1px solid rgba(22,36,58,0.10)',
-                    padding: 'clamp(28px, 4vw, 40px)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 28,
-                    height: '100%',
-                    transition: 'box-shadow 240ms ease-out, transform 240ms ease-out',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 40px rgba(22,36,58,0.09)'
-                    ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = 'none'
-                    ;(e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
-                  }}
-                >
-                  {/* Quote mark */}
-                  <p
-                    aria-hidden="true"
-                    style={{
-                      fontFamily: "'Fraunces', Georgia, serif",
-                      fontVariationSettings: "'SOFT' 30, 'opsz' 144",
-                      fontWeight: 300,
-                      fontSize: 80,
-                      color: '#B89968',
-                      lineHeight: 0.6,
-                      margin: 0,
-                      opacity: 0.7,
-                    }}
-                  >
-                    &#8220;
-                  </p>
-
-                  {/* Quote */}
-                  <p
-                    style={{
-                      fontFamily: "'Fraunces', Georgia, serif",
-                      fontVariationSettings: "'SOFT' 60, 'opsz' 18",
-                      fontStyle: 'italic',
-                      fontWeight: 300,
-                      fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
-                      lineHeight: 1.55,
-                      color: '#16243A',
-                      margin: 0,
-                      flexGrow: 1,
-                    }}
-                    dangerouslySetInnerHTML={{
-                      __html: v.quote.replace(
-                        v.emph,
-                        `<em style="font-variation-settings:'SOFT' 80,'opsz' 18;color:#A88A4B">${v.emph}</em>`
-                      ),
-                    }}
-                  />
-
-                  {/* Bottom */}
-                  <div>
-                    <div style={{ height: 1, backgroundColor: 'rgba(22,36,58,0.10)', marginBottom: 20 }} />
-
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                      {/* Avatar */}
-                      <div
-                        style={{
-                          width: 44,
-                          height: 44,
-                          borderRadius: '50%',
-                          background: 'linear-gradient(135deg, #B7714A 0%, #B89968 100%)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0,
-                        }}
-                      >
-                        <span
-                          style={{
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontSize: 12,
-                            fontWeight: 600,
-                            color: '#FAF1DA',
-                            letterSpacing: '0.04em',
-                          }}
-                        >
-                          {v.initials}
-                        </span>
-                      </div>
-
-                      <div>
-                        <p
-                          style={{
-                            fontFamily: "'Fraunces', Georgia, serif",
-                            fontVariationSettings: "'SOFT' 30, 'opsz' 18",
-                            fontWeight: 400,
-                            fontSize: 15,
-                            color: '#16243A',
-                            margin: '0 0 2px',
-                          }}
-                        >
-                          {v.name}
-                        </p>
-                        <p
-                          style={{
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontSize: 11,
-                            color: 'rgba(22,36,58,0.50)',
-                            margin: '0 0 4px',
-                          }}
-                        >
-                          {v.role} · {v.venue} · {v.state}
-                        </p>
-                        <p
-                          style={{
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontSize: 10,
-                            fontWeight: 500,
-                            letterSpacing: '0.15em',
-                            color: '#B89968',
-                            margin: 0,
-                          }}
-                        >
-                          {'★★★★★'} &nbsp;·&nbsp; Since {v.since}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════
           METHODOLOGY / PROCESS — cream-2
       ═══════════════════════════════════════════════════════════════ */}
       <section
@@ -1083,10 +850,10 @@ export default function HomePage() {
             }}
           >
             {[
-              { n: '01', title: 'Discovery', body: 'A working conversation with leadership. We listen for the real operational need — not the pitch we want to give.' },
+              { n: '01', title: 'Discovery', body: 'A working conversation with leadership. We listen for the real operational need, not the pitch we want to give.' },
               { n: '02', title: 'Written proposal', body: 'Within five business days. Roles, hours, worker rate, burden, and the Fidend markup. Every number in writing.' },
               { n: '03', title: 'Preparation', body: 'Background checks. TB clearance. State requirements. Prior orientation in senior care protocols. Nothing skipped.' },
-              { n: '04', title: 'Placement & presence', body: "Workers arrive in uniform on day one. Leadership remains your direct line — never a rotating account rep." },
+              { n: '04', title: 'Placement & presence', body: "Workers arrive in uniform on day one. Leadership remains your direct line, never a rotating account rep." },
             ].map((step, i) => (
               <FadeIn key={step.n} delay={i * 90} direction="up">
                 <div>
@@ -1460,7 +1227,7 @@ export default function HomePage() {
               >
                 is the first &amp; only legitimate object
               </em>{' '}
-              of good government — and of every house that stands for something.&#8221;
+              of good government, and of every house that stands for something.&#8221;
             </blockquote>
 
             <div
@@ -1504,7 +1271,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          PRICING — cream, open book
+          PRICING METHOD — cream, explains the open book method
       ═══════════════════════════════════════════════════════════════ */}
       <section
         id="pricing"
@@ -1513,52 +1280,123 @@ export default function HomePage() {
           padding: 'clamp(72px, 11vw, 128px) clamp(24px, 6vw, 80px)',
         }}
       >
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: 'clamp(48px, 8vw, 96px)',
-            alignItems: 'center',
-          }}
-        >
-          <FadeIn direction="left">
-            <PricingTable variant="cream" />
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <FadeIn>
+            <div style={{ maxWidth: 640, marginBottom: 'clamp(48px, 7vw, 72px)' }}>
+              <p className="eyebrow-navy" style={{ marginBottom: 14 }}>The Open Book Method</p>
+              <div className="gold-rule" style={{ marginBottom: 24 }} />
+              <h2
+                style={{
+                  fontFamily: "'Fraunces', Georgia, serif",
+                  fontVariationSettings: "'SOFT' 30, 'opsz' 48",
+                  fontWeight: 300,
+                  fontSize: 'clamp(1.9rem, 3.5vw, 2.8rem)',
+                  color: '#16243A',
+                  lineHeight: 1.1,
+                  margin: '0 0 20px',
+                }}
+              >
+                You see the worker rate. You see our fee. That is the invoice.
+              </h2>
+              <p
+                style={{
+                  fontFamily: 'Inter, system-ui, sans-serif',
+                  fontSize: 15,
+                  lineHeight: 1.75,
+                  color: 'rgba(22,36,58,0.58)',
+                  margin: 0,
+                }}
+              >
+                Most staffing agencies quote one blended hourly number and keep the
+                breakdown to themselves. We do the opposite. Every quote we send
+                separates the two figures that make up your invoice, so you always
+                know exactly what the worker is paid and what we charge to manage
+                the placement.
+              </p>
+            </div>
           </FadeIn>
 
-          <FadeIn delay={140} direction="right">
-            <p className="eyebrow-navy" style={{ marginBottom: 14 }}>Markup, not margin games.</p>
-            <div className="gold-rule" style={{ marginBottom: 24 }} />
-            <h2
-              style={{
-                fontFamily: "'Fraunces', Georgia, serif",
-                fontVariationSettings: "'SOFT' 30, 'opsz' 48",
-                fontWeight: 300,
-                fontSize: 'clamp(1.9rem, 3.5vw, 2.8rem)',
-                color: '#16243A',
-                lineHeight: 1.1,
-                margin: '0 0 20px',
-              }}
-            >
-              You see the worker rate.<br />You see our fee.<br />That is the invoice.
-            </h2>
-            <p
-              style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: 15,
-                lineHeight: 1.75,
-                color: 'rgba(22,36,58,0.58)',
-                margin: '0 0 32px',
-              }}
-            >
-              Our pricing follows one rule across every role, every shift, and every
-              renewal. A fixed dollar markup over the verifiable worker cost. You
-              always know what we add, and what we do not.
-            </p>
-            <Link href="/contact" className="btn-primary-navy">
-              Request a rate sheet
-            </Link>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: 2,
+            }}
+          >
+            {[
+              {
+                n: 'I',
+                title: 'Worker rate',
+                body: 'The hourly rate paid to the person working in your facility. Disclosed in writing before the placement begins.',
+              },
+              {
+                n: 'II',
+                title: 'Management fee',
+                body: 'A flat fee per hour, the same for every shift and every renewal. It covers payroll, compliance, scheduling, and support.',
+              },
+              {
+                n: 'III',
+                title: 'Your invoice',
+                body: 'Worker rate plus management fee. Nothing else is added, and nothing is bundled in to obscure the total.',
+              },
+            ].map((step, i) => (
+              <FadeIn key={step.n} delay={i * 90} direction="up">
+                <div
+                  style={{
+                    padding: 'clamp(28px, 4vw, 40px)',
+                    border: '1px solid rgba(22,36,58,0.08)',
+                    height: '100%',
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: "'Fraunces', Georgia, serif",
+                      fontVariationSettings: "'SOFT' 30, 'opsz' 72",
+                      fontWeight: 300,
+                      fontSize: '2rem',
+                      color: '#B89968',
+                      margin: '0 0 20px',
+                      lineHeight: 1,
+                      opacity: 0.55,
+                    }}
+                  >
+                    {step.n}
+                  </p>
+                  <div style={{ height: 1, backgroundColor: '#B89968', opacity: 0.3, marginBottom: 20 }} />
+                  <h3
+                    style={{
+                      fontFamily: "'Fraunces', Georgia, serif",
+                      fontVariationSettings: "'SOFT' 30, 'opsz' 24",
+                      fontWeight: 400,
+                      fontSize: '1.25rem',
+                      color: '#16243A',
+                      margin: '0 0 12px',
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 14,
+                      lineHeight: 1.68,
+                      color: 'rgba(22,36,58,0.55)',
+                      margin: 0,
+                    }}
+                  >
+                    {step.body}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn delay={280}>
+            <div style={{ marginTop: 'clamp(40px, 6vw, 56px)' }}>
+              <Link href="/contact" className="btn-primary-navy">
+                Request a rate sheet
+              </Link>
+            </div>
           </FadeIn>
         </div>
       </section>
@@ -1682,7 +1520,7 @@ export default function HomePage() {
             >
               When my grandmother moved into senior living, the vendor who handled
               housekeeping never met our family. The invoice was opaque. The same
-              person never came twice. I do not blame them — that is how the industry
+              person never came twice. I do not blame them: that is how the industry
               was built. But it is not how care should feel.
             </p>
 
@@ -1698,7 +1536,7 @@ export default function HomePage() {
               Fidend exists because administrators deserve a partner who answers the
               phone, sends one worker by name, and writes the cost on the invoice
               without hiding behind language. We are small on purpose. We will stay
-              small until we cannot keep that promise at scale — and then we will
+              small until we cannot keep that promise at scale, and then we will
               grow only as fast as the promise holds.
             </p>
 
@@ -1712,7 +1550,7 @@ export default function HomePage() {
               }}
             >
               If you run a building where people live with dignity, I want to hear
-              from you. Not through a form — through a phone call.
+              from you. Not through a form: through a phone call.
             </p>
 
             {/* Signature row */}

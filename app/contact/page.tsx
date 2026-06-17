@@ -212,7 +212,7 @@ export default function ContactPage() {
                 }}
               >
                 We review every application. Expect a call within 2 business
-                days. We place workers who are committed to senior care — not
+                days. We place workers who are committed to senior care, not
                 just available.
               </p>
             </div>
@@ -338,7 +338,7 @@ export default function ContactPage() {
                 margin: 0,
               }}
             >
-              Pennsylvania — currently accepting new facilities
+              Pennsylvania: currently accepting new facilities
             </p>
           </div>
           <div
