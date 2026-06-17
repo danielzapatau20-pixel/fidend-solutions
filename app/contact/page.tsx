@@ -247,12 +247,12 @@ export default function ContactPage() {
                     a: 'Not required, but preferred. We consider attitude and reliability.',
                   },
                   {
-                    q: 'What does TB cleared mean?',
-                    a: "A current TB test result on file. We'll walk you through the process if needed.",
+                    q: 'How flexible is the schedule?',
+                    a: 'We match you to shifts based on the availability you give us.',
                   },
                   {
                     q: 'How quickly can I start?',
-                    a: 'Once cleared, typically within one week of your first placement.',
+                    a: 'Once your application is reviewed, typically within one week of your first placement.',
                   },
                 ].map((item, i, arr) => (
                   <div

@@ -15,7 +15,7 @@ export default function ServiceCard({
   title,
   description,
   image,
-  badge = 'TB cleared · Background checked · Senior care oriented',
+  badge = 'Flexible scheduling · Matched to your standards',
   variant = 'cream',
   href,
 }: ServiceCardProps) {

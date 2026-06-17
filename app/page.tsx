@@ -57,13 +57,13 @@ const FIVE_TRUTHS = [
   },
   {
     n: '02',
-    title: 'Pre-oriented personnel.',
-    quote: 'Every Fidend worker arrives with a prior orientation in senior care communication and dignity protocols. The full handover to your house rules happens on day one, on the floor.',
+    title: 'Built to adapt.',
+    quote: 'Workers are matched to your shift structure and learn your house rules directly from your team, not from a generic playbook.',
   },
   {
     n: '03',
-    title: 'Compliance handled.',
-    quote: 'Background checks, TB tests, and state clearances are all managed by us, not by you.',
+    title: 'Operationally flexible.',
+    quote: 'We adjust staffing levels, shift coverage, and reporting lines as your needs change, without renegotiating the relationship every time.',
   },
   {
     n: '04',
@@ -517,9 +517,9 @@ export default function HomePage() {
                   margin: 0,
                 }}
               >
-                Five operational lines, one standard of preparation. Every worker
-                arrives with a prior orientation in senior care protocols, ready to
-                learn the house rules of your facility.
+                Five operational lines, one standard of flexibility. Every worker
+                adapts to the house rules and standards of your facility from
+                day one.
               </p>
             </div>
           </FadeIn>
@@ -852,7 +852,7 @@ export default function HomePage() {
             {[
               { n: '01', title: 'Discovery', body: 'A working conversation with leadership. We listen for the real operational need, not the pitch we want to give.' },
               { n: '02', title: 'Written proposal', body: 'Within five business days. Roles, hours, worker rate, burden, and the Fidend markup. Every number in writing.' },
-              { n: '03', title: 'Preparation', body: 'Background checks. TB clearance. State requirements. Prior orientation in senior care protocols. Nothing skipped.' },
+              { n: '03', title: 'Preparation', body: 'We confirm shift coverage, reporting lines, and any facility-specific requirements before day one. Nothing left to figure out on the floor.' },
               { n: '04', title: 'Placement & presence', body: "Workers arrive in uniform on day one. Leadership remains your direct line, never a rotating account rep." },
             ].map((step, i) => (
               <FadeIn key={step.n} delay={i * 90} direction="up">

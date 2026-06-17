@@ -7,7 +7,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Housekeeping, dietary, laundry, activities, and companion care staffing for senior living facilities. TB-cleared, background-checked workers placed within 48 hours.',
+    'Housekeeping, dietary, laundry, activities, and companion care staffing for senior living facilities, built to adapt to how your facility already operates.',
 }
 
 const SERVICES = [
@@ -15,19 +15,19 @@ const SERVICES = [
     title: 'Housekeeping',
     image: '/images/services/housekeeping.jpg',
     description:
-      'Daily room cleaning, common-area maintenance, and infection-control protocols. Our housekeepers are trained to long-term care standards: proper disinfection sequences, biohazard awareness, and resident dignity throughout.',
+      'Daily room cleaning, common-area maintenance, and general upkeep, scheduled and run according to the standards your facility already has in place.',
   },
   {
     title: 'Dietary / Food Service',
     image: '/images/services/dietary.jpg',
     description:
-      'Tray delivery, dining-room service, and kitchen support aligned with your dietary specifications and resident care plans. We place workers familiar with therapeutic diet protocols and allergy management.',
+      'Tray delivery, dining-room service, and kitchen support aligned with your dietary specifications and resident care plans, run the way your kitchen already operates.',
   },
   {
     title: 'Laundry',
     image: '/images/services/laundry.jpg',
     description:
-      "Resident laundry, linen exchange, and dry-goods handling. Sorted, tracked, and returned on schedule. Workers follow your facility's sorting and infection-control procedures from day one.",
+      "Resident laundry, linen exchange, and dry-goods handling. Sorted, tracked, and returned on the schedule your facility sets.",
   },
   {
     title: 'Activities Assistance',
@@ -39,17 +39,17 @@ const SERVICES = [
     title: 'Companion Care',
     image: '/images/services/companion-care.jpg',
     description:
-      'Attentive non-medical companionship: conversation, ambulation assistance, and presence that sustains resident dignity. Companions are briefed on cognitive sensitivity and communication preferences.',
+      'Attentive non-medical companionship: conversation, ambulation assistance, and presence that sustains resident dignity, guided by the preferences your care team sets.',
   },
 ]
 
-const COMPLIANCE_ITEMS = [
-  'TB test, current and documented',
-  'Criminal background check, state and federal',
-  'Identity verification, I-9 compliant',
-  'Reference check, prior senior care preferred',
-  'HIPAA awareness training',
-  'Infection control orientation',
+const FLEXIBILITY_ITEMS = [
+  'Shift patterns set by your facility, not by us',
+  'Reporting line of your choice',
+  'Scheduling adjusted as your census changes',
+  'Paperwork in the format you already use',
+  'Coverage scaled up or down as needs shift',
+  'Changes handled with a phone call, not a contract revision',
 ]
 
 const HOW_IT_WORKS = [
@@ -61,12 +61,12 @@ const HOW_IT_WORKS = [
   {
     number: '02',
     title: 'Worker match',
-    body: 'We assign TB-cleared, background-checked workers matched to your service area, shift length, and facility type.',
+    body: 'We assign workers matched to your service area, shift length, and facility type.',
   },
   {
     number: '03',
     title: 'On-site orientation',
-    body: "Workers arrive briefed on your facility's layout and general protocols. Your DON or shift supervisor handles final orientation to your specific procedures.",
+    body: "Workers arrive ready to learn your facility's layout. Your DON or shift supervisor leads orientation to your specific procedures.",
   },
   {
     number: '04',
@@ -134,8 +134,8 @@ export default function ServicesPage() {
                 margin: 0,
               }}
             >
-              Every Fidend worker is TB-cleared, background-checked, and credentialed
-              before they arrive at your facility.
+              Every Fidend worker adapts to your facility's standards and shift
+              structure from day one.
             </p>
           </FadeIn>
         </div>
@@ -259,7 +259,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── COMPLIANCE ────────────────────────────────────────────────── */}
+      {/* ── FLEXIBILITY ───────────────────────────────────────────────── */}
       <section
         style={{
           backgroundColor: '#EDE3CF',
@@ -278,7 +278,7 @@ export default function ServicesPage() {
         >
           {/* Left — copy */}
           <FadeIn direction="left">
-            <p className="eyebrow" style={{ marginBottom: 16 }}>Compliance</p>
+            <p className="eyebrow" style={{ marginBottom: 16 }}>Flexibility</p>
             <div className="gold-rule" style={{ marginBottom: 28 }} />
             <h2
               style={{
@@ -291,7 +291,7 @@ export default function ServicesPage() {
                 margin: '0 0 20px',
               }}
             >
-              Every worker arrives ready for survey.
+              Built to fit the way your facility already runs.
             </h2>
             <p
               style={{
@@ -302,10 +302,10 @@ export default function ServicesPage() {
                 margin: '0 0 32px',
               }}
             >
-              We maintain documentation on every worker in our network. If a
-              surveyor asks for proof of compliance, you can produce it. We keep
-              your facility audit-ready as a baseline condition of service, not
-              an upsell.
+              Every facility runs differently: different shift patterns,
+              different reporting lines, different pace. We do not ask you to
+              adapt to us. Our staffing adjusts to your existing standards and
+              procedures, so the partnership works on your terms from day one.
             </p>
             <Link href="/contact" className="btn-primary-navy">
               Request a Conversation
@@ -325,10 +325,10 @@ export default function ServicesPage() {
                 marginBottom: 20,
               }}
             >
-              Every Worker · Every Time
+              Every Placement · Every Facility
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-              {COMPLIANCE_ITEMS.map((item, i) => (
+              {FLEXIBILITY_ITEMS.map((item, i) => (
                 <div
                   key={item}
                   style={{
@@ -337,7 +337,7 @@ export default function ServicesPage() {
                     gap: 16,
                     padding: '16px 0',
                     borderBottom:
-                      i < COMPLIANCE_ITEMS.length - 1
+                      i < FLEXIBILITY_ITEMS.length - 1
                         ? '1px solid rgba(22,36,58,0.12)'
                         : 'none',
                   }}

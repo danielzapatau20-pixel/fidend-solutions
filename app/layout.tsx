@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: '%s | Fidend Solutions',
   },
   description:
-    'Fidend places TB-cleared, background-checked housekeepers, dietary aides, laundry attendants, activities aides, and companion caregivers in senior living homes across Pennsylvania.',
+    'Fidend places housekeepers, dietary aides, laundry attendants, activities aides, and companion caregivers who adapt to how your senior living facility already operates, across Pennsylvania.',
   keywords: [
     'senior living staffing',
     'housekeeping staffing Pennsylvania',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: 'Fidend Solutions',
     title: 'Fidend Solutions — Operational Staffing for Senior Living',
     description:
-      'TB-cleared. Background checked. Senior care oriented. Fidend staffs the roles that keep senior living homes running.',
+      'Flexible, operationally aligned staffing. Fidend staffs the roles that keep senior living homes running.',
   },
   twitter: {
     card: 'summary_large_image',

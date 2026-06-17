@@ -13,7 +13,7 @@ const VALUES = [
   {
     latin: 'Claridad',
     english: 'Clarity',
-    body: "Every rate disclosed. Every worker's credentials documented. No surprises on the invoice or the floor.",
+    body: 'Every rate disclosed. Every cost itemized. No surprises on the invoice or the floor.',
   },
   {
     latin: 'Estrategia',
