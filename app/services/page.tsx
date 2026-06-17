@@ -14,26 +14,31 @@ export const metadata: Metadata = {
 const SERVICES = [
   {
     title: 'Housekeeping',
+    image: '/images/services/housekeeping.jpg',
     description:
       'Daily room cleaning, common-area maintenance, and infection-control protocols. Our housekeepers are trained to long-term care standards — proper disinfection sequences, biohazard awareness, and resident dignity throughout.',
   },
   {
     title: 'Dietary / Food Service',
+    image: '/images/services/dietary.jpg',
     description:
       'Tray delivery, dining-room service, and kitchen support aligned with your dietary specifications and resident care plans. We place workers familiar with therapeutic diet protocols and allergy management.',
   },
   {
     title: 'Laundry',
+    image: '/images/services/laundry.jpg',
     description:
       "Resident laundry, linen exchange, and dry-goods handling. Sorted, tracked, and returned on schedule. Workers follow your facility's sorting and infection-control procedures from day one.",
   },
   {
     title: 'Activities Assistance',
+    image: '/images/services/activities.jpg',
     description:
       "Structured program support under your activities coordinator's direction. Engagement, facilitation, and logistical setup for recreational and therapeutic programming. Warm, patient, and resident-focused.",
   },
   {
     title: 'Companion Care',
+    image: '/images/services/companion-care.jpg',
     description:
       'Attentive non-medical companionship: conversation, ambulation assistance, and presence that sustains resident dignity. Companions are briefed on cognitive sensitivity and communication preferences.',
   },
@@ -157,6 +162,7 @@ export default function ServicesPage() {
                 <ServiceCard
                   title={svc.title}
                   description={svc.description}
+                  image={svc.image}
                 />
               </FadeIn>
             ))}

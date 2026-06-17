@@ -16,11 +16,11 @@ const FMARK = (
 )
 
 const SERVICES = [
-  { num: '01', title: 'Housekeeping',        es: 'Limpieza' },
-  { num: '02', title: 'Dietary',             es: 'Alimentación' },
-  { num: '03', title: 'Laundry',             es: 'Lavandería' },
-  { num: '04', title: 'Activities',          es: 'Actividades' },
-  { num: '05', title: 'Companion Care',      es: 'Cuidado y compañía' },
+  { num: '01', title: 'Housekeeping',        es: 'Limpieza',              image: '/images/services/housekeeping.jpg' },
+  { num: '02', title: 'Dietary',             es: 'Alimentación',          image: '/images/services/dietary.jpg' },
+  { num: '03', title: 'Laundry',             es: 'Lavandería',            image: '/images/services/laundry.jpg' },
+  { num: '04', title: 'Activities',          es: 'Actividades',           image: '/images/services/activities.jpg' },
+  { num: '05', title: 'Companion Care',      es: 'Cuidado y compañía',    image: '/images/services/companion-care.jpg' },
 ]
 
 const VOICES = [
@@ -589,6 +589,30 @@ export default function HomePage() {
                     ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(184,153,104,0.12)'
                   }}
                 >
+                  {/* Photo */}
+                  <img
+                    src={svc.image}
+                    alt={svc.title}
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'transform 240ms ease-out',
+                    }}
+                  />
+
+                  {/* Navy gradient for legibility */}
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(180deg, rgba(22,36,58,0.45) 0%, rgba(22,36,58,0.30) 40%, rgba(22,36,58,0.92) 100%)',
+                    }}
+                  />
+
                   {/* Gold number */}
                   <p
                     style={{

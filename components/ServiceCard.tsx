@@ -5,6 +5,7 @@ import Link from 'next/link'
 interface ServiceCardProps {
   title: string
   description: string
+  image?: string
   badge?: string
   variant?: 'cream' | 'navy'
   href?: string
@@ -13,6 +14,7 @@ interface ServiceCardProps {
 export default function ServiceCard({
   title,
   description,
+  image,
   badge = 'TB cleared · Background checked · Senior care oriented',
   variant = 'cream',
   href,
@@ -48,6 +50,23 @@ export default function ServiceCard({
         el.style.boxShadow = 'none'
       }}
     >
+      {/* Image */}
+      {image && (
+        <div
+          style={{
+            aspectRatio: '4 / 3',
+            margin: '-32px -32px 0',
+            overflow: 'hidden',
+          }}
+        >
+          <img
+            src={image}
+            alt={title}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
+        </div>
+      )}
+
       {/* Gold rule */}
       <div style={{ height: 1, backgroundColor: '#B89968' }} />
 
