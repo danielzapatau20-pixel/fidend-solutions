@@ -34,7 +34,7 @@ export default function AboutPage() {
       <HeroVideo
         overlayOpacity={0.68}
         minHeight="60svh"
-        poster="/poster-hero.png"
+        poster="/poster-hero.jpg"
       >
         <div
           style={{
