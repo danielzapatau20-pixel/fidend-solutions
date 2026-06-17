@@ -118,6 +118,11 @@ html.custom-cursor * {
   50%       { transform: translateX(-50%) translateY(9px); opacity: 1; }
 }
 
+@keyframes kenBurns {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-1%, -1%); }
+}
+
 /* ─── CSS Custom Properties ────────────────────────────────────────────────── */
 :root {
   --color-navy:          #16243A;
@@ -438,5 +443,11 @@ html.custom-cursor * {
     background-color: var(--color-old-gold);
     border-color: var(--color-old-gold);
     opacity: 1;
+  }
+
+  /* Slow cinematic zoom for hero poster fallback (no video source) */
+  .hero-ken-burns {
+    animation: kenBurns 26s ease-out infinite alternate;
+    will-change: transform;
   }
 }

@@ -65,12 +65,24 @@ export default function HeroVideo({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#16243A',
-        backgroundImage: showPosterFallback ? `url(${poster})` : undefined,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         overflow: 'hidden',
       }}
     >
+      {/* Poster fallback — slow cinematic zoom in lieu of video */}
+      {showPosterFallback && (
+        <div
+          aria-hidden="true"
+          className="hero-ken-burns"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: `url(${poster})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      )}
+
       {/* Video background — HIGGSFIELD ASSET 01 */}
       {showVideo && (
         <video
