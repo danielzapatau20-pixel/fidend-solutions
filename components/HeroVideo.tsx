@@ -52,6 +52,7 @@ export default function HeroVideo({
   }, [src, videoError])
 
   const showVideo = src && !videoError && !isMobile
+  const showPosterFallback = !showVideo && poster
 
   return (
     <div
@@ -64,6 +65,9 @@ export default function HeroVideo({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#16243A',
+        backgroundImage: showPosterFallback ? `url(${poster})` : undefined,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         overflow: 'hidden',
       }}
     >

@@ -78,6 +78,7 @@ export default function ServicesPage() {
       <HeroVideo
         overlayOpacity={0.65}
         minHeight="60svh"
+        poster="/poster-hero.png"
       >
         <div
           style={{

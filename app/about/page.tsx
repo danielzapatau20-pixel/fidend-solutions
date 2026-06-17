@@ -34,6 +34,7 @@ export default function AboutPage() {
       <HeroVideo
         overlayOpacity={0.68}
         minHeight="60svh"
+        poster="/poster-hero.png"
       >
         <div
           style={{
@@ -209,38 +210,20 @@ export default function AboutPage() {
             alignItems: 'center',
           }}
         >
-          {/*
-           * HIGGSFIELD ASSET 05 — Founder portrait placeholder
-           * Replace with <Image> once generated:
-           *   Tool: generate_image · Model: flux_dev
-           *   Prompt: "Professional headshot of a young founder. Warm lighting,
-           *   dark navy background, navy blazer, confident but approachable
-           *   expression. High quality, editorial feel. No other people."
-           *   Aspect: 3:4 (portrait)
-           *   Place at: /public/images/founder.jpg
-           */}
           <FadeIn direction="left">
             <div
               style={{
                 aspectRatio: '3/4',
                 maxWidth: 400,
-                backgroundColor: 'rgba(244,236,220,0.04)',
                 border: '1px solid rgba(184,153,104,0.15)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                overflow: 'hidden',
               }}
-              aria-hidden="true"
             >
-              <p
-                className="eyebrow"
-                style={{
-                  color: 'rgba(184,153,104,0.30)',
-                  letterSpacing: '0.4em',
-                }}
-              >
-                Higgsfield Asset 05
-              </p>
+              <img
+                src="/images/founder.png"
+                alt="Founder of Fidend Solutions"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
             </div>
           </FadeIn>
 

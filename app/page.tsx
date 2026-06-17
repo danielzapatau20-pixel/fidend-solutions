@@ -118,7 +118,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           HERO — navy, centered, cinematic — F-mark with breathing glow
       ═══════════════════════════════════════════════════════════════ */}
-      <HeroVideo overlayOpacity={0.58} minHeight="100svh" id="top">
+      <HeroVideo overlayOpacity={0.58} minHeight="100svh" id="top" poster="/poster-hero.png">
         {/* Decorative inner border */}
         <div
           aria-hidden="true"
