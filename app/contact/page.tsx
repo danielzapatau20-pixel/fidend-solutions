@@ -150,7 +150,7 @@ export default function ContactPage() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <a
-                  href="tel:+1XXXXXXXXXX"
+                  href="tel:+12162589368"
                   style={{
                     fontFamily: "'Fraunces', Georgia, serif",
                     fontVariationSettings: "'SOFT' 30, 'opsz' 24",
@@ -161,10 +161,10 @@ export default function ContactPage() {
                     transition: 'color 240ms ease-out',
                   }}
                 >
-                  +1 (XXX) XXX-XXXX
+                  +1 (216) 258-9368
                 </a>
                 <a
-                  href="mailto:hello@fidend.com"
+                  href="mailto:info@fidend.com"
                   style={{
                     fontFamily: 'Inter, system-ui, sans-serif',
                     fontSize: 14,
@@ -173,7 +173,7 @@ export default function ContactPage() {
                     transition: 'color 240ms ease-out',
                   }}
                 >
-                  hello@fidend.com
+                  info@fidend.com
                 </a>
               </div>
             </div>
