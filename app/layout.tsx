@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     canonical: 'https://fidend.com',
   },
   verification: {
-    google: 'google3325be60005e41e3',
+    google: 'yM8HZ-ZK-yA6roxxnJC0y2VBVZh__QHFaI6N0YtZnLU',
   },
 }
 
