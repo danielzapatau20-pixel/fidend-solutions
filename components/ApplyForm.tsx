@@ -80,8 +80,14 @@ export default function ApplyForm() {
     setErrors({})
     setStatus('submitting')
     try {
-      // Replace with your actual endpoint (Formspree, Netlify Forms, etc.)
-      await new Promise(r => setTimeout(r, 1200))
+      data.append('access_key', '6110af5f-dba8-4340-be15-705584a34124')
+      data.append('subject', `Fidend — Job application from ${data.get('fullName')}`)
+      data.append('from_name', 'Fidend Apply Form')
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      })
+      if (!res.ok) throw new Error('submission failed')
       setStatus('success')
       form.reset()
       setExperience('')

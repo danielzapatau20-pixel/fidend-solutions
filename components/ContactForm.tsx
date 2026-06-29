@@ -77,9 +77,15 @@ export default function ContactForm() {
     setErrors({})
     setStatus('submitting')
     try {
-      // Replace with your actual endpoint (Formspree, Netlify Forms, etc.)
-      // Example: const res = await fetch('https://formspree.io/f/YOUR_ID', {...})
-      await new Promise(r => setTimeout(r, 1200)) // simulate network
+      data.append('access_key', '6110af5f-dba8-4340-be15-705584a34124')
+      data.append('subject', `Fidend — New inquiry from ${data.get('facilityName')}`)
+      data.append('from_name', 'Fidend Contact Form')
+      if (services.length > 0) data.append('services_requested', services.join(', '))
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      })
+      if (!res.ok) throw new Error('submission failed')
       setStatus('success')
       form.reset()
       setServices([])
