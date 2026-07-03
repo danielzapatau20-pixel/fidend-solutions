@@ -156,9 +156,7 @@ export default function HomePage() {
                 maxWidth: '42ch',
               }}
             >
-              Care of distinguished places. We staff and run the non-clinical
-              operations of senior living homes, multifamily residences, and the
-              institutions that depend on them.
+              Reliable staff for the places people live, stay, and receive care.
             </p>
           </FadeIn>
 
