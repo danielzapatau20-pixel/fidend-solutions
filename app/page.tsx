@@ -1,10 +1,9 @@
 'use client'
 import HeroVideo from '@/components/HeroVideo'
 import FadeIn from '@/components/FadeIn'
-import CountUp from '@/components/CountUp'
 import Link from 'next/link'
 
-/* ─── Shared brand SVG paths ────────────────────────────────────────────────── */
+/* ─── Brand SVG ─────────────────────────────────────────────────────────── */
 const FMARK = (
   <g fill="currentColor">
     <path d="M 196.00 41.00 L 178.00 26.00 L 176.00 26.00 L 173.00 23.00 L 171.00 23.00 L 161.00 17.00 L 158.00 17.00 L 156.00 15.00 L 150.00 14.00 L 147.00 12.00 L 137.00 11.00 L 133.00 9.00 L 122.00 9.00 L 121.00 8.00 L 101.00 9.00 L 98.00 11.00 L 92.00 11.00 L 91.00 12.00 L 87.00 12.00 L 85.00 14.00 L 78.00 15.00 L 76.00 17.00 L 71.00 18.00 L 69.00 20.00 L 65.00 21.00 L 55.00 27.00 L 41.00 38.00 L 26.00 56.00 L 26.00 58.00 L 24.00 59.00 L 23.00 63.00 L 18.00 70.00 L 17.00 75.00 L 15.00 77.00 L 14.00 83.00 L 12.00 86.00 L 11.00 95.00 L 9.00 99.00 L 9.00 130.00 L 11.00 135.00 L 12.00 144.00 L 21.00 165.00 L 26.00 173.00 L 39.00 189.00 L 41.00 190.00 L 41.00 150.00 L 38.00 146.00 L 38.00 143.00 L 36.00 141.00 L 35.00 134.00 L 33.00 130.00 L 33.00 124.00 L 32.00 123.00 L 33.00 95.00 L 39.00 76.00 L 41.00 74.00 L 44.00 66.00 L 58.00 47.00 L 77.00 32.00 L 79.00 32.00 L 81.00 30.00 L 96.00 23.00 L 103.00 22.00 L 107.00 20.00 L 122.00 19.00 L 123.00 18.00 L 142.00 19.00 L 143.00 20.00 L 149.00 20.00 L 157.00 23.00 L 160.00 23.00 L 180.00 33.00 L 195.00 44.00 L 205.00 55.00 L 211.00 63.00 L 211.00 65.00 L 213.00 65.00 L 206.00 53.00 Z" />
@@ -13,12 +12,112 @@ const FMARK = (
   </g>
 )
 
-const SERVICES = [
-  { num: '01', title: 'Housekeeping',   es: 'Limpieza',           image: '/images/services/housekeeping.jpg' },
-  { num: '02', title: 'Dietary',        es: 'Alimentación',       image: '/images/services/dietary.jpg' },
-  { num: '03', title: 'Laundry',        es: 'Lavandería',         image: '/images/services/laundry.jpg' },
-  { num: '04', title: 'Activities',     es: 'Actividades',        image: '/images/services/activities.jpg' },
-  { num: '05', title: 'Companion Care', es: 'Cuidado y compañía', image: '/images/services/companion-care.jpg' },
+/* ─── Data ──────────────────────────────────────────────────────────────── */
+const TRUST_PILLARS = [
+  {
+    title: 'Transparency',
+    body: 'Open communication around pricing, expectations, and placement timelines.',
+  },
+  {
+    title: 'Presence',
+    body: 'Direct leadership access and responsive support when the operation needs attention.',
+  },
+  {
+    title: 'Preparation',
+    body: 'Workers aligned to the environment before they step into the property.',
+  },
+]
+
+const DIVISIONS = [
+  {
+    label: 'FIDEND CARE',
+    sub: 'Senior Care Facilities',
+    description:
+      'Non-clinical support staff for care environments where dignity, consistency, and preparation matter every day.',
+    services: ['Housekeeping', 'Dietary Aides', 'Laundry', 'Activities Assistants', 'Companion Support', 'Cleaning'],
+    href: '/care',
+    cta: 'Explore Fidend Care',
+  },
+  {
+    label: 'FIDEND LIVING',
+    sub: 'Property Management & Residential Communities',
+    description:
+      'Property operations staff for communities that need to stay clean, maintained, and resident-ready.',
+    services: ['Janitorial', 'Porter Services', 'Common Area Cleaning', 'Maintenance Helpers', 'Turnover Cleaning', 'Grounds Support'],
+    href: '/living',
+    cta: 'Explore Fidend Living',
+  },
+  {
+    label: 'FIDEND HOSPITALITY',
+    sub: 'Hotels, Resorts & Guest-Facing Properties',
+    description:
+      'Hospitality support staff for properties where every shift affects the guest experience.',
+    services: ['Housekeepers', 'Public Area Attendants', 'Laundry', 'Dishwashers', 'Cooks', 'Prep Cooks', 'Stewards', 'Maintenance Helpers'],
+    href: '/hospitality',
+    cta: 'Explore Fidend Hospitality',
+  },
+]
+
+const MATRIX = [
+  {
+    division: 'Fidend Care',
+    label: 'Care',
+    href: '/care',
+    services: ['Housekeeping', 'Cleaning', 'Dietary Aides', 'Laundry', 'Activities Assistants', 'Companion Support'],
+  },
+  {
+    division: 'Fidend Living',
+    label: 'Living',
+    href: '/living',
+    services: ['Janitorial', 'Porters', 'Common Area Cleaning', 'Maintenance Helpers', 'Turnover Cleaning', 'Grounds Support'],
+  },
+  {
+    division: 'Fidend Hospitality',
+    label: 'Hospitality',
+    href: '/hospitality',
+    services: ['Housekeeping', 'Public Areas', 'Laundry', 'Dishwashers', 'Cooks', 'Prep Cooks', 'Stewards', 'Maintenance Helpers'],
+  },
+]
+
+const HOW_IT_WORKS = [
+  {
+    number: '01',
+    title: 'Understand the property',
+    body: 'We identify the environment, roles, schedule, urgency, and standards required.',
+  },
+  {
+    number: '02',
+    title: 'Prepare the worker',
+    body: 'We align workers to the setting, expectations, and responsibilities before placement.',
+  },
+  {
+    number: '03',
+    title: 'Support the operation',
+    body: 'We stay present after placement through direct communication and leadership access.',
+  },
+  {
+    number: '04',
+    title: 'Keep expectations visible',
+    body: 'Clear rates, timelines, and communication from the beginning.',
+  },
+]
+
+const INDUSTRY_BLOCKS = [
+  {
+    label: 'FIDEND CARE',
+    href: '/care',
+    body: 'For senior care administrators who need dependable support without compromising dignity, compliance, or consistency.',
+  },
+  {
+    label: 'FIDEND LIVING',
+    href: '/living',
+    body: 'For property managers who need clean common areas, faster turnovers, maintenance support, and reliable service presence across residential communities.',
+  },
+  {
+    label: 'FIDEND HOSPITALITY',
+    href: '/hospitality',
+    body: 'For hospitality leaders who need rooms, kitchens, public spaces, laundry operations, and back-of-house functions covered by people who understand guest-facing standards.',
+  },
 ]
 
 export default function HomePage() {
@@ -26,7 +125,7 @@ export default function HomePage() {
     <>
 
       {/* ═══════════════════════════════════════════════════════════════
-          HERO — navy, centered, cinematic — F-mark with breathing glow
+          1. HERO — navy, cinematic, F-mark
       ═══════════════════════════════════════════════════════════════ */}
       <HeroVideo overlayOpacity={0.58} minHeight="100svh" id="top" poster="/poster-hero.jpg">
         {/* Decorative inner border */}
@@ -41,7 +140,7 @@ export default function HomePage() {
           }}
         />
 
-        {/* Amber breathing glow behind F-mark */}
+        {/* Amber breathing glow */}
         <div
           aria-hidden="true"
           style={{
@@ -59,7 +158,6 @@ export default function HomePage() {
           }}
         />
 
-        {/* Centered content */}
         <div
           style={{
             maxWidth: 760,
@@ -73,7 +171,7 @@ export default function HomePage() {
             zIndex: 2,
           }}
         >
-          {/* F-mark in gold */}
+          {/* F-mark */}
           <FadeIn delay={0} direction="none">
             <svg
               width="88"
@@ -137,7 +235,7 @@ export default function HomePage() {
                 letterSpacing: '0.04em',
               }}
             >
-              the faithful house of care
+              Operational staffing for distinguished places.
             </p>
           </FadeIn>
 
@@ -163,16 +261,16 @@ export default function HomePage() {
           {/* CTAs */}
           <FadeIn delay={440} direction="none">
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
-              <Link href="#what" className="btn-gold-fill" style={{ fontSize: 12, letterSpacing: '0.2em' }}>
-                See what we do
+              <Link href="/contact" className="btn-gold-fill" style={{ fontSize: 12, letterSpacing: '0.2em' }}>
+                Request Staffing Support
               </Link>
-              <Link href="/contact" className="btn-primary" style={{ fontSize: 12, letterSpacing: '0.2em' }}>
-                Request a proposal
+              <Link href="#divisions" className="btn-primary" style={{ fontSize: 12, letterSpacing: '0.2em' }}>
+                Explore Our Divisions
               </Link>
             </div>
           </FadeIn>
 
-          {/* Service ticker */}
+          {/* Division ticker */}
           <FadeIn delay={520} direction="none">
             <div
               style={{
@@ -183,9 +281,9 @@ export default function HomePage() {
                 marginTop: 40,
                 flexWrap: 'wrap',
               }}
-              aria-label="Our services"
+              aria-label="Our divisions"
             >
-              {['Housekeeping', 'Dietary', 'Laundry', 'Activities', 'Companion care'].map((item, i, arr) => (
+              {['Fidend Care', 'Fidend Living', 'Fidend Hospitality'].map((item, i, arr) => (
                 <span key={item} style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
                   <span
                     style={{
@@ -226,21 +324,128 @@ export default function HomePage() {
       </HeroVideo>
 
       {/* ═══════════════════════════════════════════════════════════════
-          WHAT WE DO — 5 vertical service cards, navy
+          2. TRUST — parchment, 3 pillars
       ═══════════════════════════════════════════════════════════════ */}
       <section
-        id="what"
-        className="grain"
         style={{
-          backgroundColor: '#16243A',
-          padding: 'clamp(64px, 10vw, 120px) clamp(24px, 6vw, 80px)',
+          backgroundColor: '#F4ECDC',
+          padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
         }}
       >
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <FadeIn>
-            <div style={{ marginBottom: 'clamp(40px, 6vw, 64px)' }}>
-              <p className="eyebrow" style={{ marginBottom: 14 }}>What Fidend does</p>
-              <div style={{ height: 1, backgroundColor: '#B89968', maxWidth: 56, marginBottom: 24 }} />
+            <p className="eyebrow" style={{ color: 'rgba(22,36,58,0.5)', marginBottom: 14 }}>
+              Our Promise
+            </p>
+            <div style={{ height: 1, backgroundColor: '#B89968', maxWidth: 56, marginBottom: 28 }} />
+            <h2
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontVariationSettings: "'SOFT' 30, 'opsz' 48",
+                fontWeight: 300,
+                fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)',
+                color: '#16243A',
+                lineHeight: 1.08,
+                margin: '0 0 20px',
+              }}
+            >
+              Trust you can audit.
+            </h2>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 15,
+                lineHeight: 1.75,
+                color: 'rgba(22,36,58,0.62)',
+                maxWidth: '60ch',
+                margin: '0 0 clamp(48px, 7vw, 72px)',
+              }}
+            >
+              Every worker placed, every role covered, every rate discussed — clear, visible, and
+              accountable. Fidend is built for administrators, property leaders, and hospitality
+              operators who need more than resumes. They need preparation, communication, and people
+              who show up ready.
+            </p>
+          </FadeIn>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: 2,
+            }}
+          >
+            {TRUST_PILLARS.map((pillar, i) => (
+              <FadeIn key={pillar.title} delay={i * 100} direction="up">
+                <div
+                  style={{
+                    padding: 'clamp(32px, 4vw, 48px)',
+                    border: '1px solid rgba(22,36,58,0.10)',
+                    backgroundColor: 'rgba(22,36,58,0.04)',
+                    height: '100%',
+                  }}
+                >
+                  <div
+                    style={{
+                      height: 1,
+                      backgroundColor: '#B89968',
+                      opacity: 0.5,
+                      marginBottom: 28,
+                    }}
+                  />
+                  <h3
+                    style={{
+                      fontFamily: "'Fraunces', Georgia, serif",
+                      fontVariationSettings: "'SOFT' 30, 'opsz' 24",
+                      fontWeight: 400,
+                      fontSize: '1.35rem',
+                      color: '#16243A',
+                      margin: '0 0 14px',
+                    }}
+                  >
+                    {pillar.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 14,
+                      lineHeight: 1.7,
+                      color: 'rgba(22,36,58,0.60)',
+                      margin: 0,
+                    }}
+                  >
+                    {pillar.body}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          3. DIVISIONS — navy, 3 premium cards
+      ═══════════════════════════════════════════════════════════════ */}
+      <section
+        id="divisions"
+        className="grain"
+        style={{
+          backgroundColor: '#16243A',
+          padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <FadeIn>
+            <div style={{ marginBottom: 'clamp(48px, 7vw, 80px)' }}>
+              <p className="eyebrow" style={{ marginBottom: 14 }}>Three Divisions</p>
+              <div
+                style={{
+                  height: 1,
+                  backgroundColor: '#B89968',
+                  maxWidth: 56,
+                  marginBottom: 24,
+                }}
+              />
               <h2
                 style={{
                   fontFamily: "'Fraunces', Georgia, serif",
@@ -252,7 +457,7 @@ export default function HomePage() {
                   margin: '0 0 16px',
                 }}
               >
-                Five fronts of<br />daily care.
+                Three divisions.<br />One operating standard.
               </h2>
               <p
                 style={{
@@ -264,131 +469,148 @@ export default function HomePage() {
                   margin: 0,
                 }}
               >
-                Five operational lines, one standard of flexibility. Every worker
-                adapts to the house rules and standards of your facility from
-                day one.
+                Fidend supports the essential service roles behind care, residential, and hospitality
+                environments.
               </p>
             </div>
           </FadeIn>
 
-          {/* 5 vertical cards */}
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
               gap: 2,
             }}
           >
-            {SERVICES.map((svc, i) => (
-              <FadeIn key={svc.num} delay={i * 80} direction="up">
+            {DIVISIONS.map((div, i) => (
+              <FadeIn key={div.label} delay={i * 100} direction="up">
                 <Link
-                  href="/services"
+                  href={div.href}
                   style={{
-                    display: 'block',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 'clamp(32px, 4vw, 48px)',
+                    border: '1px solid rgba(184,153,104,0.18)',
+                    backgroundColor: 'rgba(244,236,220,0.04)',
                     textDecoration: 'none',
-                    position: 'relative',
-                    aspectRatio: '3 / 4',
-                    backgroundColor: i % 2 === 0 ? 'rgba(244,236,220,0.04)' : 'rgba(244,236,220,0.07)',
-                    border: '1px solid rgba(184,153,104,0.12)',
-                    overflow: 'hidden',
-                    transition: 'transform 240ms ease-out, border-color 240ms ease-out',
+                    minHeight: 440,
+                    transition: 'border-color 240ms ease-out, background-color 240ms ease-out',
                   }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = 'scale(1.02)'
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(184,153,104,0.40)'
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.borderColor = 'rgba(184,153,104,0.45)'
+                    el.style.backgroundColor = 'rgba(244,236,220,0.07)'
                   }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = 'scale(1)'
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(184,153,104,0.12)'
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.borderColor = 'rgba(184,153,104,0.18)'
+                    el.style.backgroundColor = 'rgba(244,236,220,0.04)'
                   }}
                 >
-                  {/* Photo */}
-                  <img
-                    src={svc.image}
-                    alt={svc.title}
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 240ms ease-out',
-                    }}
-                  />
-
-                  {/* Navy gradient for legibility */}
                   <div
-                    aria-hidden="true"
                     style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(180deg, rgba(22,36,58,0.45) 0%, rgba(22,36,58,0.30) 40%, rgba(22,36,58,0.92) 100%)',
+                      height: 1,
+                      backgroundColor: '#B89968',
+                      opacity: 0.35,
+                      marginBottom: 32,
                     }}
                   />
 
-                  {/* Gold number */}
                   <p
                     style={{
-                      position: 'absolute',
-                      top: 20,
-                      left: 20,
-                      fontFamily: "'Fraunces', Georgia, serif",
-                      fontVariationSettings: "'SOFT' 30, 'opsz' 72",
-                      fontWeight: 300,
-                      fontSize: '2rem',
-                      color: 'rgba(184,153,104,0.40)',
-                      margin: 0,
-                      lineHeight: 1,
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 10,
+                      fontWeight: 600,
+                      letterSpacing: '0.30em',
+                      textTransform: 'uppercase',
+                      color: '#B89968',
+                      margin: '0 0 8px',
                     }}
                   >
-                    {svc.num}
+                    {div.label}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 12,
+                      color: 'rgba(244,236,220,0.45)',
+                      margin: '0 0 24px',
+                      letterSpacing: '0.03em',
+                    }}
+                  >
+                    {div.sub}
                   </p>
 
-                  {/* Arrow reveal */}
-                  <div
+                  <h3
                     style={{
-                      position: 'absolute',
-                      top: 20,
-                      right: 20,
-                      opacity: 0,
-                      transition: 'opacity 240ms ease-out',
+                      fontFamily: "'Fraunces', Georgia, serif",
+                      fontVariationSettings: "'SOFT' 30, 'opsz' 24",
+                      fontWeight: 300,
+                      fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
+                      color: '#F4ECDC',
+                      lineHeight: 1.45,
+                      margin: '0 0 28px',
+                      flex: 1,
                     }}
-                    className="card-arrow"
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M3 13L13 3M13 3H5M13 3v8" stroke="#B89968" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
+                    {div.description}
+                  </h3>
 
-                  {/* Bottom content */}
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '0 20px 24px' }}>
-                    <div style={{ height: 1, backgroundColor: 'rgba(184,153,104,0.20)', marginBottom: 16 }} />
-                    <h3
-                      style={{
-                        fontFamily: "'Fraunces', Georgia, serif",
-                        fontVariationSettings: "'SOFT' 30, 'opsz' 24",
-                        fontWeight: 400,
-                        fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-                        color: '#F4ECDC',
-                        margin: '0 0 6px',
-                      }}
-                    >
-                      {svc.title}
-                    </h3>
+                  <div style={{ marginBottom: 32 }}>
                     <p
                       style={{
-                        fontFamily: "'Fraunces', Georgia, serif",
-                        fontVariationSettings: "'SOFT' 80, 'opsz' 18",
-                        fontStyle: 'italic',
-                        fontWeight: 300,
-                        fontSize: 12,
-                        color: '#B89968',
-                        margin: 0,
-                        letterSpacing: '0.03em',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontSize: 9,
+                        fontWeight: 500,
+                        letterSpacing: '0.25em',
+                        textTransform: 'uppercase',
+                        color: 'rgba(244,236,220,0.30)',
+                        marginBottom: 12,
                       }}
                     >
-                      {svc.es}
+                      Services include
                     </p>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                      {div.services.map(s => (
+                        <span
+                          key={s}
+                          style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontSize: 11,
+                            color: 'rgba(244,236,220,0.52)',
+                            padding: '4px 10px',
+                            border: '1px solid rgba(184,153,104,0.14)',
+                            letterSpacing: '0.02em',
+                          }}
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 8,
+                      color: '#B89968',
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 11,
+                      letterSpacing: '0.15em',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    <span>{div.cta}</span>
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 13L13 3M13 3H5M13 3v8"
+                        stroke="#B89968"
+                        strokeWidth="1.3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </div>
                 </Link>
               </FadeIn>
@@ -398,82 +620,337 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          PROOF STRIP — 4 key differentiators
+          4. SERVICE MATRIX — cream, 3-column table
       ═══════════════════════════════════════════════════════════════ */}
       <section
         style={{
-          backgroundColor: '#E8D6AF',
-          padding: 'clamp(40px, 6vw, 64px) clamp(24px, 6vw, 80px)',
+          backgroundColor: '#EDE3CF',
+          padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
         }}
       >
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-            gap: 0,
-          }}
-        >
-          {[
-            { n: '5',       suffix: ' lines', label: 'Service disciplines',   sub: 'housekeeping through companion care' },
-            { n: 'Open',    suffix: ' book',  label: 'Pricing method',        sub: 'worker rate + management fee, disclosed' },
-            { n: 'Fixed',   suffix: '',       label: 'Markup methodology',    sub: 'same per hour, every role' },
-            { n: '1 line',  suffix: '',       label: 'Direct to leadership',  sub: 'no rotating account rep' },
-          ].map((s, i) => (
-            <FadeIn key={s.label} delay={i * 80} direction="up">
-              <div
-                style={{
-                  textAlign: 'center',
-                  padding: 'clamp(24px, 4vw, 40px) 16px',
-                  borderRight: i < 3 ? '1px solid rgba(22,36,58,0.10)' : 'none',
-                }}
-              >
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <FadeIn>
+            <p className="eyebrow" style={{ marginBottom: 14 }}>What We Staff</p>
+            <div style={{ height: 1, backgroundColor: '#B89968', maxWidth: 56, marginBottom: 24 }} />
+            <h2
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontVariationSettings: "'SOFT' 30, 'opsz' 48",
+                fontWeight: 300,
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                color: '#16243A',
+                lineHeight: 1.08,
+                margin: '0 0 clamp(48px, 7vw, 72px)',
+                maxWidth: '28ch',
+              }}
+            >
+              Support for the roles that keep operations moving.
+            </h2>
+          </FadeIn>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: 2,
+            }}
+          >
+            {MATRIX.map((col, i) => (
+              <FadeIn key={col.label} delay={i * 100}>
+                <div style={{ height: '100%' }}>
+                  <Link
+                    href={col.href}
+                    style={{
+                      display: 'block',
+                      padding: '20px 24px',
+                      backgroundColor: '#16243A',
+                      marginBottom: 2,
+                      textDecoration: 'none',
+                      transition: 'background-color 200ms',
+                    }}
+                    onMouseEnter={e => ((e.currentTarget as HTMLElement).style.backgroundColor = '#1d2f4a')}
+                    onMouseLeave={e => ((e.currentTarget as HTMLElement).style.backgroundColor = '#16243A')}
+                  >
+                    <p
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontSize: 9,
+                        fontWeight: 600,
+                        letterSpacing: '0.30em',
+                        textTransform: 'uppercase',
+                        color: '#B89968',
+                        margin: '0 0 4px',
+                      }}
+                    >
+                      {col.division}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontSize: 12,
+                        color: 'rgba(244,236,220,0.5)',
+                        margin: 0,
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      {col.label}
+                    </p>
+                  </Link>
+
+                  <div
+                    style={{
+                      border: '1px solid rgba(22,36,58,0.10)',
+                      backgroundColor: 'rgba(22,36,58,0.03)',
+                    }}
+                  >
+                    {col.services.map((svc, j) => (
+                      <div
+                        key={svc}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 12,
+                          padding: '13px 24px',
+                          borderBottom:
+                            j < col.services.length - 1
+                              ? '1px solid rgba(22,36,58,0.08)'
+                              : 'none',
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: 4,
+                            height: 4,
+                            borderRadius: '50%',
+                            backgroundColor: '#B89968',
+                            flexShrink: 0,
+                            opacity: 0.7,
+                          }}
+                        />
+                        <span
+                          style={{
+                            fontFamily: 'Inter, system-ui, sans-serif',
+                            fontSize: 13,
+                            color: 'rgba(22,36,58,0.70)',
+                            lineHeight: 1.3,
+                          }}
+                        >
+                          {svc}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          5. HOW IT WORKS — navy, 4 steps
+      ═══════════════════════════════════════════════════════════════ */}
+      <section
+        id="how-it-works"
+        className="grain"
+        style={{
+          backgroundColor: '#16243A',
+          padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <FadeIn style={{ maxWidth: 560, marginBottom: 'clamp(48px, 7vw, 80px)' }}>
+            <p className="eyebrow" style={{ marginBottom: 16 }}>The Process</p>
+            <div style={{ height: 1, backgroundColor: '#B89968', marginBottom: 28 }} />
+            <h2
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontVariationSettings: "'SOFT' 30, 'opsz' 48",
+                fontWeight: 300,
+                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+                color: '#F4ECDC',
+                lineHeight: 1.1,
+                margin: 0,
+              }}
+            >
+              Built for operators who need clarity.
+            </h2>
+          </FadeIn>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+              gap: 40,
+            }}
+          >
+            {HOW_IT_WORKS.map((step, i) => (
+              <FadeIn key={step.number} delay={i * 90}>
                 <p
                   style={{
                     fontFamily: "'Fraunces', Georgia, serif",
                     fontVariationSettings: "'SOFT' 30, 'opsz' 72",
                     fontWeight: 300,
-                    fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-                    color: '#16243A',
-                    margin: '0 0 4px',
+                    fontSize: '3rem',
+                    color: '#B89968',
+                    margin: '0 0 16px',
                     lineHeight: 1,
                   }}
                 >
-                  {s.n}<span style={{ fontSize: '0.55em', fontWeight: 300 }}>{s.suffix}</span>
+                  {step.number}
                 </p>
-                <p
+                <div
                   style={{
-                    fontFamily: 'Inter, system-ui, sans-serif',
-                    fontSize: 11,
-                    fontWeight: 500,
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(22,36,58,0.60)',
-                    margin: '0 0 3px',
+                    height: 1,
+                    backgroundColor: 'rgba(184,153,104,0.25)',
+                    marginBottom: 20,
+                  }}
+                />
+                <h3
+                  style={{
+                    fontFamily: "'Fraunces', Georgia, serif",
+                    fontVariationSettings: "'SOFT' 30, 'opsz' 24",
+                    fontWeight: 400,
+                    fontSize: '1.15rem',
+                    color: '#F4ECDC',
+                    margin: '0 0 12px',
                   }}
                 >
-                  {s.label}
-                </p>
+                  {step.title}
+                </h3>
                 <p
                   style={{
                     fontFamily: 'Inter, system-ui, sans-serif',
-                    fontSize: 10,
-                    color: 'rgba(22,36,58,0.40)',
+                    fontSize: 14,
+                    lineHeight: 1.65,
+                    color: 'rgba(244,236,220,0.55)',
                     margin: 0,
-                    fontStyle: 'italic',
                   }}
                 >
-                  {s.sub}
+                  {step.body}
                 </p>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          CTA — navy, ornate border
+          6. INDUSTRY BLOCKS — parchment, 3 blocks
+      ═══════════════════════════════════════════════════════════════ */}
+      <section
+        style={{
+          backgroundColor: '#F4ECDC',
+          padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <FadeIn>
+            <p className="eyebrow" style={{ color: 'rgba(22,36,58,0.5)', marginBottom: 14 }}>
+              Who We Serve
+            </p>
+            <div style={{ height: 1, backgroundColor: '#B89968', maxWidth: 56, marginBottom: 24 }} />
+            <h2
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontVariationSettings: "'SOFT' 30, 'opsz' 48",
+                fontWeight: 300,
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                color: '#16243A',
+                lineHeight: 1.08,
+                margin: '0 0 clamp(48px, 7vw, 72px)',
+                maxWidth: '28ch',
+              }}
+            >
+              Each division built for a specific operator.
+            </h2>
+          </FadeIn>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 'clamp(32px, 5vw, 56px)',
+            }}
+          >
+            {INDUSTRY_BLOCKS.map((block, i) => (
+              <FadeIn key={block.label} delay={i * 100}>
+                <div>
+                  <div
+                    style={{
+                      height: 1,
+                      backgroundColor: '#B89968',
+                      opacity: 0.5,
+                      marginBottom: 24,
+                    }}
+                  />
+                  <p
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 10,
+                      fontWeight: 600,
+                      letterSpacing: '0.30em',
+                      textTransform: 'uppercase',
+                      color: '#B89968',
+                      margin: '0 0 16px',
+                    }}
+                  >
+                    {block.label}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 15,
+                      lineHeight: 1.75,
+                      color: 'rgba(22,36,58,0.65)',
+                      margin: '0 0 24px',
+                    }}
+                  >
+                    {block.body}
+                  </p>
+                  <Link
+                    href={block.href}
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 11,
+                      letterSpacing: '0.15em',
+                      textTransform: 'uppercase',
+                      color: '#16243A',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      borderBottom: '1px solid rgba(22,36,58,0.25)',
+                      paddingBottom: 2,
+                      transition: 'border-color 240ms',
+                    }}
+                    onMouseEnter={e =>
+                      ((e.currentTarget as HTMLElement).style.borderColor = '#B89968')
+                    }
+                    onMouseLeave={e =>
+                      ((e.currentTarget as HTMLElement).style.borderColor = 'rgba(22,36,58,0.25)')
+                    }
+                  >
+                    Learn more
+                    <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 13L13 3M13 3H5M13 3v8"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          7. CTA — navy, ornate border
       ═══════════════════════════════════════════════════════════════ */}
       <section
         id="contact"
@@ -496,7 +973,7 @@ export default function HomePage() {
           }}
         />
 
-        {/* Background F mark */}
+        {/* Background F-mark */}
         <div
           aria-hidden="true"
           style={{
@@ -507,7 +984,9 @@ export default function HomePage() {
             pointerEvents: 'none',
           }}
         >
-          <svg width="560" height="638" viewBox="0 0 222 253">{FMARK}</svg>
+          <svg width="560" height="638" viewBox="0 0 222 253">
+            {FMARK}
+          </svg>
         </div>
 
         <FadeIn direction="scale">
@@ -541,8 +1020,8 @@ export default function HomePage() {
                 margin: '0 0 24px',
               }}
             >
-              One call.<br />
-              One proposal.{' '}
+              Let's discuss the roles<br />
+              you need{' '}
               <em
                 style={{
                   fontStyle: 'italic',
@@ -550,7 +1029,7 @@ export default function HomePage() {
                   color: '#B89968',
                 }}
               >
-                One promise.
+                covered.
               </em>
             </h2>
             <p
@@ -562,16 +1041,77 @@ export default function HomePage() {
                 margin: '0 0 44px',
               }}
             >
-              One conversation. A written proposal within five business days.
-              Every number on the page before anything is agreed.
+              Whether you manage a care facility, residential property, or hospitality operation,
+              Fidend helps you cover essential service roles with preparation, transparency, and
+              direct support.
             </p>
-            <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div
+              style={{
+                display: 'flex',
+                gap: 20,
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                marginBottom: 40,
+              }}
+            >
               <Link href="/contact" className="btn-primary">
-                Request a conversation
+                Request Staffing Support
               </Link>
               <Link href="/contact#apply" className="btn-primary">
-                Apply to work with us
+                Apply to Work With Us
               </Link>
+            </div>
+
+            <div
+              style={{
+                borderTop: '1px solid rgba(184,153,104,0.15)',
+                paddingTop: 32,
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: 'Inter, system-ui, sans-serif',
+                  fontSize: 12,
+                  color: 'rgba(244,236,220,0.40)',
+                  letterSpacing: '0.08em',
+                  marginBottom: 12,
+                }}
+              >
+                Daniel Zapata · CEO
+              </p>
+              <div
+                style={{
+                  display: 'flex',
+                  gap: 24,
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <a
+                  href="tel:+12162589368"
+                  style={{
+                    fontFamily: 'Inter, system-ui, sans-serif',
+                    fontSize: 13,
+                    color: 'rgba(244,236,220,0.60)',
+                    textDecoration: 'none',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  216-258-9368
+                </a>
+                <a
+                  href="mailto:daniel@fidend.com"
+                  style={{
+                    fontFamily: 'Inter, system-ui, sans-serif',
+                    fontSize: 13,
+                    color: 'rgba(244,236,220,0.60)',
+                    textDecoration: 'none',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  daniel@fidend.com
+                </a>
+              </div>
             </div>
           </div>
         </FadeIn>
