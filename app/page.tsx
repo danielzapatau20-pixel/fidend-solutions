@@ -42,8 +42,8 @@ const DIVISIONS = [
     label: 'FIDEND LIVING',
     sub: 'Property Management & Residential Communities',
     description:
-      'Property operations staff for communities that need to stay clean, maintained, and resident-ready.',
-    services: ['Janitorial', 'Porter Services', 'Common Area Cleaning', 'Maintenance Helpers', 'Turnover Cleaning', 'Grounds Support'],
+      'Full-time property operations staff for communities that need to stay clean, maintained, and resident-ready.',
+    services: ['Janitorial', 'Porter Services', 'Common Area Cleaning', 'Maintenance Helpers', 'Grounds Support'],
     href: '/living',
     cta: 'Explore Fidend Living',
   },
@@ -69,7 +69,7 @@ const MATRIX = [
     division: 'Fidend Living',
     label: 'Living',
     href: '/living',
-    services: ['Janitorial', 'Porters', 'Common Area Cleaning', 'Maintenance Helpers', 'Turnover Cleaning', 'Grounds Support'],
+    services: ['Janitorial', 'Porters', 'Common Area Cleaning', 'Maintenance Helpers', 'Grounds Support'],
   },
   {
     division: 'Fidend Hospitality',

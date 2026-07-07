@@ -6,7 +6,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Fidend Living — Property Management & Residential Staffing',
   description:
-    'Property operations staff for residential communities and multifamily properties. Fidend Living places janitorial staff, porters, maintenance helpers, and turnover crews for properties that need to stay clean, maintained, and resident-ready.',
+    'Full-time property operations staff for residential communities and multifamily properties. Fidend Living places janitorial staff, porters, maintenance helpers, and grounds support for properties that need to stay clean, maintained, and resident-ready.',
 }
 
 const SERVICES = [
@@ -28,12 +28,7 @@ const SERVICES = [
   {
     title: 'Maintenance Helpers',
     description:
-      'Support for your maintenance team on routine tasks, unit turnovers, and general property upkeep. Not licensed trade work — operational support to keep your team moving.',
-  },
-  {
-    title: 'Turnover Cleaning',
-    description:
-      'Unit turnover cleaning between residents, coordinated around your move-out and move-in schedule. Faster turnovers, fewer delays.',
+      'Support for your maintenance team on routine tasks and general property upkeep. Not licensed trade work — operational support to keep your team moving.',
   },
   {
     title: 'Grounds Support',
@@ -43,8 +38,8 @@ const SERVICES = [
 ]
 
 const PILLARS = [
+  'Full-time placements, not temporary or gig coverage',
   'Resident-ready spaces maintained daily',
-  'Faster unit turnovers between residents',
   'Cleaner common areas and lobbies',
   'Reliable maintenance support presence',
   'Scheduling aligned to your occupancy',
@@ -130,8 +125,8 @@ export default function LivingPage() {
               }}
             >
               Reliable support for properties that need to stay clean, maintained, and
-              ready for residents. We place operational staff who show up, follow
-              your standards, and keep the property moving.
+              ready for residents. We place full-time operational staff who show up every
+              day, follow your standards, and keep the property moving.
             </p>
             <Link href="/contact" className="btn-gold-fill" style={{ fontSize: 11, letterSpacing: '0.2em' }}>
               Request Staffing Support
@@ -164,7 +159,7 @@ export default function LivingPage() {
                 margin: '0 0 16px',
               }}
             >
-              Six roles that keep residential properties running.
+              Five roles that keep residential properties running.
             </h2>
             <p
               style={{
@@ -276,7 +271,7 @@ export default function LivingPage() {
                 margin: '0 0 32px',
               }}
             >
-              Every property has its own rhythm: different turnover schedules, different
+              Every property has its own rhythm: different shift patterns, different
               resident expectations, different peak periods. We align to how your property
               operates — not the other way around.
             </p>
