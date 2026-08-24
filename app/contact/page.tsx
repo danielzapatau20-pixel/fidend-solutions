@@ -212,8 +212,8 @@ export default function ContactPage() {
                 }}
               >
                 We review every application. Expect a call within 2 business
-                days. We place workers who are committed to senior care, not
-                just available.
+                days. We look for workers who are reliable, willing to learn,
+                and ready to commit.
               </p>
             </div>
 
@@ -243,8 +243,8 @@ export default function ContactPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
                 {[
                   {
-                    q: 'Do I need prior senior care experience?',
-                    a: 'Not required, but preferred. We consider attitude and reliability.',
+                    q: 'Do I need prior experience?',
+                    a: 'Not required, but preferred. We consider attitude, reliability, and willingness to learn — regardless of background.',
                   },
                   {
                     q: 'How flexible is the schedule?',
@@ -349,20 +349,6 @@ export default function ContactPage() {
               minWidth: 40,
             }}
           />
-          <p
-            style={{
-              fontFamily: 'Inter, system-ui, sans-serif',
-              fontSize: 10,
-              fontWeight: 500,
-              letterSpacing: '0.35em',
-              textTransform: 'uppercase',
-              color: '#B89968',
-              margin: 0,
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Claridad · Estrategia · Resultados
-          </p>
         </FadeIn>
       </section>
     </>

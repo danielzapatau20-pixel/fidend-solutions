@@ -16,15 +16,15 @@ const FMARK = (
 const TRUST_PILLARS = [
   {
     title: 'Transparency',
-    body: 'Open communication around pricing, expectations, and placement timelines.',
+    body: 'Clear communication around pricing, expectations, timelines, and challenges.',
+  },
+  {
+    title: 'Adaptability',
+    body: 'We learn how your operation works and adapt our process when reasonable — without losing the standards that define Fidend.',
   },
   {
     title: 'Presence',
-    body: 'Direct leadership access and responsive support when the operation needs attention.',
-  },
-  {
-    title: 'Preparation',
-    body: 'Workers aligned to the environment before they step into the property.',
+    body: 'You know who to contact, who is responsible, and where to go when something needs attention.',
   },
 ]
 
@@ -33,8 +33,7 @@ const DIVISIONS = [
     label: 'FIDEND CARE',
     sub: 'Senior Care Facilities',
     description:
-      'Non-clinical support staff for care environments where dignity, consistency, and preparation matter every day.',
-    services: ['Housekeeping', 'Dietary Aides', 'Laundry', 'Activities Assistants', 'Companion Support', 'Cleaning'],
+      'Non-clinical operational staff for senior care environments where consistency, dignity, and dependable support matter every day.',
     href: '/care',
     cta: 'Explore Fidend Care',
   },
@@ -42,8 +41,7 @@ const DIVISIONS = [
     label: 'FIDEND LIVING',
     sub: 'Property Management & Residential Communities',
     description:
-      'Full-time property operations staff for communities that need to stay clean, maintained, and resident-ready.',
-    services: ['Janitorial', 'Porter Services', 'Common Area Cleaning', 'Maintenance Helpers', 'Grounds Support'],
+      'Full-time operational staff for residential communities that need to stay clean, maintained, and resident-ready.',
     href: '/living',
     cta: 'Explore Fidend Living',
   },
@@ -51,8 +49,7 @@ const DIVISIONS = [
     label: 'FIDEND HOSPITALITY',
     sub: 'Hotels, Resorts & Guest-Facing Properties',
     description:
-      'Hospitality support staff for properties where every shift affects the guest experience.',
-    services: ['Housekeepers', 'Public Area Attendants', 'Laundry', 'Dishwashers', 'Cooks', 'Prep Cooks', 'Stewards', 'Maintenance Helpers'],
+      'Operational staff for hotels and hospitality properties where consistent service directly supports the guest experience.',
     href: '/hospitality',
     cta: 'Explore Fidend Hospitality',
   },
@@ -63,60 +60,57 @@ const MATRIX = [
     division: 'Fidend Care',
     label: 'Care',
     href: '/care',
-    services: ['Housekeeping', 'Cleaning', 'Dietary Aides', 'Laundry', 'Activities Assistants', 'Companion Support'],
+    services: ['Housekeeping', 'Cleaning Support', 'Dietary Aides', 'Laundry Attendants', 'Activities Assistants', 'Companion Support'],
   },
   {
     division: 'Fidend Living',
     label: 'Living',
     href: '/living',
-    services: ['Janitorial', 'Porters', 'Common Area Cleaning', 'Maintenance Helpers', 'Grounds Support'],
+    services: ['Janitorial Staff', 'Porter Services', 'Common Area Cleaning', 'Maintenance Helpers', 'Grounds Support'],
   },
   {
     division: 'Fidend Hospitality',
     label: 'Hospitality',
     href: '/hospitality',
-    services: ['Housekeeping', 'Public Areas', 'Laundry', 'Dishwashers', 'Cooks', 'Prep Cooks', 'Stewards', 'Maintenance Helpers'],
+    services: ['Housekeepers', 'Public Area Attendants', 'Laundry Attendants', 'Dishwashers & Stewards', 'Cooks & Prep Cooks', 'Maintenance Helpers'],
   },
 ]
 
 const HOW_IT_WORKS = [
   {
     number: '01',
-    title: 'Understand the property',
-    body: 'We identify the environment, roles, schedule, urgency, and standards required.',
+    title: 'Understand the need',
+    body: 'We review the role, schedule, environment, expectations, and the specific needs behind the opening.',
   },
   {
     number: '02',
-    title: 'Prepare the worker',
-    body: 'We align workers to the setting, expectations, and responsibilities before placement.',
+    title: 'Recruit with fit in mind',
+    body: 'We evaluate candidates against the requirements of the role instead of treating every available worker as interchangeable.',
   },
   {
     number: '03',
-    title: 'Support the operation',
-    body: 'We stay present after placement through direct communication and leadership access.',
+    title: 'Make the placement',
+    body: 'We connect the client with candidates whose experience, availability, and profile align with the opportunity.',
   },
   {
     number: '04',
-    title: 'Keep expectations visible',
-    body: 'Clear rates, timelines, and communication from the beginning.',
+    title: 'Stay connected',
+    body: 'After placement, Fidend remains available for communication, adjustments, and issues that need attention.',
   },
 ]
 
-const INDUSTRY_BLOCKS = [
+const OPERATIONAL_GAPS = [
   {
-    label: 'FIDEND CARE',
-    href: '/care',
-    body: 'For senior care administrators who need dependable support without compromising dignity, compliance, or consistency.',
+    title: 'STAFFING GAPS',
+    body: 'Open positions put additional pressure on the people already carrying the work.',
   },
   {
-    label: 'FIDEND LIVING',
-    href: '/living',
-    body: 'For property managers who need clean common areas, faster turnovers, maintenance support, and reliable service presence across residential communities.',
+    title: 'TURNOVER',
+    body: 'Constant replacement creates instability for teams and operations.',
   },
   {
-    label: 'FIDEND HOSPITALITY',
-    href: '/hospitality',
-    body: 'For hospitality leaders who need rooms, kitchens, public spaces, laundry operations, and back-of-house functions covered by people who understand guest-facing standards.',
+    title: 'DISCONNECTED PROVIDERS',
+    body: 'Staffing becomes harder when communication disappears after placement.',
   },
 ]
 
@@ -221,9 +215,9 @@ export default function HomePage() {
             />
           </FadeIn>
 
-          {/* Tagline */}
+          {/* Tagline — semantic H1 */}
           <FadeIn delay={280} direction="none">
-            <p
+            <h1
               style={{
                 fontFamily: "'Fraunces', Georgia, serif",
                 fontVariationSettings: "'SOFT' 80, 'opsz' 24",
@@ -236,7 +230,7 @@ export default function HomePage() {
               }}
             >
               Operational staffing for distinguished places.
-            </p>
+            </h1>
           </FadeIn>
 
           {/* Lede */}
@@ -254,7 +248,7 @@ export default function HomePage() {
                 maxWidth: '42ch',
               }}
             >
-              Reliable staff for the places people live, stay, and receive care.
+              Reliable people. Clear communication. A staffing partner that stays involved.
             </p>
           </FadeIn>
 
@@ -324,7 +318,103 @@ export default function HomePage() {
       </HeroVideo>
 
       {/* ═══════════════════════════════════════════════════════════════
-          2. TRUST — parchment, 3 pillars
+          2. OPERATIONAL UNDERSTANDING — dark cream, 3 problem items
+      ═══════════════════════════════════════════════════════════════ */}
+      <section
+        style={{
+          backgroundColor: '#EDE3CF',
+          padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <FadeIn>
+            <p className="eyebrow" style={{ color: 'rgba(22,36,58,0.5)', marginBottom: 14 }}>
+              The Reality of Operations
+            </p>
+            <div style={{ height: 1, backgroundColor: '#B89968', maxWidth: 56, marginBottom: 28 }} />
+            <h2
+              style={{
+                fontFamily: "'Fraunces', Georgia, serif",
+                fontVariationSettings: "'SOFT' 30, 'opsz' 48",
+                fontWeight: 300,
+                fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)',
+                color: '#16243A',
+                lineHeight: 1.08,
+                margin: '0 0 24px',
+              }}
+            >
+              When staffing falls short,<br />the operation feels it.
+            </h2>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 15,
+                lineHeight: 1.75,
+                color: 'rgba(22,36,58,0.62)',
+                maxWidth: '58ch',
+                margin: '0 0 16px',
+              }}
+            >
+              Vacancies don't stay isolated to a schedule. They create pressure on the people already carrying the work and affect the consistency of the operation.
+            </p>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 15,
+                lineHeight: 1.75,
+                color: 'rgba(22,36,58,0.62)',
+                maxWidth: '58ch',
+                margin: '0 0 clamp(48px, 7vw, 72px)',
+              }}
+            >
+              That's why Fidend starts by understanding the operation behind the opening — not just the position that needs to be filled.
+            </p>
+          </FadeIn>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 'clamp(32px, 5vw, 56px)',
+            }}
+          >
+            {OPERATIONAL_GAPS.map((item, i) => (
+              <FadeIn key={item.title} delay={i * 100} direction="up">
+                <div>
+                  <div style={{ height: 1, backgroundColor: '#B89968', opacity: 0.5, marginBottom: 24 }} />
+                  <p
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 10,
+                      fontWeight: 600,
+                      letterSpacing: '0.30em',
+                      textTransform: 'uppercase',
+                      color: '#B89968',
+                      margin: '0 0 14px',
+                    }}
+                  >
+                    {item.title}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 15,
+                      lineHeight: 1.75,
+                      color: 'rgba(22,36,58,0.65)',
+                      margin: 0,
+                    }}
+                  >
+                    {item.body}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          3. TRUST — parchment, 3 pillars
       ═══════════════════════════════════════════════════════════════ */}
       <section
         style={{
@@ -361,10 +451,8 @@ export default function HomePage() {
                 margin: '0 0 clamp(48px, 7vw, 72px)',
               }}
             >
-              Every worker placed, every role covered, every rate discussed — clear, visible, and
-              accountable. Fidend is built for administrators, property leaders, and hospitality
-              operators who need more than resumes. They need preparation, communication, and people
-              who show up ready.
+              Good staffing is not only about filling a position. It is about understanding what the
+              client needs, communicating clearly, and staying involved throughout the relationship.
             </p>
           </FadeIn>
 
@@ -424,7 +512,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          3. DIVISIONS — navy, 3 premium cards
+          4. DIVISIONS — navy, 3 premium cards
       ═══════════════════════════════════════════════════════════════ */}
       <section
         id="divisions"
@@ -469,8 +557,7 @@ export default function HomePage() {
                   margin: 0,
                 }}
               >
-                Fidend supports the essential service roles behind care, residential, and hospitality
-                environments.
+                Dedicated staffing solutions for care, residential, and hospitality operations — each shaped around the needs of its environment.
               </p>
             </div>
           </FadeIn>
@@ -493,7 +580,7 @@ export default function HomePage() {
                     border: '1px solid rgba(184,153,104,0.18)',
                     backgroundColor: 'rgba(244,236,220,0.04)',
                     textDecoration: 'none',
-                    minHeight: 440,
+                    minHeight: 360,
                     transition: 'border-color 240ms ease-out, background-color 240ms ease-out',
                   }}
                   onMouseEnter={e => {
@@ -556,39 +643,6 @@ export default function HomePage() {
                     {div.description}
                   </h3>
 
-                  <div style={{ marginBottom: 32 }}>
-                    <p
-                      style={{
-                        fontFamily: 'Inter, system-ui, sans-serif',
-                        fontSize: 9,
-                        fontWeight: 500,
-                        letterSpacing: '0.25em',
-                        textTransform: 'uppercase',
-                        color: 'rgba(244,236,220,0.30)',
-                        marginBottom: 12,
-                      }}
-                    >
-                      Services include
-                    </p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                      {div.services.map(s => (
-                        <span
-                          key={s}
-                          style={{
-                            fontFamily: 'Inter, system-ui, sans-serif',
-                            fontSize: 11,
-                            color: 'rgba(244,236,220,0.52)',
-                            padding: '4px 10px',
-                            border: '1px solid rgba(184,153,104,0.14)',
-                            letterSpacing: '0.02em',
-                          }}
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
                   <div
                     style={{
                       display: 'flex',
@@ -620,7 +674,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          4. SERVICE MATRIX — cream, 3-column table
+          5. SERVICE MATRIX — cream, 3-column table
       ═══════════════════════════════════════════════════════════════ */}
       <section
         style={{
@@ -644,7 +698,7 @@ export default function HomePage() {
                 maxWidth: '28ch',
               }}
             >
-              Support for the roles that keep operations moving.
+              The people behind the day-to-day operation.
             </h2>
           </FadeIn>
 
@@ -748,7 +802,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          5. HOW IT WORKS — navy, 4 steps
+          6. HOW IT WORKS — navy, 4 steps
       ═══════════════════════════════════════════════════════════════ */}
       <section
         id="how-it-works"
@@ -773,7 +827,7 @@ export default function HomePage() {
                 margin: 0,
               }}
             >
-              Built for operators who need clarity.
+              Staffing starts with understanding.
             </h2>
           </FadeIn>
 
@@ -829,120 +883,6 @@ export default function HomePage() {
                 >
                   {step.body}
                 </p>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════
-          6. INDUSTRY BLOCKS — parchment, 3 blocks
-      ═══════════════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          backgroundColor: '#F4ECDC',
-          padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
-        }}
-      >
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <FadeIn>
-            <p className="eyebrow" style={{ color: 'rgba(22,36,58,0.5)', marginBottom: 14 }}>
-              Who We Serve
-            </p>
-            <div style={{ height: 1, backgroundColor: '#B89968', maxWidth: 56, marginBottom: 24 }} />
-            <h2
-              style={{
-                fontFamily: "'Fraunces', Georgia, serif",
-                fontVariationSettings: "'SOFT' 30, 'opsz' 48",
-                fontWeight: 300,
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
-                color: '#16243A',
-                lineHeight: 1.08,
-                margin: '0 0 clamp(48px, 7vw, 72px)',
-                maxWidth: '28ch',
-              }}
-            >
-              Each division built for a specific operator.
-            </h2>
-          </FadeIn>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: 'clamp(32px, 5vw, 56px)',
-            }}
-          >
-            {INDUSTRY_BLOCKS.map((block, i) => (
-              <FadeIn key={block.label} delay={i * 100}>
-                <div>
-                  <div
-                    style={{
-                      height: 1,
-                      backgroundColor: '#B89968',
-                      opacity: 0.5,
-                      marginBottom: 24,
-                    }}
-                  />
-                  <p
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      fontSize: 10,
-                      fontWeight: 600,
-                      letterSpacing: '0.30em',
-                      textTransform: 'uppercase',
-                      color: '#B89968',
-                      margin: '0 0 16px',
-                    }}
-                  >
-                    {block.label}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      fontSize: 15,
-                      lineHeight: 1.75,
-                      color: 'rgba(22,36,58,0.65)',
-                      margin: '0 0 24px',
-                    }}
-                  >
-                    {block.body}
-                  </p>
-                  <Link
-                    href={block.href}
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      fontSize: 11,
-                      letterSpacing: '0.15em',
-                      textTransform: 'uppercase',
-                      color: '#16243A',
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 6,
-                      borderBottom: '1px solid rgba(22,36,58,0.25)',
-                      paddingBottom: 2,
-                      transition: 'border-color 240ms',
-                    }}
-                    onMouseEnter={e =>
-                      ((e.currentTarget as HTMLElement).style.borderColor = '#B89968')
-                    }
-                    onMouseLeave={e =>
-                      ((e.currentTarget as HTMLElement).style.borderColor = 'rgba(22,36,58,0.25)')
-                    }
-                  >
-                    Learn more
-                    <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path
-                        d="M3 13L13 3M13 3H5M13 3v8"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </Link>
-                </div>
               </FadeIn>
             ))}
           </div>
@@ -1042,7 +982,7 @@ export default function HomePage() {
               }}
             >
               Whether you manage a care facility, residential property, or hospitality operation,
-              Fidend helps you cover essential service roles with preparation, transparency, and
+              Fidend helps you cover essential service roles with clarity, transparency, and
               direct support.
             </p>
             <div

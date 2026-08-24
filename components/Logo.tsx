@@ -107,7 +107,7 @@ export default function Logo({
               letterSpacing: '0.04em',
             }}
           >
-            the faithful house of care
+            operational staffing for distinguished places
           </div>
         )}
       </div>

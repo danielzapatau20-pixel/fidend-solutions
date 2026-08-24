@@ -9,14 +9,26 @@ interface FieldError {
   phone?: string
 }
 
-const SERVICE_AREAS = [
-  'Housekeeping',
-  'Dietary / Food Service',
-  'Laundry',
-  'Activities Assistance',
-  'Companion Care',
+const ROLE_GROUPS = [
+  {
+    group: 'Fidend Care',
+    roles: ['Housekeeping', 'Dietary / Food Service', 'Laundry', 'Activities Assistance', 'Companion Care'],
+  },
+  {
+    group: 'Fidend Living',
+    roles: ['Janitorial Staff', 'Porter Services', 'Common Area Cleaning', 'Maintenance Helpers', 'Grounds Support'],
+  },
+  {
+    group: 'Fidend Hospitality',
+    roles: ['Housekeepers', 'Public Area Attendants', 'Laundry Attendants', 'Dishwashers & Stewards', 'Cooks & Prep Cooks', 'Maintenance Helpers'],
+  },
 ]
 
+// TODO (Product Lead): Review availability options before next sprint.
+// Current options include Part-time and Per diem, which conflict with the
+// full-time positioning of Fidend Living. Confirm whether all divisions
+// share the same availability model or whether options should be filtered
+// based on the selected role area.
 const AVAILABILITY = [
   'Full-time (40 hrs/wk)',
   'Part-time (under 30 hrs/wk)',
@@ -128,7 +140,7 @@ export default function ApplyForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate aria-label="Work with Fidend application form">
+    <form onSubmit={handleSubmit} noValidate aria-label="Apply to work with Fidend">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
 
         {/* Full name */}
@@ -181,9 +193,9 @@ export default function ApplyForm() {
           </div>
         </div>
 
-        {/* Service area */}
+        {/* Role Interest */}
         <div>
-          <label htmlFor="serviceArea" style={labelStyle}>Service Area</label>
+          <label htmlFor="serviceArea" style={labelStyle}>Role Interest</label>
           <select
             id="serviceArea"
             name="serviceArea"
@@ -192,8 +204,14 @@ export default function ApplyForm() {
             onFocus={e => { e.target.style.borderColor = '#B89968' }}
             onBlur={e => { e.target.style.borderColor = 'rgba(22,36,58,0.18)' }}
           >
-            <option value="">Select area of work</option>
-            {SERVICE_AREAS.map(a => <option key={a} value={a}>{a}</option>)}
+            <option value="">Select a role</option>
+            {ROLE_GROUPS.map(group => (
+              <optgroup key={group.group} label={group.group}>
+                {group.roles.map(role => (
+                  <option key={role} value={role}>{role}</option>
+                ))}
+              </optgroup>
+            ))}
           </select>
         </div>
 
@@ -213,9 +231,9 @@ export default function ApplyForm() {
           </select>
         </div>
 
-        {/* Prior senior care experience */}
+        {/* Prior relevant work experience */}
         <div>
-          <p style={labelStyle} id="exp-label">Prior Senior Care Experience</p>
+          <p style={labelStyle} id="exp-label">Prior Relevant Work Experience</p>
           <div
             role="radiogroup"
             aria-labelledby="exp-label"

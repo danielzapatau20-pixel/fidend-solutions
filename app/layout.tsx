@@ -71,7 +71,7 @@ export default function RootLayout({
               '@type': 'LocalBusiness',
               name: 'Fidend Solutions',
               description:
-                'Operational staffing for senior living facilities in Pennsylvania. We place housekeepers, dietary aides, laundry attendants, activities aides, and companion caregivers.',
+                'Fidend Solutions places operational staff for care facilities, residential communities, and hospitality properties across Pennsylvania. Three divisions — Fidend Care, Fidend Living, Fidend Hospitality — one operating standard.',
               url: 'https://fidend.com',
               telephone: '+12162589368',
               email: 'info@fidend.com',
@@ -93,7 +93,6 @@ export default function RootLayout({
                 'Companion Care Staffing',
                 'Property Management Staffing',
                 'Residential Janitorial Staffing',
-                'Turnover Cleaning Staffing',
                 'Hotel Housekeeping Staffing',
                 'Hospitality Staffing',
                 'Kitchen & Culinary Staffing',

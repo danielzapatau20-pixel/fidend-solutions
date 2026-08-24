@@ -3,23 +3,38 @@
 import { useState, FormEvent } from 'react'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
+type Division = '' | 'Care' | 'Living' | 'Hospitality'
 
 interface FieldError {
-  facilityName?: string
+  companyName?: string
   contactName?: string
-  role?: string
-  message?: string
 }
 
-const SERVICES = [
-  'Housekeeping',
-  'Dietary Support',
-  'Laundry',
-  'Activities Coordination',
-  'Companion Care',
-]
+const DIVISION_ROLES: Record<Exclude<Division, ''>, string[]> = {
+  Care: [
+    'Housekeeping',
+    'Dietary / Food Service',
+    'Laundry',
+    'Activities Assistance',
+    'Companion Care',
+  ],
+  Living: [
+    'Janitorial Staff',
+    'Porter Services',
+    'Common Area Cleaning',
+    'Maintenance Helpers',
+    'Grounds Support',
+  ],
+  Hospitality: [
+    'Housekeepers',
+    'Public Area Attendants',
+    'Laundry Attendants',
+    'Dishwashers & Stewards',
+    'Cooks & Prep Cooks',
+    'Maintenance Helpers',
+  ],
+}
 
-const ROLES = ['Administrator', 'HR Manager', 'Director of Operations', 'Executive', 'Other']
 const TIMES = ['Morning (8am–12pm)', 'Afternoon (12pm–5pm)', 'Evening (5pm–7pm)', 'Anytime']
 
 const inputStyle: React.CSSProperties = {
@@ -58,13 +73,13 @@ const errorStyle: React.CSSProperties = {
 export default function ContactForm() {
   const [status, setStatus] = useState<FormStatus>('idle')
   const [errors, setErrors] = useState<FieldError>({})
-  const [services, setServices] = useState<string[]>([])
+  const [division, setDivision] = useState<Division>('')
+  const [roles, setRoles] = useState<string[]>([])
 
   function validate(data: FormData): FieldError {
     const errs: FieldError = {}
-    if (!data.get('facilityName')) errs.facilityName = 'Facility name is required.'
-    if (!data.get('contactName'))  errs.contactName  = 'Contact name is required.'
-    if (!data.get('role'))         errs.role         = 'Please select a role.'
+    if (!data.get('companyName')) errs.companyName = 'Company name is required.'
+    if (!data.get('contactName')) errs.contactName = 'Contact name is required.'
     return errs
   }
 
@@ -78,9 +93,10 @@ export default function ContactForm() {
     setStatus('submitting')
     try {
       data.append('access_key', '6110af5f-dba8-4340-be15-705584a34124')
-      data.append('subject', `Fidend — New inquiry from ${data.get('facilityName')}`)
+      const divisionLabel = division ? `Fidend ${division}` : 'Division not specified'
+      data.append('subject', `Fidend — New inquiry from ${data.get('companyName')} · ${divisionLabel}`)
       data.append('from_name', 'Fidend Contact Form')
-      if (services.length > 0) data.append('services_requested', services.join(', '))
+      if (roles.length > 0) data.append('roles_requested', roles.join(', '))
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: data,
@@ -88,15 +104,21 @@ export default function ContactForm() {
       if (!res.ok) throw new Error('submission failed')
       setStatus('success')
       form.reset()
-      setServices([])
+      setDivision('')
+      setRoles([])
     } catch {
       setStatus('error')
     }
   }
 
-  const toggleService = (svc: string) => {
-    setServices(prev =>
-      prev.includes(svc) ? prev.filter(s => s !== svc) : [...prev, svc]
+  function handleDivisionChange(d: Division) {
+    setDivision(d)
+    setRoles([])
+  }
+
+  const toggleRole = (role: string) => {
+    setRoles(prev =>
+      prev.includes(role) ? prev.filter(r => r !== role) : [...prev, role]
     )
   }
 
@@ -131,69 +153,62 @@ export default function ContactForm() {
     )
   }
 
+  const availableRoles = division ? DIVISION_ROLES[division] : null
+
   return (
     <form onSubmit={handleSubmit} noValidate aria-label="Hire Fidend inquiry form">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
 
-        {/* Facility name */}
+        {/* Company / Property Name */}
         <div>
-          <label htmlFor="facilityName" style={labelStyle}>Facility Name <span aria-hidden="true">*</span></label>
+          <label htmlFor="companyName" style={labelStyle}>Company / Property Name <span aria-hidden="true">*</span></label>
           <input
-            id="facilityName"
-            name="facilityName"
+            id="companyName"
+            name="companyName"
             type="text"
             autoComplete="organization"
             required
             aria-required="true"
-            aria-describedby={errors.facilityName ? 'facilityName-error' : undefined}
-            style={{ ...inputStyle, borderColor: errors.facilityName ? '#C0392B' : 'rgba(22,36,58,0.20)' }}
+            aria-describedby={errors.companyName ? 'companyName-error' : undefined}
+            style={{ ...inputStyle, borderColor: errors.companyName ? '#C0392B' : 'rgba(22,36,58,0.20)' }}
             onFocus={e => { e.target.style.borderColor = '#B89968' }}
-            onBlur={e => { e.target.style.borderColor = errors.facilityName ? '#C0392B' : 'rgba(22,36,58,0.20)' }}
+            onBlur={e => { e.target.style.borderColor = errors.companyName ? '#C0392B' : 'rgba(22,36,58,0.20)' }}
           />
-          {errors.facilityName && <p id="facilityName-error" style={errorStyle} role="alert">{errors.facilityName}</p>}
+          {errors.companyName && <p id="companyName-error" style={errorStyle} role="alert">{errors.companyName}</p>}
         </div>
 
-        {/* Two-column row: Contact name + Role */}
+        {/* Contact Name */}
+        <div>
+          <label htmlFor="contactName" style={labelStyle}>Contact Name <span aria-hidden="true">*</span></label>
+          <input
+            id="contactName"
+            name="contactName"
+            type="text"
+            autoComplete="name"
+            required
+            aria-required="true"
+            aria-describedby={errors.contactName ? 'contactName-error' : undefined}
+            style={{ ...inputStyle, borderColor: errors.contactName ? '#C0392B' : 'rgba(22,36,58,0.20)' }}
+            onFocus={e => { e.target.style.borderColor = '#B89968' }}
+            onBlur={e => { e.target.style.borderColor = errors.contactName ? '#C0392B' : 'rgba(22,36,58,0.20)' }}
+          />
+          {errors.contactName && <p id="contactName-error" style={errorStyle} role="alert">{errors.contactName}</p>}
+        </div>
+
+        {/* Email + Phone */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
           <div>
-            <label htmlFor="contactName" style={labelStyle}>Contact Name <span aria-hidden="true">*</span></label>
+            <label htmlFor="contactEmail" style={labelStyle}>Email Address</label>
             <input
-              id="contactName"
-              name="contactName"
-              type="text"
-              autoComplete="name"
-              required
-              aria-required="true"
-              aria-describedby={errors.contactName ? 'contactName-error' : undefined}
-              style={{ ...inputStyle, borderColor: errors.contactName ? '#C0392B' : 'rgba(22,36,58,0.20)' }}
+              id="contactEmail"
+              name="email"
+              type="email"
+              autoComplete="email"
+              style={inputStyle}
               onFocus={e => { e.target.style.borderColor = '#B89968' }}
-              onBlur={e => { e.target.style.borderColor = errors.contactName ? '#C0392B' : 'rgba(22,36,58,0.20)' }}
+              onBlur={e => { e.target.style.borderColor = 'rgba(22,36,58,0.20)' }}
             />
-            {errors.contactName && <p id="contactName-error" style={errorStyle} role="alert">{errors.contactName}</p>}
           </div>
-
-          <div>
-            <label htmlFor="role" style={labelStyle}>Your Role <span aria-hidden="true">*</span></label>
-            <select
-              id="role"
-              name="role"
-              required
-              aria-required="true"
-              aria-describedby={errors.role ? 'role-error' : undefined}
-              defaultValue=""
-              style={{ ...inputStyle, borderColor: errors.role ? '#C0392B' : 'rgba(22,36,58,0.20)', cursor: 'pointer' }}
-              onFocus={e => { e.target.style.borderColor = '#B89968' }}
-              onBlur={e => { e.target.style.borderColor = errors.role ? '#C0392B' : 'rgba(22,36,58,0.20)' }}
-            >
-              <option value="" disabled>Select role</option>
-              {ROLES.map(r => <option key={r} value={r}>{r}</option>)}
-            </select>
-            {errors.role && <p id="role-error" style={errorStyle} role="alert">{errors.role}</p>}
-          </div>
-        </div>
-
-        {/* Two-column: Phone + Beds */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
           <div>
             <label htmlFor="phone" style={labelStyle}>Phone Number</label>
             <input
@@ -206,69 +221,72 @@ export default function ContactForm() {
               onBlur={e => { e.target.style.borderColor = 'rgba(22,36,58,0.20)' }}
             />
           </div>
-          <div>
-            <label htmlFor="beds" style={labelStyle}>Number of Beds</label>
-            <select
-              id="beds"
-              name="beds"
-              defaultValue=""
-              style={{ ...inputStyle, cursor: 'pointer' }}
-              onFocus={e => { e.target.style.borderColor = '#B89968' }}
-              onBlur={e => { e.target.style.borderColor = 'rgba(22,36,58,0.20)' }}
-            >
-              <option value="">Select range</option>
-              <option value="under-50">Under 50</option>
-              <option value="50-100">50 – 100</option>
-              <option value="100-200">100 – 200</option>
-              <option value="200-plus">200+</option>
-              <option value="multiple">Multiple facilities</option>
-            </select>
-          </div>
         </div>
 
-        {/* Services needed */}
+        {/* Division — drives role options */}
         <div>
-          <p style={labelStyle} id="services-label">Services Needed</p>
-          <div
-            role="group"
-            aria-labelledby="services-label"
-            style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}
+          <label htmlFor="division" style={labelStyle}>Division</label>
+          <select
+            id="division"
+            name="division"
+            value={division}
+            onChange={e => handleDivisionChange(e.target.value as Division)}
+            style={{ ...inputStyle, cursor: 'pointer' }}
+            onFocus={e => { e.target.style.borderColor = '#B89968' }}
+            onBlur={e => { e.target.style.borderColor = 'rgba(22,36,58,0.20)' }}
           >
-            {SERVICES.map(svc => {
-              const checked = services.includes(svc)
-              return (
-                <label
-                  key={svc}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    fontFamily: 'Inter, system-ui, sans-serif',
-                    fontSize: 13,
-                    color: checked ? '#16243A' : 'rgba(22,36,58,0.60)',
-                    cursor: 'pointer',
-                    border: `1px solid ${checked ? '#B89968' : 'rgba(22,36,58,0.15)'}`,
-                    padding: '8px 14px',
-                    transition: 'all 240ms ease-out',
-                    userSelect: 'none',
-                  }}
-                >
-                  <input
-                    type="checkbox"
-                    name="services"
-                    value={svc}
-                    checked={checked}
-                    onChange={() => toggleService(svc)}
-                    style={{ accentColor: '#B89968', width: 14, height: 14 }}
-                  />
-                  {svc}
-                </label>
-              )
-            })}
-          </div>
+            <option value="">Select a division</option>
+            <option value="Care">Fidend Care — Senior Care Facilities</option>
+            <option value="Living">Fidend Living — Property Management & Residential</option>
+            <option value="Hospitality">Fidend Hospitality — Hotels, Resorts & Guest Properties</option>
+          </select>
         </div>
 
-        {/* Best time to call */}
+        {/* Roles Needed — conditional on division */}
+        {availableRoles && (
+          <div>
+            <p style={labelStyle} id="roles-label">Roles Needed</p>
+            <div
+              role="group"
+              aria-labelledby="roles-label"
+              style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}
+            >
+              {availableRoles.map(role => {
+                const checked = roles.includes(role)
+                return (
+                  <label
+                    key={role}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 8,
+                      fontFamily: 'Inter, system-ui, sans-serif',
+                      fontSize: 13,
+                      color: checked ? '#16243A' : 'rgba(22,36,58,0.60)',
+                      cursor: 'pointer',
+                      border: `1px solid ${checked ? '#B89968' : 'rgba(22,36,58,0.15)'}`,
+                      padding: '8px 14px',
+                      transition: 'all 240ms ease-out',
+                      userSelect: 'none',
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      name="roles"
+                      value={role}
+                      checked={checked}
+                      onChange={() => toggleRole(role)}
+                      style={{ accentColor: '#B89968', width: 14, height: 14 }}
+                    />
+                    {role}
+                  </label>
+                )
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Best Time to Call */}
         <div>
           <label htmlFor="callTime" style={labelStyle}>Best Time to Call</label>
           <select
@@ -284,9 +302,9 @@ export default function ContactForm() {
           </select>
         </div>
 
-        {/* Message */}
+        {/* Additional Information */}
         <div>
-          <label htmlFor="message" style={labelStyle}>Message</label>
+          <label htmlFor="message" style={labelStyle}>Additional Information</label>
           <textarea
             id="message"
             name="message"

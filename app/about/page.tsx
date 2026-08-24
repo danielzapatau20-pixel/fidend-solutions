@@ -6,7 +6,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Fidend Solutions was built on a belief that operational staffing in senior care should be faithful, transparent, and permanent. Learn who we are.',
+    'Fidend Solutions places operational staff for care facilities, residential communities, and hospitality properties in Pennsylvania. Learn who we are and how we work.',
 }
 
 const VALUES = [
@@ -23,7 +23,8 @@ const VALUES = [
   {
     latin: 'Resultados',
     english: 'Results',
-    body: 'We measure ourselves by whether your facility runs better. Survey readiness. Resident continuity. DON peace of mind.',
+    // TODO: Resultados body copy — "Survey readiness / Resident continuity / DON peace of mind" are Care-only KPIs. Replace with division-agnostic outcomes once Product Lead provides revised copy.
+    body: 'We measure ourselves by whether the operation runs better after we engage.',
   },
 ]
 
@@ -124,22 +125,7 @@ export default function AboutPage() {
             >
               From Latin <em>fidelis</em>: faithful, loyal, trustworthy.
             </p>
-            <p
-              style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: 15,
-                lineHeight: 1.75,
-                color: 'rgba(22,36,58,0.65)',
-                margin: '0 0 20px',
-              }}
-            >
-              Senior living is not a commodity market. The residents who live in
-              your facility have earned a standard of care that doesn't bend to
-              staffing gaps, surprise callouts, or workers who arrive without
-              context. We named ourselves Fidend because we believe the word
-              should mean something in operational staffing, not only in the
-              care professions.
-            </p>
+            {/* TODO: Brand copy needed — "The Name" opening paragraph. Current copy references "senior living" and "residents" exclusively. New copy should explain the Fidend name in the context of all three divisions (Care, Living, Hospitality). Product Lead to provide revised copy before this page is considered complete. */}
             <p
               style={{
                 fontFamily: 'Inter, system-ui, sans-serif',
@@ -154,42 +140,7 @@ export default function AboutPage() {
             </p>
           </FadeIn>
 
-          {/* Right — pull quote */}
-          <FadeIn delay={160}>
-            <div
-              style={{
-                borderLeft: '3px solid #B89968',
-                paddingLeft: 32,
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "'Fraunces', Georgia, serif",
-                  fontVariationSettings: "'SOFT' 30, 'opsz' 36",
-                  fontStyle: 'italic',
-                  fontWeight: 300,
-                  fontSize: 'clamp(1.3rem, 2.8vw, 2rem)',
-                  color: '#16243A',
-                  lineHeight: 1.35,
-                  margin: '0 0 24px',
-                }}
-              >
-                "The faithful house of care."
-              </p>
-              <p
-                style={{
-                  fontFamily: 'Inter, system-ui, sans-serif',
-                  fontSize: 12,
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(22,36,58,0.40)',
-                  margin: 0,
-                }}
-              >
-                Fidend Solutions tagline
-              </p>
-            </div>
-          </FadeIn>
+          {/* TODO: Pull quote needed — replace the removed "The faithful house of care." tagline with a quote that reflects the three-division brand. Product Lead to provide before this section is considered complete. */}
         </div>
       </section>
 
@@ -252,21 +203,7 @@ export default function AboutPage() {
             >
               Fidend was not built to disrupt staffing. It was built to fix it.
             </h2>
-            <p
-              style={{
-                fontFamily: 'Inter, system-ui, sans-serif',
-                fontSize: 15,
-                lineHeight: 1.75,
-                color: 'rgba(244,236,220,0.60)',
-                margin: '0 0 20px',
-              }}
-            >
-              The senior care staffing industry has a structural problem: it
-              treats facilities as clients to be billed and workers as
-              commodities to be dispatched. The result is high turnover, poor
-              orientation, and invoices that obscure the economics of the
-              relationship.
-            </p>
+            {/* TODO: Founder origin story paragraph — current copy frames the problem as specific to "the senior care staffing industry." New copy should reflect the three-division scope of Fidend Solutions. Product Lead to provide revised copy. */}
             <p
               style={{
                 fontFamily: 'Inter, system-ui, sans-serif',
@@ -297,7 +234,7 @@ export default function AboutPage() {
                   margin: '0 0 4px',
                 }}
               >
-                [Founder Name]
+                Daniel Zapata
               </p>
               <p
                 style={{
@@ -309,7 +246,7 @@ export default function AboutPage() {
                   margin: 0,
                 }}
               >
-                Founder & Principal · Fidend Solutions
+                Founder & CEO · Fidend Solutions
               </p>
             </div>
           </FadeIn>
@@ -450,7 +387,7 @@ export default function AboutPage() {
               margin: '0 0 36px',
             }}
           >
-            We work with a limited number of facilities at a time to maintain
+            We work with a limited number of clients at a time to maintain
             the quality our name requires.
           </p>
           <Link href="/contact" className="btn-primary">
