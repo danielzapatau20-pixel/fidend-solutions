@@ -245,10 +245,12 @@ export default function HomePage() {
                 lineHeight: 1.6,
                 color: 'rgba(244,236,220,0.68)',
                 margin: '0 0 40px',
-                maxWidth: '42ch',
+                maxWidth: '48ch',
               }}
             >
-              Reliable people. Clear communication. A staffing partner that stays involved.
+              Understanding your operation comes first.<br /><br />
+              Then finding the right people.<br /><br />
+              Then staying involved long after placement.
             </p>
           </FadeIn>
 
