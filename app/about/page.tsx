@@ -11,20 +11,19 @@ export const metadata: Metadata = {
 
 const VALUES = [
   {
-    latin: 'Claridad',
-    english: 'Clarity',
-    body: 'Every rate disclosed. Every cost itemized. No surprises on the invoice or the floor.',
+    title: 'Understanding',
+    subtitle: 'Before We Recruit',
+    body: 'We review the roles, the environment, the schedule, and the specific needs behind every opening before we begin the search.',
   },
   {
-    latin: 'Estrategia',
-    english: 'Strategy',
-    body: 'Staffing gaps are operational problems. We solve them with structure rather than patches: the right worker, on the right shift, sustained over time.',
+    title: 'Selection',
+    subtitle: 'Not Just Availability',
+    body: 'Every candidate is evaluated against the requirements of the role — not treated as an available body to be placed at speed.',
   },
   {
-    latin: 'Resultados',
-    english: 'Results',
-    // TODO: Resultados body copy — "Survey readiness / Resident continuity / DON peace of mind" are Care-only KPIs. Replace with division-agnostic outcomes once Product Lead provides revised copy.
-    body: 'We measure ourselves by whether the operation runs better after we engage.',
+    title: 'Presence',
+    subtitle: 'After Placement',
+    body: 'Fidend remains a point of contact after placement. When adjustments are needed, we are available to address them directly.',
   },
 ]
 
@@ -180,7 +179,7 @@ export default function AboutPage() {
             }}
           >
             {VALUES.map((val, i) => (
-              <FadeIn key={val.latin} delay={i * 100}>
+              <FadeIn key={val.title} delay={i * 100}>
                 <div
                   style={{
                     backgroundColor: '#F4ECDC',
@@ -206,7 +205,7 @@ export default function AboutPage() {
                       margin: '0 0 4px',
                     }}
                   >
-                    {val.latin}
+                    {val.title}
                   </p>
                   <p
                     style={{
@@ -219,7 +218,7 @@ export default function AboutPage() {
                       margin: '0 0 20px',
                     }}
                   >
-                    {val.english}
+                    {val.subtitle}
                   </p>
                   <p
                     style={{
