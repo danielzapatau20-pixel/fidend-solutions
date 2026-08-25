@@ -65,7 +65,7 @@ const HOW_IT_WORKS = [
   {
     number: '04',
     title: 'Ongoing coverage',
-    body: 'We handle scheduling, HR, and payroll. You manage the property. Direct access to leadership if anything needs attention.',
+    body: 'We handle scheduling, HR, and payroll. You manage the property. Fidend remains a direct point of contact when anything needs attention.',
   },
 ]
 

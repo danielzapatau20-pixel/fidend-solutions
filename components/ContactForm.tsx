@@ -13,10 +13,11 @@ interface FieldError {
 const DIVISION_ROLES: Record<Exclude<Division, ''>, string[]> = {
   Care: [
     'Housekeeping',
-    'Dietary / Food Service',
-    'Laundry',
-    'Activities Assistance',
-    'Companion Care',
+    'Cleaning Support',
+    'Dietary Aides',
+    'Laundry Attendants',
+    'Activities Assistants',
+    'Companion Support',
   ],
   Living: [
     'Janitorial Staff',

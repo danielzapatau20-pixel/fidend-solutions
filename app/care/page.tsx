@@ -18,25 +18,25 @@ const SERVICES = [
       'Daily room cleaning, common-area maintenance, and general upkeep, scheduled and run according to the standards your facility already has in place.',
   },
   {
-    title: 'Dietary / Food Service',
+    title: 'Dietary Aides',
     image: '/images/services/dietary.jpg',
     description:
       'Tray delivery, dining-room service, and kitchen support aligned with your dietary specifications and resident care plans, run the way your kitchen already operates.',
   },
   {
-    title: 'Laundry',
+    title: 'Laundry Attendants',
     image: '/images/services/laundry.jpg',
     description:
       "Resident laundry, linen exchange, and dry-goods handling. Sorted, tracked, and returned on the schedule your facility sets.",
   },
   {
-    title: 'Activities Assistance',
+    title: 'Activities Assistants',
     image: '/images/services/activities.jpg',
     description:
       "Structured program support under your activities coordinator's direction. Engagement, facilitation, and logistical setup for recreational and therapeutic programming. Warm, patient, and resident-focused.",
   },
   {
-    title: 'Companion Care',
+    title: 'Companion Support',
     image: '/images/services/companion-care.jpg',
     description:
       'Attentive non-medical companionship: conversation, ambulation assistance, and presence that sustains resident dignity, guided by the preferences your care team sets.',

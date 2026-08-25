@@ -6,7 +6,7 @@ import FadeIn from '@/components/FadeIn'
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Hire Fidend to staff your facility, or apply to work with us. We respond to facility inquiries within 4 hours and review every worker application.',
+    'Hire Fidend to staff your property or operation, or apply to work with us. We respond to inquiries within 4 hours and review every worker application.',
 }
 
 export default function ContactPage() {
@@ -64,9 +64,9 @@ export default function ContactPage() {
                 margin: 0,
               }}
             >
-              If you run a facility, tell us your staffing situation. If you want
-              to work, apply below. We read everything and respond to every
-              submission.
+              If you manage a property or operation, tell us your staffing situation.
+              If you want to work, apply below. We read everything and respond to
+              every submission.
             </p>
           </FadeIn>
         </div>
@@ -338,7 +338,7 @@ export default function ContactPage() {
                 margin: 0,
               }}
             >
-              Pennsylvania: currently accepting new facilities
+              Pennsylvania: currently accepting new clients
             </p>
           </div>
           <div

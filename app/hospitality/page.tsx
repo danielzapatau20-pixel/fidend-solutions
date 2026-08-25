@@ -13,7 +13,7 @@ const SERVICES = [
   {
     title: 'Housekeepers',
     description:
-      'Room attendants who clean and prepare guest rooms to your brand standards and inspection checklist. Trained to your specific room sequence and turnover speed.',
+      'Room attendants who clean and prepare guest rooms to your brand standards and inspection checklist. Workers learn your room sequence and turnover pace on-site under your direction.',
   },
   {
     title: 'Public Area Attendants',
@@ -70,7 +70,7 @@ const HOW_IT_WORKS = [
   {
     number: '04',
     title: 'Ongoing coverage',
-    body: 'We manage scheduling, HR, and payroll. You focus on the guest experience. Direct leadership access whenever the operation needs attention.',
+    body: 'We manage scheduling, HR, and payroll. You focus on the guest experience. Fidend remains available as a direct point of contact when the operation needs attention.',
   },
 ]
 

@@ -12,7 +12,7 @@ interface FieldError {
 const ROLE_GROUPS = [
   {
     group: 'Fidend Care',
-    roles: ['Housekeeping', 'Dietary / Food Service', 'Laundry', 'Activities Assistance', 'Companion Care'],
+    roles: ['Housekeeping', 'Cleaning Support', 'Dietary Aides', 'Laundry Attendants', 'Activities Assistants', 'Companion Support'],
   },
   {
     group: 'Fidend Living',
