@@ -15,16 +15,16 @@ const FMARK = (
 /* ─── Data ──────────────────────────────────────────────────────────────── */
 const TRUST_PILLARS = [
   {
-    title: 'Transparency',
-    body: 'Clear communication around pricing, expectations, timelines, and challenges.',
+    title: 'Clear Pricing',
+    body: "You see the worker rate and our management fee separately. No guessing what you're paying for.",
   },
   {
-    title: 'Adaptability',
-    body: 'We learn how your operation works and adapt our process when reasonable — without losing the standards that define Fidend.',
+    title: 'We Work With Your Process',
+    body: "If you already have a process that works, we're not here to replace it. We learn how you operate and figure out how our staff fits into it.",
   },
   {
-    title: 'Presence',
-    body: 'You know who to contact, who is responsible, and where to go when something needs attention.',
+    title: 'Someone Actually Answers',
+    body: "If there's a scheduling issue, a payroll question, or something isn't working with a placement, you know who to call.",
   },
 ]
 
@@ -33,7 +33,7 @@ const DIVISIONS = [
     label: 'FIDEND CARE',
     sub: 'Senior Care Facilities',
     description:
-      'Non-clinical operational staff for senior care environments where consistency, dignity, and dependable support matter every day.',
+      'Non-clinical staff for the day-to-day work that keeps senior care communities running.',
     href: '/care',
     cta: 'Explore Fidend Care',
   },
@@ -41,7 +41,7 @@ const DIVISIONS = [
     label: 'FIDEND LIVING',
     sub: 'Property Management & Residential Communities',
     description:
-      'Full-time operational staff for residential communities that need to stay clean, maintained, and resident-ready.',
+      'Full-time staff for residential properties, from janitorial and porter services to maintenance and grounds support.',
     href: '/living',
     cta: 'Explore Fidend Living',
   },
@@ -49,7 +49,7 @@ const DIVISIONS = [
     label: 'FIDEND HOSPITALITY',
     sub: 'Hotels, Resorts & Guest-Facing Properties',
     description:
-      'Operational staff for hotels and hospitality properties where consistent service directly supports the guest experience.',
+      'Staff for hotels and hospitality properties across housekeeping, laundry, public areas, kitchens, and maintenance support.',
     href: '/hospitality',
     cta: 'Explore Fidend Hospitality',
   },
@@ -79,38 +79,38 @@ const MATRIX = [
 const HOW_IT_WORKS = [
   {
     number: '01',
-    title: 'Understand the need',
-    body: 'We review the role, schedule, environment, expectations, and the specific needs behind the opening.',
+    title: 'Tell us what you need',
+    body: 'We start with the job: what the person will be doing, the schedule, the environment, and what you expect from them.',
   },
   {
     number: '02',
-    title: 'Recruit with fit in mind',
-    body: 'We evaluate candidates against the requirements of the role instead of treating every available worker as interchangeable.',
+    title: 'We recruit for the job',
+    body: "We interview candidates with that specific opening in mind. Availability matters, but it isn't enough by itself.",
   },
   {
     number: '03',
-    title: 'Make the placement',
-    body: 'We connect the client with candidates whose experience, availability, and profile align with the opportunity.',
+    title: 'You see the fit',
+    body: "We introduce candidates whose experience and availability make sense for the position. If we haven't found the right person yet, we'll tell you.",
   },
   {
     number: '04',
-    title: 'Stay connected',
-    body: 'After placement, Fidend remains available for communication, adjustments, and issues that need attention.',
+    title: "We don't disappear after placement",
+    body: "Once someone starts, we're still your staffing partner. If something changes or isn't working, you have someone to call.",
   },
 ]
 
 const OPERATIONAL_GAPS = [
   {
-    title: 'STAFFING GAPS',
-    body: 'Open positions put additional pressure on the people already carrying the work.',
+    title: 'SHORT-STAFFED',
+    body: 'An open position usually means more work for the people already there.',
   },
   {
     title: 'TURNOVER',
-    body: 'Constant replacement creates instability for teams and operations.',
+    body: "Filling a position quickly doesn't help much if you're recruiting for the same job again a few weeks later.",
   },
   {
-    title: 'DISCONNECTED PROVIDERS',
-    body: 'Staffing becomes harder when communication disappears after placement.',
+    title: 'HARD TO REACH',
+    body: "When you need an update, have a payroll question, or something isn't working, you shouldn't have to chase your staffing company for an answer.",
   },
 ]
 
@@ -248,9 +248,8 @@ export default function HomePage() {
                 maxWidth: '48ch',
               }}
             >
-              Understanding your operation comes first.<br /><br />
-              Then finding the right people.<br /><br />
-              Then staying involved long after placement.
+              We help care communities, residential properties, and hotels find full-time staff for the roles that keep the day-to-day operation moving.<br /><br />
+              We take the time to understand the job, find people who fit it, and stay involved after they're placed.
             </p>
           </FadeIn>
 
@@ -345,7 +344,7 @@ export default function HomePage() {
                 margin: '0 0 24px',
               }}
             >
-              When staffing falls short,<br />the operation feels it.
+              When you're short-staffed, the work doesn't disappear.
             </h2>
             <p
               style={{
@@ -357,7 +356,7 @@ export default function HomePage() {
                 margin: '0 0 16px',
               }}
             >
-              Vacancies don't stay isolated to a schedule. They create pressure on the people already carrying the work and affect the consistency of the operation.
+              Someone else has to pick it up. Supervisors cover gaps, teams get stretched, and the same work still has to get done.
             </p>
             <p
               style={{
@@ -369,7 +368,7 @@ export default function HomePage() {
                 margin: '0 0 clamp(48px, 7vw, 72px)',
               }}
             >
-              That's why Fidend starts by understanding the operation behind the opening — not just the position that needs to be filled.
+              And when the wrong person is placed, you're often back to recruiting for the same position a few weeks later.
             </p>
           </FadeIn>
 
@@ -453,8 +452,8 @@ export default function HomePage() {
                 margin: '0 0 clamp(48px, 7vw, 72px)',
               }}
             >
-              Good staffing is not only about filling a position. It is about understanding what the
-              client needs, communicating clearly, and staying involved throughout the relationship.
+              A staffing relationship should be straightforward. You should know what you're paying,
+              where recruiting stands, and who to call when something needs attention.
             </p>
           </FadeIn>
 
@@ -547,7 +546,7 @@ export default function HomePage() {
                   margin: '0 0 16px',
                 }}
               >
-                Three divisions.<br />One operating standard.
+                Staffing for the places people depend on every day.
               </h2>
               <p
                 style={{
@@ -559,7 +558,7 @@ export default function HomePage() {
                   margin: 0,
                 }}
               >
-                Dedicated staffing solutions for care, residential, and hospitality operations — each shaped around the needs of its environment.
+                We focus on the roles that keep care communities, residential properties, and hotels running every day.
               </p>
             </div>
           </FadeIn>
@@ -829,7 +828,7 @@ export default function HomePage() {
                 margin: 0,
               }}
             >
-              Staffing starts with understanding.
+              We don't send someone just because they're available.
             </h2>
           </FadeIn>
 
@@ -983,9 +982,8 @@ export default function HomePage() {
                 margin: '0 0 44px',
               }}
             >
-              Whether you manage a care facility, residential property, or hospitality operation,
-              Fidend helps you cover essential service roles with clarity, transparency, and
-              direct support.
+              Tell us what you're hiring for, what the schedule looks like, and what's been
+              difficult to cover. We'll take it from there.
             </p>
             <div
               style={{
