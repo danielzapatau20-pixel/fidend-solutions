@@ -124,7 +124,31 @@ export default function AboutPage() {
             >
               From Latin <em>fidelis</em>: faithful, loyal, trustworthy.
             </p>
-            {/* TODO: Brand copy needed — "The Name" opening paragraph. Current copy references "senior living" and "residents" exclusively. New copy should explain the Fidend name in the context of all three divisions (Care, Living, Hospitality). Product Lead to provide revised copy before this page is considered complete. */}
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 15,
+                lineHeight: 1.75,
+                color: 'rgba(22,36,58,0.65)',
+                margin: '0 0 16px',
+              }}
+            >
+              Fidend comes from the idea of faithfulness — being dependable
+              in the relationships and responsibilities entrusted to us.
+            </p>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 15,
+                lineHeight: 1.75,
+                color: 'rgba(22,36,58,0.65)',
+                margin: '0 0 16px',
+              }}
+            >
+              For us, that means understanding what a client needs, being
+              clear about what we can deliver, and remaining accountable
+              after a placement is made.
+            </p>
             <p
               style={{
                 fontFamily: 'Inter, system-ui, sans-serif',
@@ -135,11 +159,8 @@ export default function AboutPage() {
               }}
             >
               Every worker we place is a representation of that commitment.
-              Every invoice we issue is designed to honor it.
             </p>
           </FadeIn>
-
-          {/* TODO: Pull quote needed — replace the removed "The faithful house of care." tagline with a quote that reflects the three-division brand. Product Lead to provide before this section is considered complete. */}
         </div>
       </section>
 

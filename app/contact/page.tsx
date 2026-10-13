@@ -95,7 +95,7 @@ export default function ContactPage() {
             {/* Section header */}
             <div style={{ marginBottom: 40 }}>
               <p className="eyebrow" style={{ marginBottom: 12 }}>
-                For Facilities
+                For Clients
               </p>
               <div className="gold-rule" style={{ marginBottom: 24 }} />
               <h2

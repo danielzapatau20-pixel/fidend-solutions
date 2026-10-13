@@ -7,6 +7,15 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: '*.higgsfield.ai' },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/services',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

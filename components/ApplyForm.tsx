@@ -24,15 +24,10 @@ const ROLE_GROUPS = [
   },
 ]
 
-// TODO (Product Lead): Review availability options before next sprint.
-// Current options include Part-time and Per diem, which conflict with the
-// full-time positioning of Fidend Living. Confirm whether all divisions
-// share the same availability model or whether options should be filtered
-// based on the selected role area.
 const AVAILABILITY = [
-  'Full-time (40 hrs/wk)',
-  'Part-time (under 30 hrs/wk)',
-  'Per diem / as needed',
+  'Full-time',
+  'Flexible full-time schedule',
+  'Open availability',
   'Weekends only',
   'Evenings / nights',
 ]
