@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Logo from './Logo'
@@ -34,6 +34,7 @@ export default function Nav() {
   const [isDesktop,      setIsDesktop]      = useState(false)
   const [divisionsOpen,  setDivisionsOpen]  = useState(false)
   const pathname = usePathname()
+  const divisionsTriggerRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => { setMenuOpen(false) }, [pathname])
 
@@ -62,6 +63,24 @@ export default function Nav() {
   const isDivisionActive = divisionLinks.some(l =>
     pathname.startsWith(l.href)
   )
+
+  const closeDivisionsAndRefocus = () => {
+    setDivisionsOpen(false)
+    divisionsTriggerRef.current?.focus()
+  }
+
+  const onDivisionsKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Escape' && divisionsOpen) {
+      e.stopPropagation()
+      closeDivisionsAndRefocus()
+    }
+  }
+
+  const onDivisionsBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setDivisionsOpen(false)
+    }
+  }
 
   return (
     <>
@@ -119,9 +138,16 @@ export default function Nav() {
                 style={{ position: 'relative' }}
                 onMouseEnter={() => setDivisionsOpen(true)}
                 onMouseLeave={() => setDivisionsOpen(false)}
+                onKeyDown={onDivisionsKeyDown}
+                onBlur={onDivisionsBlur}
               >
                 <button
+                  ref={divisionsTriggerRef}
+                  type="button"
                   aria-expanded={divisionsOpen}
+                  aria-haspopup="true"
+                  aria-controls="divisions-menu"
+                  onClick={() => setDivisionsOpen(true)}
                   style={{
                     fontFamily: 'Inter, system-ui, sans-serif',
                     fontSize: 13,
@@ -168,69 +194,76 @@ export default function Nav() {
 
                 {divisionsOpen && (
                   <div
+                    id="divisions-menu"
                     style={{
                       position: 'absolute',
-                      top: 'calc(100% + 16px)',
+                      top: '100%',
                       left: '50%',
                       transform: 'translateX(-50%)',
-                      backgroundColor: '#16243A',
-                      border: '1px solid rgba(184,153,104,0.25)',
-                      minWidth: 240,
+                      paddingTop: 16,
                       zIndex: 100,
-                      boxShadow: '0 16px 48px rgba(0,0,0,0.35)',
                     }}
                   >
-                    {divisionLinks.map(({ label, href, sub }) => {
-                      const active = pathname.startsWith(href)
-                      return (
-                        <Link
-                          key={href}
-                          href={href}
-                          style={{
-                            display: 'block',
-                            padding: '14px 20px',
-                            borderBottom: '1px solid rgba(184,153,104,0.10)',
-                            textDecoration: 'none',
-                            backgroundColor: active
-                              ? 'rgba(184,153,104,0.08)'
-                              : 'transparent',
-                            transition: 'background-color 180ms',
-                          }}
-                          onMouseEnter={e =>
-                            ((e.currentTarget as HTMLElement).style.backgroundColor =
-                              'rgba(184,153,104,0.08)')
-                          }
-                          onMouseLeave={e =>
-                            ((e.currentTarget as HTMLElement).style.backgroundColor =
-                              active ? 'rgba(184,153,104,0.08)' : 'transparent')
-                          }
-                        >
-                          <p
+                    <div
+                      style={{
+                        backgroundColor: '#16243A',
+                        border: '1px solid rgba(184,153,104,0.25)',
+                        minWidth: 240,
+                        boxShadow: '0 16px 48px rgba(0,0,0,0.35)',
+                      }}
+                    >
+                      {divisionLinks.map(({ label, href, sub }) => {
+                        const active = pathname.startsWith(href)
+                        return (
+                          <Link
+                            key={href}
+                            href={href}
                             style={{
-                              fontFamily: 'Inter, system-ui, sans-serif',
-                              fontSize: 12,
-                              fontWeight: 500,
-                              letterSpacing: '0.08em',
-                              color: active ? '#B89968' : '#F4ECDC',
-                              margin: '0 0 3px',
+                              display: 'block',
+                              padding: '14px 20px',
+                              borderBottom: '1px solid rgba(184,153,104,0.10)',
+                              textDecoration: 'none',
+                              backgroundColor: active
+                                ? 'rgba(184,153,104,0.08)'
+                                : 'transparent',
+                              transition: 'background-color 180ms',
                             }}
+                            onMouseEnter={e =>
+                              ((e.currentTarget as HTMLElement).style.backgroundColor =
+                                'rgba(184,153,104,0.08)')
+                            }
+                            onMouseLeave={e =>
+                              ((e.currentTarget as HTMLElement).style.backgroundColor =
+                                active ? 'rgba(184,153,104,0.08)' : 'transparent')
+                            }
                           >
-                            {label}
-                          </p>
-                          <p
-                            style={{
-                              fontFamily: 'Inter, system-ui, sans-serif',
-                              fontSize: 11,
-                              color: 'rgba(244,236,220,0.40)',
-                              margin: 0,
-                              letterSpacing: '0.03em',
-                            }}
-                          >
-                            {sub}
-                          </p>
-                        </Link>
-                      )
-                    })}
+                            <p
+                              style={{
+                                fontFamily: 'Inter, system-ui, sans-serif',
+                                fontSize: 12,
+                                fontWeight: 500,
+                                letterSpacing: '0.08em',
+                                color: active ? '#B89968' : '#F4ECDC',
+                                margin: '0 0 3px',
+                              }}
+                            >
+                              {label}
+                            </p>
+                            <p
+                              style={{
+                                fontFamily: 'Inter, system-ui, sans-serif',
+                                fontSize: 11,
+                                color: 'rgba(244,236,220,0.40)',
+                                margin: 0,
+                                letterSpacing: '0.03em',
+                              }}
+                            >
+                              {sub}
+                            </p>
+                          </Link>
+                        )
+                      })}
+                    </div>
                   </div>
                 )}
               </div>
