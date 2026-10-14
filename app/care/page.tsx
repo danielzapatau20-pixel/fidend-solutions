@@ -7,7 +7,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Fidend Care — Senior Care Facility Staffing',
   description:
-    'Non-clinical support staff for senior care facilities. Fidend Care places housekeepers, dietary aides, laundry attendants, activities assistants, and companion support workers who adapt to your facility from day one.',
+    'Full-time, non-clinical staffing for senior care communities across housekeeping, dietary, laundry, activities, and companion support.',
 }
 
 const SERVICES = [
@@ -44,33 +44,51 @@ const SERVICES = [
 ]
 
 const PILLARS = [
-  'Senior care environment orientation',
-  'Dignity-first interaction standards',
-  'Consistent coverage across shifts',
-  'Dementia-aware presence',
-  'Reporting to your chain of command',
-  'Scheduling adjusted to your census',
+  {
+    title: 'Full-Time Staffing',
+    body: 'Ongoing staffing needs, not per-diem or gig coverage.',
+  },
+  {
+    title: "Your Facility's Procedures",
+    body: 'Your team leads facility-specific orientation and day-to-day direction.',
+  },
+  {
+    title: 'Recruiting for the Opening',
+    body: 'We look at the position, schedule, responsibilities, and relevant experience before deciding who may be a fit.',
+  },
+  {
+    title: 'Your Chain of Command',
+    body: 'Workers report through the structure your facility already has in place.',
+  },
+  {
+    title: 'Open-Book Pricing',
+    body: 'Worker rate and Fidend management fee are shown separately.',
+  },
+  {
+    title: 'One Point of Contact',
+    body: "When there's a staffing, payroll, or billing question, you know who to call.",
+  },
 ]
 
 const HOW_IT_WORKS = [
   {
     number: '01',
-    title: 'Initial call',
+    title: 'Tell us where the need is',
     body: 'We learn your census, acuity level, current staffing gaps, and shift structure. Typically 20 minutes with your DON, administrator, or HR manager.',
   },
   {
     number: '02',
-    title: 'Worker match',
-    body: 'We assign workers matched to your service area, shift length, and facility type.',
+    title: 'We recruit for the opening',
+    body: "We recruit with the position, schedule, responsibilities, and facility environment in mind. If we haven't found the right person yet, we'll tell you.",
   },
   {
     number: '03',
-    title: 'On-site orientation',
+    title: 'Your team leads orientation',
     body: "Workers arrive ready to learn your facility's layout. Your DON or shift supervisor leads orientation to your specific procedures.",
   },
   {
     number: '04',
-    title: 'Ongoing management',
+    title: 'We handle our side',
     body: 'We handle scheduling, HR, payroll, and documentation. You manage care quality. One point of contact, always.',
   },
 ]
@@ -127,12 +145,25 @@ export default function CarePage() {
                 lineHeight: 1.65,
                 color: 'rgba(244,236,220,0.68)',
                 maxWidth: '48ch',
+                margin: '0 0 16px',
+              }}
+            >
+              Full-time, non-clinical staffing for senior care communities. We recruit
+              for housekeeping, dietary, laundry, activities, companion support, and
+              other day-to-day support roles.
+            </p>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 'clamp(14px, 1.6vw, 16px)',
+                lineHeight: 1.65,
+                color: 'rgba(244,236,220,0.68)',
+                maxWidth: '48ch',
                 margin: '0 0 32px',
               }}
             >
-              Non-clinical support staff for care environments where dignity, consistency,
-              and preparation matter every day. Every worker adapts to your facility's
-              standards and shift structure from day one.
+              Your facility sets the standards and directs the work. We focus on
+              finding people who fit the position and schedule you actually need.
             </p>
             <Link href="/contact" className="btn-gold-fill" style={{ fontSize: 11, letterSpacing: '0.2em' }}>
               Request Staffing Support
@@ -165,7 +196,7 @@ export default function CarePage() {
                 margin: '0 0 16px',
               }}
             >
-              Five disciplines of daily care.
+              Support for the work happening around residents every day.
             </h2>
             <p
               style={{
@@ -177,7 +208,8 @@ export default function CarePage() {
                 margin: 0,
               }}
             >
-              Prepared support staff for care environments where trust is non-negotiable.
+              Housekeeping, meals, laundry, activities, and companionship all depend
+              on having the right people in place. These are the roles we recruit for.
             </p>
           </FadeIn>
 
@@ -232,7 +264,7 @@ export default function CarePage() {
                 margin: '0 0 20px',
               }}
             >
-              Built to fit the way your facility already runs.
+              We learn how your facility works before we start recruiting.
             </h2>
             <p
               style={{
@@ -243,10 +275,9 @@ export default function CarePage() {
                 margin: '0 0 32px',
               }}
             >
-              Every facility runs differently: different shift patterns, different reporting
-              lines, different pace. We do not ask you to adapt to us. Our workers adjust
-              to your existing standards and procedures, so the partnership works on your
-              terms from day one.
+              We do not ask you to adapt to us. Your schedules, reporting lines,
+              procedures, and department expectations already exist. We need to
+              understand them so we can recruit for the actual opening.
             </p>
             <Link href="/contact" className="btn-primary-navy">
               Request a Conversation
@@ -268,12 +299,12 @@ export default function CarePage() {
               Every Placement · Every Facility
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-              {PILLARS.map((item, i) => (
+              {PILLARS.map((pillar, i) => (
                 <div
-                  key={item}
+                  key={pillar.title}
                   style={{
                     display: 'flex',
-                    alignItems: 'center',
+                    alignItems: 'flex-start',
                     gap: 16,
                     padding: '16px 0',
                     borderBottom:
@@ -287,18 +318,35 @@ export default function CarePage() {
                       borderRadius: '50%',
                       backgroundColor: '#B89968',
                       flexShrink: 0,
+                      marginTop: 6,
                     }}
                   />
-                  <span
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      fontSize: 14,
-                      color: '#16243A',
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {item}
-                  </span>
+                  <div>
+                    <p
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontSize: 14,
+                        fontWeight: 600,
+                        color: '#16243A',
+                        lineHeight: 1.4,
+                        margin: '0 0 3px',
+                      }}
+                    >
+                      {pillar.title}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontSize: 13,
+                        fontWeight: 400,
+                        color: 'rgba(22,36,58,0.58)',
+                        lineHeight: 1.5,
+                        margin: 0,
+                      }}
+                    >
+                      {pillar.body}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -328,7 +376,7 @@ export default function CarePage() {
                 margin: 0,
               }}
             >
-              How we go from first call to first shift.
+              Here's what happens when you need staff.
             </h2>
           </FadeIn>
 
@@ -434,7 +482,7 @@ export default function CarePage() {
               }}
             >
               One conversation. A written proposal within five business days.
-              Every number disclosed before anything is agreed.
+              Open-book pricing before anything is agreed.
             </p>
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/contact" className="btn-primary-navy">
