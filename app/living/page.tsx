@@ -4,9 +4,9 @@ import FadeIn from '@/components/FadeIn'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Fidend Living — Property Management & Residential Staffing',
+  title: 'Fidend Living — Residential Property Staffing',
   description:
-    'Full-time property operations staff for residential communities and multifamily properties. Fidend Living places janitorial staff, porters, maintenance helpers, and grounds support for properties that need to stay clean, maintained, and resident-ready.',
+    'Full-time staffing for apartment communities, multifamily properties, and residential portfolios across janitorial, porter, common area, maintenance support, and grounds roles.',
 }
 
 const SERVICES = [
@@ -18,7 +18,7 @@ const SERVICES = [
   {
     title: 'Porter Services',
     description:
-      'Ongoing exterior and interior upkeep: trash handling, package management, entryway maintenance, and general property presence that keeps standards visible.',
+      'Ongoing exterior and interior upkeep, including trash handling, package management, and entryway maintenance.',
   },
   {
     title: 'Common Area Cleaning',
@@ -28,7 +28,7 @@ const SERVICES = [
   {
     title: 'Maintenance Helpers',
     description:
-      'Support for your maintenance team on routine tasks and general property upkeep. Not licensed trade work — operational support to keep your team moving.',
+      'Support for your maintenance team on routine tasks and general property upkeep. Not licensed trade work. Operational support to keep your team moving.',
   },
   {
     title: 'Grounds Support',
@@ -38,34 +38,52 @@ const SERVICES = [
 ]
 
 const PILLARS = [
-  'Full-time placements, not temporary or gig coverage',
-  'Resident-ready spaces maintained daily',
-  'Cleaner common areas and lobbies',
-  'Reliable maintenance support presence',
-  'Scheduling aligned to your occupancy',
-  'Coverage scaled as your property roster grows',
+  {
+    title: 'Full-Time Staffing',
+    body: 'Ongoing staffing needs, not temporary or gig coverage.',
+  },
+  {
+    title: "Your Property's Procedures",
+    body: 'Your team leads property-specific orientation, work priorities, and day-to-day direction.',
+  },
+  {
+    title: 'Recruiting for the Opening',
+    body: 'We look at the position, schedule, responsibilities, and relevant experience before deciding who may be a fit.',
+  },
+  {
+    title: 'Maintenance Support, Not Licensed Trades',
+    body: 'We staff maintenance helpers for general property support. Licensed trade work stays with the appropriate professionals.',
+  },
+  {
+    title: 'Open-Book Pricing',
+    body: 'Worker rate and Fidend management fee are shown separately.',
+  },
+  {
+    title: 'One Point of Contact',
+    body: "When there's a staffing, payroll, or billing question, you know who to call.",
+  },
 ]
 
 const HOW_IT_WORKS = [
   {
     number: '01',
-    title: 'Understand the property',
+    title: 'Tell us about the property',
     body: 'We learn the property type, unit count, occupancy patterns, current gaps, and the standards your residents expect.',
   },
   {
     number: '02',
-    title: 'Match the right workers',
-    body: 'We assign workers aligned to your shift structure, building type, and operational priorities.',
+    title: 'We recruit for the opening',
+    body: "We recruit with the position, schedule, responsibilities, and property environment in mind. If we haven't found the right person yet, we'll tell you.",
   },
   {
     number: '03',
-    title: 'On-site start',
+    title: 'Your team sets the property standard',
     body: 'Workers arrive ready to learn your property layout and procedures. Your property manager or lead sets the standard from day one.',
   },
   {
     number: '04',
-    title: 'Ongoing coverage',
-    body: 'We handle scheduling, HR, and payroll. You manage the property. Fidend remains a direct point of contact when anything needs attention.',
+    title: 'We handle our side',
+    body: 'We handle scheduling, HR, and payroll. You manage the property. If something needs attention, you have a direct point of contact at Fidend.',
   },
 ]
 
@@ -110,7 +128,7 @@ export default function LivingPage() {
                 margin: '0 0 20px',
               }}
             >
-              Property Management &amp; Residential Staffing
+              Residential Property Staffing
             </h1>
           </FadeIn>
           <FadeIn delay={280}>
@@ -121,12 +139,26 @@ export default function LivingPage() {
                 lineHeight: 1.65,
                 color: 'rgba(244,236,220,0.68)',
                 maxWidth: '48ch',
+                margin: '0 0 16px',
+              }}
+            >
+              Full-time staffing for apartment communities, multifamily properties,
+              and residential portfolios. We recruit for janitorial, porter, common
+              area, maintenance support, and grounds roles.
+            </p>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 'clamp(14px, 1.6vw, 16px)',
+                lineHeight: 1.65,
+                color: 'rgba(244,236,220,0.68)',
+                maxWidth: '48ch',
                 margin: '0 0 32px',
               }}
             >
-              Reliable support for properties that need to stay clean, maintained, and
-              ready for residents. We place full-time operational staff who show up every
-              day, follow your standards, and keep the property moving.
+              Your team manages the property and directs the work. We focus on
+              finding people who fit the position, schedule, and property you
+              need them for.
             </p>
             <Link href="/contact" className="btn-gold-fill" style={{ fontSize: 11, letterSpacing: '0.2em' }}>
               Request Staffing Support
@@ -159,7 +191,7 @@ export default function LivingPage() {
                 margin: '0 0 16px',
               }}
             >
-              Five roles that keep residential properties running.
+              The people behind the day-to-day property work.
             </h2>
             <p
               style={{
@@ -171,8 +203,8 @@ export default function LivingPage() {
                 margin: 0,
               }}
             >
-              Reliable operational support for residential communities and multifamily
-              properties that cannot afford inconsistency.
+              Common areas, trash, grounds, routine upkeep, and maintenance support
+              all need people assigned to the work. These are the roles we recruit for.
             </p>
           </FadeIn>
 
@@ -260,7 +292,7 @@ export default function LivingPage() {
                 margin: '0 0 20px',
               }}
             >
-              Residential properties that stay clean, staffed, and ready.
+              We recruit around the way your property actually operates.
             </h2>
             <p
               style={{
@@ -271,9 +303,9 @@ export default function LivingPage() {
                 margin: '0 0 32px',
               }}
             >
-              Every property has its own rhythm: different shift patterns, different
-              resident expectations, different peak periods. We align to how your property
-              operates — not the other way around.
+              We start with the property, the position, and the schedule. We want
+              to understand the building, the work that needs to get done, and what
+              your team expects from the person filling the role.
             </p>
             <Link href="/contact" className="btn-primary-navy">
               Request a Conversation
@@ -295,12 +327,12 @@ export default function LivingPage() {
               Every Placement · Every Property
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-              {PILLARS.map((item, i) => (
+              {PILLARS.map((pillar, i) => (
                 <div
-                  key={item}
+                  key={pillar.title}
                   style={{
                     display: 'flex',
-                    alignItems: 'center',
+                    alignItems: 'flex-start',
                     gap: 16,
                     padding: '16px 0',
                     borderBottom:
@@ -314,18 +346,35 @@ export default function LivingPage() {
                       borderRadius: '50%',
                       backgroundColor: '#B89968',
                       flexShrink: 0,
+                      marginTop: 6,
                     }}
                   />
-                  <span
-                    style={{
-                      fontFamily: 'Inter, system-ui, sans-serif',
-                      fontSize: 14,
-                      color: '#16243A',
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {item}
-                  </span>
+                  <div>
+                    <p
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontSize: 14,
+                        fontWeight: 600,
+                        color: '#16243A',
+                        lineHeight: 1.4,
+                        margin: '0 0 3px',
+                      }}
+                    >
+                      {pillar.title}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontSize: 13,
+                        fontWeight: 400,
+                        color: 'rgba(22,36,58,0.58)',
+                        lineHeight: 1.5,
+                        margin: 0,
+                      }}
+                    >
+                      {pillar.body}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -355,7 +404,7 @@ export default function LivingPage() {
                 margin: 0,
               }}
             >
-              From first call to first shift.
+              Here's how we staff your property.
             </h2>
           </FadeIn>
 
@@ -457,11 +506,23 @@ export default function LivingPage() {
                 fontSize: 15,
                 lineHeight: 1.72,
                 color: 'rgba(22,36,58,0.55)',
+                margin: '0 0 16px',
+              }}
+            >
+              Tell us what you're hiring for and what the schedule looks like.
+              We'll talk through the need and put together a clear proposal.
+            </p>
+            <p
+              style={{
+                fontFamily: 'Inter, system-ui, sans-serif',
+                fontSize: 15,
+                lineHeight: 1.72,
+                color: 'rgba(22,36,58,0.55)',
                 margin: '0 0 36px',
               }}
             >
-              One conversation. A written proposal within five business days.
-              Every number disclosed before anything is agreed.
+              Written proposal within five business days. Open-book pricing
+              before anything is agreed.
             </p>
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/contact" className="btn-primary-navy">
